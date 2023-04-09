@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logo2.png';
+import CustomLink from './CustomLink';
 
 const Navbar = () => {
-    
+
     const menuItem = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/login">Login</Link></li>
+        <li><CustomLink to="/">Home</CustomLink></li>
+        <li><CustomLink to="/tools">Tools</CustomLink></li>
+        <li><CustomLink to="/about">About</CustomLink></li>
+        <li><CustomLink to="/login">Login</CustomLink></li>
     </>
 
     return (
@@ -28,7 +29,7 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0">
+                    <ul className="menu menu-horizontal p-0 text-white">
                         {menuItem}
                     </ul>
                 </div>

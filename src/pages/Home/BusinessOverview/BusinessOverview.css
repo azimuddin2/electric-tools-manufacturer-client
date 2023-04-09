@@ -1,0 +1,10 @@
+.background-image {
+    height: 100%;
+}
+
+/* make products responsive */
+@media only screen and (max-width: 576px) {
+    .background-image {
+        height: 1050px;
+    }
+}
