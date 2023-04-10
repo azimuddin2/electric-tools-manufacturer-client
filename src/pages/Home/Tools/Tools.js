@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Tool from './Tool';
+import { Link } from 'react-router-dom';
+import Loading from '../../Shared/Loading/Loading';
 
 const Tools = () => {
 
-    const {data:tools, isLoading, error } = useQuery({
+    const { data: tools, isLoading, error } = useQuery({
         queryKey: ['tools'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/tools');
@@ -13,19 +15,19 @@ const Tools = () => {
         }
     })
 
-    if(isLoading){
-        return <p className='text-red-500 text-center'>error: {error.message}</p>
+    if (isLoading) {
+        return <Loading></Loading>
     }
 
-    if(error){
+    if (error) {
         return <p className='text-red-500 text-center'>error: {error.message}</p>
     }
 
     const toolsCollection = tools.slice(0, 6);
 
     return (
-        <div className='px-6 lg:px-8 mt-4 mb-12'>
-            <h1 className='text-center font-bold text-primary text-xl'>What Our Have</h1>
+        <div className='px-6 lg:px-8 mb-12'>
+            <h1 className='text-center font-semibold text-primary text-lg'>What Our Have</h1>
             <h1 className='text-center text-4xl font-normal uppercase mb-10'>Electric Tools</h1>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
@@ -35,15 +37,10 @@ const Tools = () => {
                     ></Tool>)
                 }
             </div>
-            <div className='review-button'>
-                <div className='review-border'></div>
-                <button className='btn-review'>
-                    {/* <Link className='text-white text-decoration-none'
-                        to={'/reviews'}>SHOW ALL CARS
-                        <FontAwesomeIcon className='ml-1' icon={faArrowRightLong}></FontAwesomeIcon>
-                    </Link> */}
-                </button>
-                <div className='review-border'></div>
+            <div className="divider divider-primary mt-20">
+                <Link to='/tools'>
+                    <button className='btn btn-sm btn-outline'>SHOW ALL TOOLS</button>
+                </Link>
             </div>
         </div>
     );

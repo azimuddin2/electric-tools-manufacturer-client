@@ -26,7 +26,7 @@ const Banner = () => {
     }
 
     if (error) {
-        <p className='text-red-500 text-center'>error: {error.message}</p>
+        return <p className='text-red-500 text-center mt-10'>error: {error.message}</p>
     }
 
     return (
@@ -71,7 +71,7 @@ const Banner = () => {
                         repeat={Infinity}
                     />
                     <h1 className="text-xl text-secondary mt-4 font-semibold">Hardware Equipments & Accessories manufacturer</h1>
-                    <p className="py-6 text-secondary text-sm">Electrical tools are used to do the electrical work like electrical wiring installations by using this tool we can do the tools of electrical wire properly and quickly.</p>
+                    <p className="py-4 md:py-6 text-secondary text-sm">Electrical tools are used to do the electrical work like electrical wiring installations by using this tool we can do the tools of electrical wire properly and quickly.</p>
                     <Link to='/tools'>
                         <Button>Get Started <HiArrowRight className='ml-1 text-xl'></HiArrowRight> </Button>
                     </Link>
