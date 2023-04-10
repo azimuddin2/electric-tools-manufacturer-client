@@ -11,7 +11,7 @@ module.exports = {
       {
         electrictoolstheme: {
           primary: "#67c0f4",
-          secondary: "#1e2b47",
+          secondary: "#3A4256",
           accent: "#19223c",
           neutral: "#3d4451",
           "base-100": "#ffffff",

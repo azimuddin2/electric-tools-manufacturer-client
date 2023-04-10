@@ -6,11 +6,11 @@ import BusinessOverview from '../BusinessOverview/BusinessOverview';
 
 const Home = () => {
     return (
-        <div>
+        <div className='max-w-screen-xl mx-auto'>
             <Banner></Banner>
-            <CompanyLogo></CompanyLogo>
-            <Tools></Tools>
-            <BusinessOverview></BusinessOverview>
+            {/* <CompanyLogo></CompanyLogo> */}
+            {/* <Tools></Tools> */}
+            {/* <BusinessOverview></BusinessOverview> */}
         </div>
     );
 };

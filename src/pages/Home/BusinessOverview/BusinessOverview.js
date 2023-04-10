@@ -8,10 +8,11 @@ const BusinessOverview = () => {
     return (
         <section style={{
             background: `url(${backgroundImg})`,
-            backgroundRepeat: '100%',
-            backgroundPosition: '100%'
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: '100%',
+            backgroundSize: 'cover',
         }}
-            className='px-8 py-12 background-image'
+            className=' px-6 lg:px-8 py-12 background-image'
         >
             <div>
                 <h1 className='text-center text-cyan-500 uppercase text-4xl font-bold'>Millions of Clients trust us</h1>
