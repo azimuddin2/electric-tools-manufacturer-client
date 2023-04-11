@@ -2,7 +2,6 @@ import React from 'react';
 import backgroundImg from '../../../assets/images/background.jpg';
 import { FaTools, FaUsers } from 'react-icons/fa';
 import { AiTwotoneLike, AiFillDollarCircle } from 'react-icons/ai';
-// import './BusinessOverview.css';
 
 const BusinessOverview = () => {
     return (
@@ -12,10 +11,10 @@ const BusinessOverview = () => {
             backgroundPosition: '100%',
             backgroundSize: 'cover',
         }}
-            className=' px-6 lg:px-8 py-12 background-image'
+            className=' px-6 lg:px-8 py-12 background-img mb-20'
         >
             <div>
-                <h1 className='text-center text-cyan-500 uppercase text-4xl font-bold'>Millions of Clients trust us</h1>
+                <h1 className='text-center text-primary uppercase text-4xl font-bold'>Millions of Clients trust us</h1>
                 <h3 className='text-center capitalize text-white text-2xl mb-12'>try to understand Customer expectation</h3>
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>

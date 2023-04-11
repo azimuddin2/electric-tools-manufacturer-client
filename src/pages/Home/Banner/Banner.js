@@ -35,7 +35,7 @@ const Banner = () => {
                 <Swiper
                     className="mySwiper lg:flex-1"
                     style={{
-                        "--swiper-pagination-color": "#67c0f4",
+                        "--swiper-pagination-color": "#4158f3",
                         "--swiper-pagination-margin": "auto",
                         "--swiper-pagination-bullet-inactive-color": "#999999",
                         "--swiper-pagination-bullet-inactive-opacity": "1",
