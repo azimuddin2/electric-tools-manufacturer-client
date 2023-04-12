@@ -8,14 +8,14 @@ import walmart from '../../../assets/icons/Walmart.svg';
 
 const CompanyLogo = () => {
     return (
-        <div className='px-6 lg:px-8 py-20'>
+        <div className='px-6 lg:px-8 py-16 lg:py-20'>
             <div className='logo-container grid grid-cols-3 lg:grid-cols-6 gap-6 lg:px-20'>
-                <img src={alibaba} alt="" />
-                <img src={amazon} alt="" />
-                <img src={daraz} alt="" />
-                <img src={ebay} alt="" />
-                <img src={rakuten} alt="" />
-                <img src={walmart} alt="" />
+                <img src={alibaba} alt="alibaba" />
+                <img src={amazon} alt="amazon" />
+                <img src={daraz} alt="daraz" />
+                <img src={ebay} alt="ebay" />
+                <img src={rakuten} alt="rakuten" />
+                <img src={walmart} alt="walmart" />
             </div>
         </div>
     );

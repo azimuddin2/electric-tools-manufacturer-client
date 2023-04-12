@@ -30,13 +30,12 @@ const Banner = () => {
     }
 
     return (
-        <div className="lg:hero mt-14 lg:mt-20 px-6 lg:px-8">
+        <div className="mt-14 lg:mt-20 px-6 lg:px-8">
             <div className="lg:hero-content flex-col lg:flex-row-reverse">
                 <Swiper
                     className="mySwiper lg:flex-1"
                     style={{
                         "--swiper-pagination-color": "#4158f3",
-                        "--swiper-pagination-margin": "auto",
                         "--swiper-pagination-bullet-inactive-color": "#999999",
                         "--swiper-pagination-bullet-inactive-opacity": "1",
                         "--swiper-pagination-bullet-size": "12px",

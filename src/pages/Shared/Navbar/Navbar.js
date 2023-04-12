@@ -13,7 +13,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div style={{backgroundColor: '#212121'}} className=' text-white'>
+        <div className='bg-secondary text-white lg:px-8'>
             <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">

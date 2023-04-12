@@ -10,8 +10,9 @@ const BusinessOverview = () => {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: '100%',
             backgroundSize: 'cover',
+            width: '100%'
         }}
-            className=' px-6 lg:px-8 py-12 background-img mb-20'
+            className=' px-6 lg:px-8 py-12'
         >
             <div>
                 <h1 className='text-center text-primary uppercase text-4xl font-bold'>Millions of Clients trust us</h1>

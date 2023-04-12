@@ -28,7 +28,7 @@ const Tools = () => {
     return (
         <div className='px-6 lg:px-8 mb-12'>
             <h1 className='text-center font-semibold text-primary text-lg'>What Our Have</h1>
-            <h1 className='text-center text-4xl font-normal uppercase mb-10'>Electric Tools</h1>
+            <h1 className='text-center text-4xl text-secondary font-normal uppercase mb-10'>Electric Tools</h1>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
                     toolsCollection?.map(tool => <Tool
@@ -37,7 +37,7 @@ const Tools = () => {
                     ></Tool>)
                 }
             </div>
-            <div className="divider divider-primary mt-20">
+            <div className="divider mt-14">
                 <Link to='/tools'>
                     <button className='btn btn-sm btn-outline'>SHOW ALL TOOLS</button>
                 </Link>

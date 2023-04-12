@@ -6,7 +6,7 @@ const Loading = () => {
         <div className='h-screen flex justify-center items-center'>
             <ReactLoading
                 type='spinningBubbles'
-                color='#67c0f4'
+                color='#4158f3'
                 height='60px'
                 width='60px'
             />
