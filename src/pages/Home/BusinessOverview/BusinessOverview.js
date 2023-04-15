@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import backgroundImg from '../../../assets/images/background.jpg';
 import { FaTools, FaUsers } from 'react-icons/fa';
-import { AiTwotoneLike, AiFillDollarCircle } from 'react-icons/ai';
+import { AiFillDollarCircle } from 'react-icons/ai';
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
+import like from '../../../assets/images/like.png';
 
 const BusinessOverview = () => {
     const [counter, setCounter] = useState(false);
@@ -18,9 +19,9 @@ const BusinessOverview = () => {
         }}
             className=' px-6 lg:px-8 py-12'
         >
-            <div>
-                <h1 className='text-center text-primary uppercase text-4xl font-bold'>Millions of Clients trust us</h1>
-                <h3 className='text-center capitalize text-white text-2xl mb-12'>try to understand Customer expectation</h3>
+            <div className='mb-12'>
+                <h1 className='text-center text-primary uppercase text-4xl font-semibold'>Millions of Clients trust us</h1>
+                <h3 className='text-center capitalize text-white text-2xl'>try to understand Customer expectation</h3>
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                 <div className="stats shadow">
@@ -64,7 +65,7 @@ const BusinessOverview = () => {
 
                 <div className="stats shadow">
                     <div className="stat text-center">
-                        <AiTwotoneLike className='text-primary text-6xl mb-2 mx-auto'></AiTwotoneLike>
+                        <img src={like} alt="Like" className='mb-2 mx-auto' />
                         <ScrollTrigger onEnter={() => setCounter(true)} onExit={() => setCounter(false)}>
                             <h2 className="stat-value">
                                 {counter && <CountUp start={1} end={44} duration={2} delay={0}></CountUp>}
