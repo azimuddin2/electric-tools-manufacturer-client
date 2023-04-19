@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import Tool from './Tool';
 import { Link } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
+import Tool from '../../../components/Tool';
 
 const Tools = () => {
 
