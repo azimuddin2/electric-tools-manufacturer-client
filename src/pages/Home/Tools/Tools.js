@@ -27,8 +27,10 @@ const Tools = () => {
 
     return (
         <div className='px-6 lg:px-8 mb-12'>
-            <h1 className='text-center font-semibold text-primary text-lg'>What Our Have</h1>
-            <h1 className='text-center text-4xl text-secondary font-normal uppercase mb-10'>Electric Tools</h1>
+            <div className=' mb-10'>
+                <h1 className='text-center font-semibold text-primary text-lg'>What Our Have</h1>
+                <h1 className='text-center text-4xl text-secondary font-normal'>Electric Tools</h1>
+            </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
                     toolsCollection?.map(tool => <Tool
