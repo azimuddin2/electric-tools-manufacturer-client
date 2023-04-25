@@ -21,7 +21,7 @@ const Tool = ({ tool }) => {
                 <div className="card-actions justify-start">
                     <button
                         onClick={() => navigate(`/tool/${_id}`)}
-                        className='btn btn-sm btn-primary text-white'
+                        className='btn btn-sm btn-primary text-white capitalize'
                     >
                         Buy Now <FaShoppingCart className='text-lg ml-1'></FaShoppingCart>
                     </button>
