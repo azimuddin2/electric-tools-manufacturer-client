@@ -3,6 +3,7 @@ import Main from "../layout/Main";
 import Home from "../pages/Home/Home/Home";
 import ToolDetails from "../pages/ToolDetails/ToolDetails";
 import Tools from "../pages/Tools/Tools";
+import Login from "../pages/Login/Login/Login";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
                 loader: async ({ params }) => {
                     return fetch(`http://localhost:5000/tool/${params.id}`)
                 }
+            },
+            {
+                path: 'login',
+                element: <Login></Login>
             },
         ]
     }
