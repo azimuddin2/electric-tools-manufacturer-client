@@ -6,6 +6,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import useToken from '../../../hooks/useToken';
 import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import SocialLogin from '../SocialLogin/SocialLogin';
+import login from '../../../assets/images/login.gif';
 
 const Login = () => {
     useTitle('Login');
@@ -38,9 +40,12 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <div className="flex justify-center items-center my-12 px-3">
-                <div className="card w-96 shadow-lg">
+        <section className='hero my-12'>
+            <div className='hero-content grid grid-cols-1 lg:grid-cols-2 lg:gap-20'>
+                <div>
+                    <img src={login} alt="Login" />
+                </div>
+                <div className="card md:w-96 shadow-lg">
                     <div className="card-body">
                         <h2 className="text-center text-2xl">Login</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -103,15 +108,15 @@ const Login = () => {
                                     {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 </label>
                             </div>
-                            <input className="btn btn-accent text-white w-full max-w-xs mt-2" type="submit" value='Login' />
+                            <input className="btn btn-primary text-white w-full max-w-xs mt-2" type="submit" value='Login' />
                         </form>
-                        {/* <p className='text-center'><small>New to Doctors Portal? <Link className='text-secondary' to='/signup'>Create new account</Link></small></p> */}
+                        <p className='text-center'><small>New to Doctors Portal? <Link className='text-secondary' to='/signup'>Create new account</Link></small></p>
                         <div className="divider">OR</div>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

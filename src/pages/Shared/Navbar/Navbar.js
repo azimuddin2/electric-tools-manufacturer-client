@@ -2,14 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/icons/logo.svg';
 import CustomLink from './CustomLink';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                toast.error(error.message);
+            })
+    };
 
     const menuItem = <>
         <li><CustomLink to="/">Home</CustomLink></li>
         <li><CustomLink to="/tools">Tools</CustomLink></li>
         <li><CustomLink to="/about">About</CustomLink></li>
-        <li><CustomLink to="/login">Login</CustomLink></li>
+        <li>
+            {
+                user?.uid ?
+                    <button className=' font-medium' onClick={handleLogout}>Logout</button>
+                    :
+                    <CustomLink to='/login'>Login</CustomLink>
+            }
+        </li>
     </>
 
     return (
