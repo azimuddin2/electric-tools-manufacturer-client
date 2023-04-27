@@ -22,6 +22,9 @@ const Navbar = () => {
         <li><CustomLink to="/">Home</CustomLink></li>
         <li><CustomLink to="/tools">Tools</CustomLink></li>
         <li><CustomLink to="/about">About</CustomLink></li>
+        {
+            user?.uid && <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
+        }
         <li>
             {
                 user?.uid ?

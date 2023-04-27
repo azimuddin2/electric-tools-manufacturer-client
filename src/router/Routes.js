@@ -6,6 +6,7 @@ import Tools from "../pages/Tools/Tools";
 import Login from "../pages/Login/Login/Login";
 import SignUp from "../pages/Login/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const router = createBrowserRouter([
     {
@@ -38,7 +39,37 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             }
         ]
-    }
+    },
+
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        // errorElement: <DisplayError></DisplayError>,
+        // children: [
+        //     {
+        //         path: '/dashboard',
+        //         element: <MyAppointment></MyAppointment>
+        //     },
+        //     {
+        //         path: '/dashboard/users',
+        //         element: <AdminRoute>
+        //             <AllUsers></AllUsers>
+        //         </AdminRoute>
+        //     },
+        //     {
+        //         path: '/dashboard/add-doctor',
+        //         element: <AdminRoute>
+        //             <AddDoctor></AddDoctor>
+        //         </AdminRoute>
+        //     },
+        //     {
+        //         path: '/dashboard/manage-doctors',
+        //         element: <AdminRoute>
+        //             <ManageDoctors></ManageDoctors>
+        //         </AdminRoute>
+        //     }
+        // ]
+    },
 ]);
 
 export default router;

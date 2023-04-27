@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const OrderForm = ({ tool }) => {
+    const { user } = useContext(AuthContext);
     const { _id, name, price, minimumQuantity, availableQuantity } = tool;
-    // const [user, loading] = useAuthState(auth);
     const [check, setCheck] = useState(0);
 
     const handleOrder = event => {
@@ -12,8 +14,8 @@ const OrderForm = ({ tool }) => {
             toolId: _id,
             toolName: name,
             toolPrice: price,
-            // customerName: user.displayName,
-            // customerEmail: user.email,
+            customerName: user.displayName,
+            customerEmail: user.email,
             customerPhone: event.target.phone.value,
             customerAddress: event.target.address.value,
             orderQuantity: event.target.quantity.value,
@@ -29,7 +31,7 @@ const OrderForm = ({ tool }) => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    // toast.success('Order Complete')
+                    toast.success('Order Complete')
                 }
             })
     }
@@ -48,7 +50,7 @@ const OrderForm = ({ tool }) => {
                                 type="text"
                                 name='name'
                                 disabled
-                                // value={user?.displayName || ''}
+                                defaultValue={user?.displayName || ''}
                                 className="input input-bordered w-full max-w-md"
                             />
                         </div>
@@ -58,7 +60,7 @@ const OrderForm = ({ tool }) => {
                                 type="email"
                                 name='email'
                                 disabled
-                                // value={user?.email || ''}
+                                defaultValue={user?.email || ''}
                                 className="input input-bordered w-full max-w-md"
                             />
                         </div>
