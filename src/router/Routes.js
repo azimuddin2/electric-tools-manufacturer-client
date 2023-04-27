@@ -5,6 +5,7 @@ import ToolDetails from "../pages/ToolDetails/ToolDetails";
 import Tools from "../pages/Tools/Tools";
 import Login from "../pages/Login/Login/Login";
 import SignUp from "../pages/Login/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/tool/:id',
-                element: <ToolDetails></ToolDetails>,
+                element: <PrivateRoute>
+                    <ToolDetails></ToolDetails>
+                </PrivateRoute>,
                 loader: async ({ params }) => {
                     return fetch(`http://localhost:5000/tool/${params.id}`)
                 }

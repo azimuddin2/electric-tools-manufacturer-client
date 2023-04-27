@@ -41,16 +41,16 @@ const Login = () => {
 
     return (
         <section className='hero my-12'>
-            <div className='hero-content grid grid-cols-1 lg:grid-cols-2 lg:gap-20'>
+            <div className='hero-content grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-20'>
                 <div>
                     <img src={login} alt="Login" />
                 </div>
-                <div className="card md:w-96 shadow-lg">
-                    <div className="card-body">
+                <div className="card lg:w-4/5 shadow-lg">
+                    <div className="card-body px-5 md:px-8">
                         <h2 className="text-center text-2xl">Login</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            <div className="form-control w-full max-w-xs">
+                            <div className="form-control w-full max-w-md">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
@@ -66,7 +66,7 @@ const Login = () => {
                                         }
                                     })}
                                     type="email"
-                                    className="input input-bordered w-full max-w-xs focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
+                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <label className="label">
                                     {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
@@ -74,7 +74,7 @@ const Login = () => {
                                 </label>
                             </div>
 
-                            <div className="form-control w-full max-w-xs">
+                            <div className="form-control w-full max-w-md">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
@@ -90,11 +90,11 @@ const Login = () => {
                                         }
                                     })}
                                     type={showPassword ? "text" : "password"}
-                                    className="input input-bordered w-full max-w-xs focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
+                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <p className='m-12'
                                     onClick={() => setShowPassword(!showPassword)}
-                                    style={{ position: 'absolute', top: '10', right: '0', cursor: 'pointer' }}
+                                    style={{ position: 'absolute', marginTop: '51px', right: '0', cursor: 'pointer' }}
                                 >
                                     {
                                         showPassword ?
@@ -108,9 +108,9 @@ const Login = () => {
                                     {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 </label>
                             </div>
-                            <input className="btn btn-primary text-white w-full max-w-xs mt-2" type="submit" value='Login' />
+                            <input className="btn btn-primary text-white w-full max-w-md mt-2" type="submit" value='Login' />
                         </form>
-                        <p className='text-center'><small>New to Doctors Portal? <Link className='text-secondary' to='/signup'>Create new account</Link></small></p>
+                        <p className='text-center'><small>New to Doctors Portal? <Link className='text-primary' to='/signup'>Create new account</Link></small></p>
                         <div className="divider">OR</div>
                         <SocialLogin></SocialLogin>
                     </div>

@@ -39,7 +39,7 @@ const SocialLogin = () => {
         <div>
             <button
                 onClick={handleSignInWithGoogle}
-                className="btn btn-outline w-full max-w-xs"
+                className="btn btn-outline w-full max-w-md"
             >
                 <FcGoogle className='text-3xl'></FcGoogle>
                 <span className='ml-1'>CONTINUE WITH GOOGLE</span>

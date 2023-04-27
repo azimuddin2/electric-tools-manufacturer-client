@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import login from '../../../assets/images/login.gif';
 
 const SignUp = () => {
     useTitle('Signup');
@@ -56,7 +57,7 @@ const SignUp = () => {
     const saveUserDataBase = (name, email) => {
         const user = { name, email };
 
-        fetch('https://doctors-portal-server-ashen-eight.vercel.app/user', {
+        fetch('http://localhost:5000/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -70,14 +71,17 @@ const SignUp = () => {
     };
 
     return (
-        <div>
-            <div className="flex justify-center items-center my-12 px-3">
-                <div className="card w-96 shadow-lg">
-                    <div className="card-body">
+        <section className='hero my-12'>
+            <div className="hero-content grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-20">
+                <div>
+                    <img src={login} alt="login" />
+                </div>
+                <div className="card lg:w-4/5 shadow-lg">
+                    <div className="card-body px-5 md:px-8">
                         <h2 className="text-center text-2xl">Sign Up</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            <div className="form-control w-full max-w-xs">
+                            <div className="form-control w-full max-w-md">
                                 <label className="label">
                                     <span className="label-text">Your Name</span>
                                 </label>
@@ -89,7 +93,7 @@ const SignUp = () => {
                                         },
                                     })}
                                     type="text"
-                                    className="input input-bordered w-full max-w-xs focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
+                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <label className="label">
                                     {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
@@ -97,7 +101,7 @@ const SignUp = () => {
                                 </label>
                             </div>
 
-                            <div className="form-control w-full max-w-xs">
+                            <div className="form-control w-full max-w-md">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
@@ -113,7 +117,7 @@ const SignUp = () => {
                                         }
                                     })}
                                     type="email"
-                                    className="input input-bordered w-full max-w-xs focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
+                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <label className="label">
                                     {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
@@ -121,7 +125,7 @@ const SignUp = () => {
                                 </label>
                             </div>
 
-                            <div className="form-control w-full max-w-xs">
+                            <div className="form-control w-full max-w-md">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
@@ -137,12 +141,12 @@ const SignUp = () => {
                                         }
                                     })}
                                     type={showPassword ? 'text' : 'password'}
-                                    className="input input-bordered w-full max-w-xs focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
+                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <p
                                     className='m-12'
                                     onClick={() => setShowPassword(!showPassword)}
-                                    style={{ position: 'absolute', top: '10', right: '0', cursor: 'pointer' }}
+                                    style={{ position: 'absolute', marginTop: '51px', right: '0', cursor: 'pointer' }}
                                 >
                                     {
                                         showPassword ?
@@ -156,15 +160,15 @@ const SignUp = () => {
                                     {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 </label>
                             </div>
-                            <input className="btn btn-accent text-white w-full max-w-xs mt-2" type="submit" value='Signup' />
+                            <input className="btn btn-primary text-white w-full max-w-md mt-2" type="submit" value='Signup' />
                         </form>
-                        <p className='text-center'><small>Already have an Account? <Link to='/login' className='text-secondary'>Please Login</Link></small></p>
+                        <p className='text-center'><small>Already have an Account? <Link to='/login' className='text-primary'>Please Login</Link></small></p>
                         <div className="divider">OR</div>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

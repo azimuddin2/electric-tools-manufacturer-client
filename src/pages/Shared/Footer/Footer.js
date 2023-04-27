@@ -5,7 +5,7 @@ import ScrollToTop from 'react-scroll-to-top';
 
 const Footer = () => {
     return (
-        <footer className="px-6 lg:px-10 bg-secondary text-gray-200 pb-10 pt-20 max-w-screen-xl mx-auto">
+        <footer className="px-6 lg:px-10 bg-secondary text-gray-200 pb-10 pt-20 ">
             <div className='footer pb-10'>
                 <div>
                     <img src={logo} alt="Logo" />
