@@ -1,7 +1,6 @@
-import { signOut } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
@@ -14,7 +13,7 @@ const MyOrders = () => {
 
     const url = `http://localhost:5000/order?customerEmail=${user.email}`;
 
-    const { data: orders, isLoading, refetch } = useQuery({
+    const { data: orders, isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             try {
