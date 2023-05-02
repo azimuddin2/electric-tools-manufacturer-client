@@ -21,13 +21,11 @@ const DashboardLayout = () => {
                 <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-64 lg:bg-inherit bg-base-100 text-base-content">
                     <li><Sidebar to="/dashboard">My Order</Sidebar></li>
-                    {
-                        isAdmin && <>
+                 
                             <li><Sidebar to="/dashboard/users">All Users</Sidebar></li>
-                            <li><Sidebar to="/dashboard/add-doctor">Add Doctor</Sidebar></li>
+                            <li><Sidebar to="/dashboard/add-product">Add Product</Sidebar></li>
                             <li><Sidebar to="/dashboard/manage-doctors">Manage Doctors</Sidebar></li>
-                        </>
-                    }
+                     
                 </ul>
             </div>
         </div>

@@ -7,6 +7,8 @@ import Login from "../pages/Login/Login/Login";
 import SignUp from "../pages/Login/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layout/DashboardLayout";
+import MyOrders from "../pages/Dashboard/MyOrders/MyOrders";
+import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
 
 const router = createBrowserRouter([
     {
@@ -45,30 +47,29 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         // errorElement: <DisplayError></DisplayError>,
-        // children: [
-        //     {
-        //         path: '/dashboard',
-        //         element: <MyAppointment></MyAppointment>
-        //     },
-        //     {
-        //         path: '/dashboard/users',
-        //         element: <AdminRoute>
-        //             <AllUsers></AllUsers>
-        //         </AdminRoute>
-        //     },
-        //     {
-        //         path: '/dashboard/add-doctor',
-        //         element: <AdminRoute>
-        //             <AddDoctor></AddDoctor>
-        //         </AdminRoute>
-        //     },
-        //     {
-        //         path: '/dashboard/manage-doctors',
-        //         element: <AdminRoute>
-        //             <ManageDoctors></ManageDoctors>
-        //         </AdminRoute>
-        //     }
-        // ]
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyOrders></MyOrders>
+            },
+            // {
+            //     path: '/dashboard/users',
+            //     element: <AdminRoute>
+            //         <AllUsers></AllUsers>
+            //     </AdminRoute>
+            // },
+            {
+                path: '/dashboard/add-product',
+                element: <AddProduct></AddProduct>
+               
+            },
+            // {
+            //     path: '/dashboard/manage-doctors',
+            //     element: <AdminRoute>
+            //         <ManageDoctors></ManageDoctors>
+            //     </AdminRoute>
+            // }
+        ]
     },
 ]);
 
