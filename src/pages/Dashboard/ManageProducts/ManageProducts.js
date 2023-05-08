@@ -2,6 +2,7 @@ import React from 'react';
 import Loading from '../../Shared/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import ProductRow from './ProductRow';
 
 const ManageProducts = () => {
     const [deletingProduct, setDeletingProduct] = useState(null);
