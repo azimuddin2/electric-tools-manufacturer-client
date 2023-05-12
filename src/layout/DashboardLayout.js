@@ -11,25 +11,23 @@ const DashboardLayout = () => {
 
     return (
         <div>
-        <Navbar></Navbar>
-        <div className="drawer drawer-mobile">
-            <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                <Outlet></Outlet>
-            </div>
-            <div className="drawer-side">
-                <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-64 lg:bg-inherit bg-base-100 text-base-content">
-                    <li><Sidebar to="/dashboard">My Order</Sidebar></li>
-                 
-                            <li><Sidebar to="/dashboard/users">All Users</Sidebar></li>
-                            <li><Sidebar to="/dashboard/add-product">Add Product</Sidebar></li>
-                            <li><Sidebar to="/dashboard/manage-doctors">Manage Doctors</Sidebar></li>
-                     
-                </ul>
+            <Navbar></Navbar>
+            <div className="drawer drawer-mobile">
+                <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content">
+                    <Outlet></Outlet>
+                </div>
+                <div className="drawer-side">
+                    <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
+                    <ul className="menu p-4 w-64 lg:bg-inherit bg-base-100 text-base-content">
+                        <li><Sidebar to="/dashboard">My Order</Sidebar></li>
+                        <li><Sidebar to="/dashboard/users">All Users</Sidebar></li>
+                        <li><Sidebar to="/dashboard/add-product">Add Product</Sidebar></li>
+                        <li><Sidebar to="/dashboard/manage-doctors">Manage Products</Sidebar></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
     );
 };
 
