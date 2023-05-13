@@ -1,22 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Order = ({ order, index }) => {
+    const { customerName, customerEmail, customerPhone, toolName, toolPrice, orderQuantity } = order;
+    const totalToolPrice = toolPrice * orderQuantity;
+
     return (
         <tr>
             <th>{index + 1}</th>
-            <td>{order.toolName}</td>
-            <td>{order.orderQuantity}</td>
-            <td>${order.toolPrice}</td>
             <td>
-                {(order.toolPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
-                {(order.toolPrice && order.paid) && <div>
+                {customerName}
+                <br />
+                <span className="badge badge-ghost badge-sm">{customerEmail}</span>
+            </td>
+            <td>{customerPhone}</td>
+            <td>{toolName}</td>
+            <td>{orderQuantity}</td>
+            <td>${totalToolPrice}</td>
+            {/* <td>
+                {(toolPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
+                {(toolPrice && order.paid) && <div>
                     <p><span className='text-success'>Paid</span> </p>
                     <p>Transaction id: <span className='text-success'>{order.transactionId}</span> </p>
                 </div>}
 
-            </td>
-
+            </td> */}
         </tr>
     );
 };

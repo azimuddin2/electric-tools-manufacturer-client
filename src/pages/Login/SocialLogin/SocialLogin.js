@@ -28,7 +28,7 @@ const SocialLogin = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setLoginUserEmail(user.email)
+                setLoginUserEmail(user.email);
             })
             .catch(error => {
                 toast.error(error.message);

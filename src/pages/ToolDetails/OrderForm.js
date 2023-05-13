@@ -14,8 +14,8 @@ const OrderForm = ({ tool }) => {
             toolId: _id,
             toolName: name,
             toolPrice: price,
-            customerName: user.displayName,
-            customerEmail: user.email,
+            customerName: user?.displayName,
+            customerEmail: user?.email,
             customerPhone: event.target.phone.value,
             customerAddress: event.target.address.value,
             orderQuantity: event.target.quantity.value,
@@ -30,7 +30,7 @@ const OrderForm = ({ tool }) => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data) {
+                if (data.acknowledged) {
                     toast.success('Order Complete')
                 }
             })

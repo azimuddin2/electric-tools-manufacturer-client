@@ -1,6 +1,5 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
@@ -12,7 +11,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext);
     // const [payment, setPayment] = useState(null);
 
-    const url = `http://localhost:5000/orders?customerEmail=${user?.email}`;
+    const url = `http://localhost:5000/orders?email=${user?.email}`;
 
     const { data: orders, isLoading } = useQuery({
         queryKey: ['orders', user?.email],
@@ -31,7 +30,7 @@ const MyOrders = () => {
             }
         }
     })
-    console.log(orders)
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -40,29 +39,37 @@ const MyOrders = () => {
         <section>
             {
                 orders?.length > 0 ?
-                    <div className="overflow-x-auto">
-                        <table className="table w-full">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Payment</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    orders?.map((order, index) => <Order
-                                        key={order._id}
-                                        index={index}
-                                    ></Order>)
-                                }
-                            </tbody>
-                        </table>
+                    <div className='h-full p-4 lg:p-10'>
+                        <h1 className='text-2xl font-medium mb-5'>My Orders</h1>
+                        <div className="overflow-x-auto">
+                            <table className="table w-full">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Name & Email</th>
+                                        <th>Phone</th>
+                                        <th>Tools</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Payment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        orders?.map((order, index) => <Order
+                                            key={order._id}
+                                            order={order}
+                                            index={index}
+                                        ></Order>)
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     :
-                    <h1>no order</h1>
+                    <div>
+                        <h1>No order</h1>
+                    </div>
             }
         </section>
     );
