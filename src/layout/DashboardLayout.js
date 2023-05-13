@@ -17,13 +17,17 @@ const DashboardLayout = () => {
                 <div className="drawer-content">
                     <Outlet></Outlet>
                 </div>
-                <div className="drawer-side" style={{backgroundColor: '#f2f2f2'}}>
+                <div className="drawer-side" style={{ backgroundColor: '#f2f2f2' }}>
                     <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-64 lg:bg-inherit bg-base-100 text-base-content">
                         <li><Sidebar to="/dashboard">My Orders</Sidebar></li>
-                        <li><Sidebar to="/dashboard/users">All Users</Sidebar></li>
-                        <li><Sidebar to="/dashboard/add-product">Add Product</Sidebar></li>
-                        <li><Sidebar to="/dashboard/manage-doctors">Manage Products</Sidebar></li>
+                        {
+                            isAdmin && <>
+                                <li><Sidebar to="/dashboard/users">All Users</Sidebar></li>
+                                <li><Sidebar to="/dashboard/add-product">Add Product</Sidebar></li>
+                                <li><Sidebar to="/dashboard/manage-doctors">Manage Products</Sidebar></li>
+                            </>
+                        }
                     </ul>
                 </div>
             </div>
