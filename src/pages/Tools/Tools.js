@@ -2,9 +2,10 @@ import React from 'react';
 import Loading from '../Shared/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import Tool from '../../components/Tool';
+import useTitle from '../../hooks/useTitle';
 
 const Tools = () => {
-
+    useTitle('Tools');
     const { data: tools, isLoading, error } = useQuery({
         queryKey: ['tools'],
         queryFn: async () => {

@@ -5,8 +5,10 @@ import { useState } from 'react';
 import ProductRow from './ProductRow';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 import { toast } from 'react-toastify';
+import useTitle from '../../../hooks/useTitle';
 
 const ManageProducts = () => {
+    useTitle('Manage Products');
     const [deletingProduct, setDeletingProduct] = useState(null);
 
     const { data: tools, isLoading, refetch } = useQuery({

@@ -5,6 +5,8 @@ import useTitle from '../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Shared/Loading/Loading';
 import Order from './Order';
+import orderGif from '../../../assets/images/order.gif';
+import { Link } from 'react-router-dom';
 
 const MyOrders = () => {
     useTitle('My Orders');
@@ -67,8 +69,11 @@ const MyOrders = () => {
                         </div>
                     </div>
                     :
-                    <div>
-                        <h1>No order</h1>
+                    <div className='text-center m-4 lg:m-0'>
+                        <img src={orderGif} alt="Order Gif" className='mx-auto mt-10' />
+                        <Link to='/tools'>
+                            <button className='btn btn-primary mt-4 lg:mt-0'>Please Order tools</button>
+                        </Link>
                     </div>
             }
         </section>

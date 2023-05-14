@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import useTitle from '../../../hooks/useTitle';
 
 const AddProduct = () => {
-
+    useTitle('Add Product');
     const [accepted, setAccepted] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -27,7 +28,6 @@ const AddProduct = () => {
                     toast.error('Failed to add the Product')
                 }
             })
-
     };
 
     return (

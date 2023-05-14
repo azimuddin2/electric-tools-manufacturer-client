@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import OrderForm from './OrderForm';
+import useTitle from '../../hooks/useTitle';
 
 const ToolDetails = () => {
+    useTitle('Tool Details');
     const tool = useLoaderData();
     const { name, img, price, rating, description, minimumQuantity, availableQuantity } = tool;
 
@@ -10,7 +12,7 @@ const ToolDetails = () => {
         <section className='max-w-screen-xl mx-auto py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 px-4 lg:px-12'>
             <div className="rounded-xl shadow-lg">
                 <figure>
-                    <img src={img} alt={name} className='mx-auto'/>
+                    <img src={img} alt={name} className='mx-auto' />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title text-xl">{name}</h2>

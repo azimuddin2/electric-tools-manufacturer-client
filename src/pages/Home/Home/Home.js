@@ -6,8 +6,10 @@ import BusinessOverview from '../BusinessOverview/BusinessOverview';
 import Contact from '../Contact/Contact';
 import Testimonials from '../Testimonial/Testimonials';
 import Information from '../Information/Information';
+import useTitle from '../../../hooks/useTitle';
 
 const Home = () => {
+    useTitle('Home');
     return (
         <div className='max-w-screen-xl mx-auto'>
             <Banner></Banner>
