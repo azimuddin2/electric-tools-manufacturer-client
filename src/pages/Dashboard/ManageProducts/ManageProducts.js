@@ -3,21 +3,48 @@ import Loading from '../../Shared/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import ProductRow from './ProductRow';
+import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
+import { toast } from 'react-toastify';
 
 const ManageProducts = () => {
     const [deletingProduct, setDeletingProduct] = useState(null);
-    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('http://localhost:5000/tool', {
-        headers: {
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+
+    const { data: tools, isLoading, refetch } = useQuery({
+        queryKey: ['tools'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/tools');
+            const data = await res.json();
+            return data;
         }
-    }).then(res => res.json()));
+    });
+
+    const handleDeleteProduct = (tool) => {
+        fetch(`http://localhost:5000/tool/${tool._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`Tool ${tool.name} deleted successfully`)
+                }
+            })
+    };
+
+    const closeModal = () => {
+        setDeletingProduct(null);
+    };
 
     if (isLoading) {
         return <Loading></Loading>
     }
+
     return (
-        <div>
-            <h1>Manage Products: {tools.length}</h1>
+        <section className='h-full p-4 lg:p-10'>
+            <h1 className='text-2xl font-medium mb-5'>Manage Products</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -26,16 +53,18 @@ const ManageProducts = () => {
                             <th>Avatar</th>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Description</th>
+                            <th>MinimumQuantity</th>
+                            <th>AvailableQuantity</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            tools.map((tool, index) => <ProductRow
+                            tools?.map((tool, index) => <ProductRow
                                 key={tool._id}
                                 tool={tool}
                                 index={index}
-                                refetch={refetch}
                                 setDeletingProduct={setDeletingProduct}
                             ></ProductRow>)
                         }
@@ -43,13 +72,13 @@ const ManageProducts = () => {
                 </table>
             </div>
             {
-                deletingProduct && <DeleteConfirmModal
-                    deletingProduct={deletingProduct}
-                    refetch={refetch}
-                    setDeletingProduct={setDeletingProduct}
-                ></DeleteConfirmModal>
+                deletingProduct && <ConfirmationModal
+                    modalData={deletingProduct}
+                    closeModal={closeModal}
+                    successModal={handleDeleteProduct}
+                ></ConfirmationModal>
             }
-        </div>
+        </section>
     );
 };
 

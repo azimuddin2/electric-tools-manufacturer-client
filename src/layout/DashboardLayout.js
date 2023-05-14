@@ -25,7 +25,7 @@ const DashboardLayout = () => {
                             isAdmin && <>
                                 <li><Sidebar to="/dashboard/users">All Users</Sidebar></li>
                                 <li><Sidebar to="/dashboard/add-product">Add Product</Sidebar></li>
-                                <li><Sidebar to="/dashboard/manage-doctors">Manage Products</Sidebar></li>
+                                <li><Sidebar to="/dashboard/manage-products">Manage Products</Sidebar></li>
                             </>
                         }
                     </ul>

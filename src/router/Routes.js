@@ -10,6 +10,8 @@ import DashboardLayout from "../layout/DashboardLayout";
 import MyOrders from "../pages/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import ManageProducts from "../pages/Dashboard/ManageProducts/ManageProducts";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -55,19 +57,23 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/users',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute>
+                    <AllUsers></AllUsers>
+                </AdminRoute>
             },
             {
                 path: '/dashboard/add-product',
-                element: <AddProduct></AddProduct>
-               
+                element: <AdminRoute>
+                    <AddProduct></AddProduct>
+                </AdminRoute>
+
             },
-            // {
-            //     path: '/dashboard/manage-doctors',
-            //     element: <AdminRoute>
-            //         <ManageDoctors></ManageDoctors>
-            //     </AdminRoute>
-            // }
+            {
+                path: '/dashboard/manage-products',
+                element: <AdminRoute>
+                    <ManageProducts></ManageProducts>
+                </AdminRoute>
+            }
         ]
     },
 ]);
