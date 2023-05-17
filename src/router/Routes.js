@@ -13,6 +13,7 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import ManageProducts from "../pages/Dashboard/ManageProducts/ManageProducts";
 import AdminRoute from "./AdminRoute";
 import AddReview from "../pages/Dashboard/AddReview/AddReview";
+import UpdateProfile from "../pages/Dashboard/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/view-profile',
+                element: <UpdateProfile></UpdateProfile>
             },
             {
                 path: '/dashboard/add-review',

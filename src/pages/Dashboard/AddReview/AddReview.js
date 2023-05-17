@@ -61,6 +61,7 @@ const AddReview = () => {
                                 <input
                                     type="email"
                                     value={user?.email}
+                                    disabled
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("email", {
                                         required: {
@@ -83,6 +84,7 @@ const AddReview = () => {
                                 <input
                                     type="text"
                                     value={user?.displayName}
+                                    disabled
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("name", {
                                         required: {
@@ -121,7 +123,6 @@ const AddReview = () => {
                             <div className='flex justify-center items-center '>
                                 <ReactStars {...thirdExample} />
                             </div>
-                            {/* {signInError} */}
                             <input className=' btn  w-full max-w-xs' type="submit" value="Save" />
                         </form>
                     </div>
