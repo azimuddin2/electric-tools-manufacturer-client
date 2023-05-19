@@ -39,7 +39,7 @@ const Navbar = () => {
                 <Link to='/profile'>
                     {
                         user?.photoURL ?
-                            <img src={user?.photoURL} alt='' className='w-9 h-9 border rounded-full border-gray-300' />
+                            <img src={user?.photoURL} alt='' className='w-9 h-9 border-2 rounded-full border-green-500' />
                             :
                             <FaUserCircle className='text-3xl'></FaUserCircle>
                     }

@@ -6,10 +6,12 @@ import ProductRow from './ProductRow';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 import { toast } from 'react-toastify';
 import useTitle from '../../../hooks/useTitle';
+import UpdateProductModal from '../UpdateProductModal/UpdateProductModal';
 
 const ManageProducts = () => {
     useTitle('Manage Products');
     const [deletingProduct, setDeletingProduct] = useState(null);
+    const [updateProduct, setUpdateProduct] = useState(null);
 
     const { data: tools, isLoading, refetch } = useQuery({
         queryKey: ['tools'],
@@ -67,12 +69,18 @@ const ManageProducts = () => {
                                 key={tool._id}
                                 tool={tool}
                                 index={index}
+                                setUpdateProduct={setUpdateProduct}
                                 setDeletingProduct={setDeletingProduct}
                             ></ProductRow>)
                         }
                     </tbody>
                 </table>
             </div>
+            {
+                updateProduct && <UpdateProductModal
+                    modalData={updateProduct}
+                ></UpdateProductModal>
+            }
             {
                 deletingProduct && <ConfirmationModal
                     modalData={deletingProduct}
