@@ -5,6 +5,7 @@ import CustomLink from './CustomLink';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
 
@@ -33,6 +34,18 @@ const Navbar = () => {
                     <CustomLink to='/login'>Login</CustomLink>
             }
         </li>
+        {
+            user?.uid && <li title='View Profile'>
+                <Link to='/profile'>
+                    {
+                        user?.photoURL ?
+                            <img src={user?.photoURL} alt='' className='w-9 h-9 border rounded-full border-gray-300' />
+                            :
+                            <FaUserCircle className='text-3xl'></FaUserCircle>
+                    }
+                </Link>
+            </li>
+        }
     </>
 
     return (

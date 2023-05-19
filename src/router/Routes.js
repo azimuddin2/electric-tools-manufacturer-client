@@ -14,6 +14,7 @@ import ManageProducts from "../pages/Dashboard/ManageProducts/ManageProducts";
 import AdminRoute from "./AdminRoute";
 import AddReview from "../pages/Dashboard/AddReview/AddReview";
 import UpdateProfile from "../pages/Dashboard/UpdateProfile/UpdateProfile";
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,12 @@ const router = createBrowserRouter([
             {
                 path: 'signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: 'profile',
+                element: <PrivateRoute>
+                    <Profile></Profile>
+                </PrivateRoute>
             }
         ]
     },
@@ -58,7 +65,7 @@ const router = createBrowserRouter([
                 element: <MyOrders></MyOrders>
             },
             {
-                path: '/dashboard/view-profile',
+                path: '/dashboard/edit-profile',
                 element: <UpdateProfile></UpdateProfile>
             },
             {

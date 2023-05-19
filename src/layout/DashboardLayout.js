@@ -4,6 +4,8 @@ import Navbar from '../pages/Shared/Navbar/Navbar';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import Sidebar from '../components/Sidebar';
 import useAdmin from '../hooks/useAdmin';
+import { BiEdit } from 'react-icons/bi';
+import { FiUsers } from 'react-icons/fi';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
@@ -21,11 +23,11 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-64 lg:bg-inherit bg-base-100 text-base-content">
                         <li><Sidebar to="/dashboard">My Orders</Sidebar></li>
-                        <li><Sidebar to="/dashboard/view-profile">View Profile</Sidebar></li>
+                        <li><Sidebar to="/dashboard/edit-profile"> <BiEdit className='text-xl'></BiEdit> Edit Profile</Sidebar></li>
                         <li><Sidebar to="/dashboard/add-review">Add Review</Sidebar></li>
                         {
                             isAdmin && <>
-                                <li><Sidebar to="/dashboard/users">All Users</Sidebar></li>
+                                <li><Sidebar to="/dashboard/users"> <FiUsers className='text-xl'></FiUsers>  All Users</Sidebar></li>
                                 <li><Sidebar to="/dashboard/add-product">Add Product</Sidebar></li>
                                 <li><Sidebar to="/dashboard/manage-products">Manage Products</Sidebar></li>
                             </>
