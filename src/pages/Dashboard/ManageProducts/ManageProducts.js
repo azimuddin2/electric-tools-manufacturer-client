@@ -79,8 +79,11 @@ const ManageProducts = () => {
             {
                 updateProduct && <UpdateProductModal
                     modalData={updateProduct}
+                    setUpdateProduct={setUpdateProduct}
+                    refetch={refetch}
                 ></UpdateProductModal>
             }
+
             {
                 deletingProduct && <ConfirmationModal
                     modalData={deletingProduct}

@@ -1,26 +1,39 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
-const UpdateProductModal = ({ modalData }) => {
+const UpdateProductModal = ({ modalData, setUpdateProduct, refetch }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const { _id, name, img, price, description, minimumQuantity, availableQuantity } = modalData;
+    const { _id, name, img } = modalData;
 
     const onSubmit = (data) => {
         const updateProduct = {
             name: data.name,
-            image: data.img,
+            img: data.img,
             price: data.price,
             description: data.description,
             minimumQuantity: data.minimumQuantity,
             availableQuantity: data.availableQuantity
         };
 
-        fetch(`http://localhost:5000/tool/${_id}`)
+        fetch(`http://localhost:5000/tool/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(updateProduct)
+        })
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then(result => {
+                if(result.acknowledged){
+                    refetch();
+                    toast.success('Product updated successfully');
+                    reset();
+                    setUpdateProduct(null);
+                }
             })
-    }
+    };
 
     return (
         <div>
@@ -28,7 +41,7 @@ const UpdateProductModal = ({ modalData }) => {
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="update-product-modal" className="btn btn-secondary btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <div className='flex items-center border-b'>
+                    <div className='flex items-center justify-center border-b mb-4'>
                         <img src={img} alt="" className='w-24' />
                         <h1 className='lg:text-xl'>{`Updated Product ${name}`}</h1>
                     </div>
