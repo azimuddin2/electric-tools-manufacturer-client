@@ -7,11 +7,13 @@ import Loading from '../../Shared/Loading/Loading';
 import Order from './Order';
 import orderGif from '../../../assets/images/order.gif';
 import { Link } from 'react-router-dom';
+import { HiArrowRight } from 'react-icons/hi';
+import { useState } from 'react';
 
 const MyOrders = () => {
     useTitle('My Orders');
     const { user } = useContext(AuthContext);
-    // const [payment, setPayment] = useState(null);
+    const [payment, setPayment] = useState(null);
 
     const url = `http://localhost:5000/orders?email=${user?.email}`;
 
@@ -51,9 +53,10 @@ const MyOrders = () => {
                                         <th>Name & Email</th>
                                         <th>Phone</th>
                                         <th>Tools</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
+                                        <th>Price * Quantity</th>
+                                        <th>Total Price</th>
                                         <th>Payment</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,7 +75,7 @@ const MyOrders = () => {
                     <div className='text-center m-4 lg:m-0'>
                         <img src={orderGif} alt="Order Gif" className='mx-auto mt-10' />
                         <Link to='/tools'>
-                            <button className='btn btn-primary mt-4 lg:mt-0'>Please Order tools</button>
+                            <button className='btn btn-sm btn-primary mt-4 lg:mt-0'>Please Order tools <HiArrowRight className='ml-1 text-lg'></HiArrowRight> </button>
                         </Link>
                     </div>
             }

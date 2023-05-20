@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const OrderForm = ({ tool }) => {
     const { user } = useContext(AuthContext);
     const { _id, name, price, minimumQuantity, availableQuantity } = tool;
     const [check, setCheck] = useState(0);
+    const navigate = useNavigate();
 
     const handleOrder = event => {
         event.preventDefault();
@@ -31,10 +33,11 @@ const OrderForm = ({ tool }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast.success('Order Complete')
+                    toast.success('Order Complete');
+                    navigate('/dashboard');
                 }
             })
-    }
+    };
 
     return (
         <div className='flex justify-center'>
