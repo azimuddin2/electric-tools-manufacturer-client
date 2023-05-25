@@ -9,6 +9,7 @@ import orderGif from '../../../assets/images/order.gif';
 import { Link } from 'react-router-dom';
 import { HiArrowRight } from 'react-icons/hi';
 import { useState } from 'react';
+import PaymentModal from '../PaymentModal/PaymentModal';
 
 const MyOrders = () => {
     useTitle('My Orders');
@@ -17,7 +18,7 @@ const MyOrders = () => {
 
     const url = `http://localhost:5000/orders?email=${user?.email}`;
 
-    const { data: orders, isLoading } = useQuery({
+    const { data: orders, isLoading, refetch } = useQuery({
         queryKey: ['orders', user?.email],
         queryFn: async () => {
             try {
@@ -65,6 +66,7 @@ const MyOrders = () => {
                                             key={order._id}
                                             order={order}
                                             index={index}
+                                            setPayment={setPayment}
                                         ></Order>)
                                     }
                                 </tbody>
@@ -78,6 +80,14 @@ const MyOrders = () => {
                             <button className='btn btn-sm btn-primary mt-4 lg:mt-0'>Please Order tools <HiArrowRight className='ml-1 text-lg'></HiArrowRight> </button>
                         </Link>
                     </div>
+            }
+
+            {
+                payment && <PaymentModal
+                    payment={payment}
+                    setPayment={setPayment}
+                    refetch={refetch}
+                ></PaymentModal>
             }
         </section>
     );

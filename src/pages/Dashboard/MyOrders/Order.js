@@ -1,9 +1,8 @@
 import React from 'react';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
 
-const Order = ({ order, index }) => {
-    const { customerName, customerEmail, customerPhone, toolName, toolPrice, orderQuantity } = order;
+const Order = ({ order, index, setPayment }) => {
+    const { customerName, customerEmail, customerPhone, toolName, toolPrice, orderQuantity, paid, transactionId } = order;
     const totalToolPrice = toolPrice * orderQuantity;
 
     return (
@@ -19,11 +18,21 @@ const Order = ({ order, index }) => {
             <td>{toolPrice} × {orderQuantity}</td>
             <td>${totalToolPrice}</td>
             <td>
-                {(toolPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-sm btn-primary'>Pay</button></Link>}
-                {(toolPrice && order.paid) && <div>
-                    <p><span className='text-success'>Paid</span> </p>
-                    <p>Transaction id: <span className='text-success'>{order.transactionId}</span> </p>
-                </div>}
+                {
+                    paid ?
+                        <>
+                            <h4 className='text-green-500 font-medium'>Paid</h4>
+                            <p className='text-sm'>{transactionId}</p>
+                        </>
+                        :
+                        <label
+                            onClick={() => setPayment(order)}
+                            htmlFor="payment-modal"
+                            className="btn btn-sm capitalize btn-primary text-white font-medium bg-primary"
+                        >
+                            Pay
+                        </label>
+                }
             </td>
             <td>
                 <label
