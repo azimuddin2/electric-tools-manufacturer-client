@@ -83,7 +83,6 @@ const ManageProducts = () => {
                     refetch={refetch}
                 ></UpdateProductModal>
             }
-
             {
                 deletingProduct && <ConfirmationModal
                     modalData={deletingProduct}

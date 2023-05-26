@@ -7,7 +7,7 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
     const [processing, setProcessing] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
-    const {customerName, customerEmail, _id } = payment;
+    const { customerName, customerEmail, _id } = payment;
     const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {

@@ -10,11 +10,14 @@ import { Link } from 'react-router-dom';
 import { HiArrowRight } from 'react-icons/hi';
 import { useState } from 'react';
 import PaymentModal from '../PaymentModal/PaymentModal';
+import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
+import { toast } from 'react-toastify';
 
 const MyOrders = () => {
     useTitle('My Orders');
     const { user } = useContext(AuthContext);
     const [payment, setPayment] = useState(null);
+    const [deleteOrder, setDeleteOrder] = useState(null);
 
     const url = `http://localhost:5000/orders?email=${user?.email}`;
 
@@ -34,7 +37,27 @@ const MyOrders = () => {
 
             }
         }
-    })
+    });
+
+    const handleDeleteOrder = (order) => {
+        fetch(`http://localhost:5000/order/${order._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                if(result.acknowledged){
+                    refetch();
+                    toast.success(`Order ${order?.toolName} tool deleted successfully`);
+                }
+            })
+    }
+
+    const closeModal = () => {
+        setDeleteOrder(null);
+    }
 
     if (isLoading) {
         return <Loading></Loading>
@@ -54,7 +77,6 @@ const MyOrders = () => {
                                         <th>Name & Email</th>
                                         <th>Phone</th>
                                         <th>Tools</th>
-                                        <th>Price * Quantity</th>
                                         <th>Total Price</th>
                                         <th>Payment</th>
                                         <th>Action</th>
@@ -67,6 +89,7 @@ const MyOrders = () => {
                                             order={order}
                                             index={index}
                                             setPayment={setPayment}
+                                            setDeleteOrder={setDeleteOrder}
                                         ></Order>)
                                     }
                                 </tbody>
@@ -81,13 +104,19 @@ const MyOrders = () => {
                         </Link>
                     </div>
             }
-
             {
                 payment && <PaymentModal
                     payment={payment}
                     setPayment={setPayment}
                     refetch={refetch}
                 ></PaymentModal>
+            }
+            {
+                deleteOrder && <ConfirmationModal
+                    modalData={deleteOrder}
+                    closeModal={closeModal}
+                    successModal={handleDeleteOrder}
+                ></ConfirmationModal>
             }
         </section>
     );

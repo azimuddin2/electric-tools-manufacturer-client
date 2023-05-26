@@ -1,7 +1,8 @@
 import React from 'react';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import { FcPrint } from 'react-icons/fc';
 
-const Order = ({ order, index, setPayment }) => {
+const Order = ({ order, index, setPayment, setDeleteOrder }) => {
     const { customerName, customerEmail, customerPhone, toolName, toolPrice, orderQuantity, paid, transactionId } = order;
     const totalToolPrice = toolPrice * orderQuantity;
 
@@ -15,7 +16,6 @@ const Order = ({ order, index, setPayment }) => {
             </td>
             <td>{customerPhone}</td>
             <td>{toolName}</td>
-            <td>{toolPrice} × {orderQuantity}</td>
             <td>${totalToolPrice}</td>
             <td>
                 {
@@ -35,13 +35,23 @@ const Order = ({ order, index, setPayment }) => {
                 }
             </td>
             <td>
-                <label
-                    // onClick={() => setDeletingProduct(tool)}
-                    htmlFor="confirmation-modal"
-                    title='Delete'
-                >
-                    <RiDeleteBin5Line className='text-2xl text-red-500 cursor-pointer'></RiDeleteBin5Line>
-                </label>
+                {
+                    paid ?
+                        <div className="tooltip tooltip-top print:hidden" data-tip="Print">
+                            <FcPrint
+                                onClick={() => window.print()}
+                                className='text-3xl cursor-pointer print:hidden'
+                            ></FcPrint>
+                        </div>
+                        :
+                        <label
+                            onClick={() => setDeleteOrder(order)}
+                            htmlFor="confirmation-modal"
+                            title='Delete'
+                        >
+                            <RiDeleteBin5Line className='text-2xl text-red-500 cursor-pointer'></RiDeleteBin5Line>
+                        </label>
+                }
             </td>
         </tr>
     );

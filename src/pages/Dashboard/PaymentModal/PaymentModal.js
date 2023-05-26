@@ -6,6 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const PaymentModal = ({ payment, setPayment, refetch }) => {
+
     const { customerName, toolName, toolPrice, orderQuantity } = payment;
     const totalToolPrice = toolPrice * orderQuantity;
 
@@ -14,10 +15,9 @@ const PaymentModal = ({ payment, setPayment, refetch }) => {
             <input type="checkbox" id="payment-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box">
-                    <label htmlFor="payment-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="payment-modal" className="btn btn-sm btn-circle absolute right-2 top-2 text-white">✕</label>
                     <h4 style={{ color: '#3CBCA2' }} className='text-lg font-semibold'>Hello, {customerName}</h4>
-                    <h3 className="font-bold text-xl mt-2">Please Pay for {toolName}</h3>
-                    <p className="py-2 text-base text-accent">Your Tools <span style={{ color: '#F0AA22' }}>{orderQuantity}</span> at Order Quantity</p>
+                    <h3 className="font-bold text-xl mt-2">Please Pay for <span className='font-semibold' style={{ color: '#F0AA22' }}>{toolName} Tools</span></h3>
                     <h2 className='text-xl font-bold'>Please Pay: ${totalToolPrice}</h2>
                     <div className="divider"></div>
                     <div>
