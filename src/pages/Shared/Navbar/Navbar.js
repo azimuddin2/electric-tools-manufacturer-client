@@ -29,7 +29,7 @@ const Navbar = () => {
         <li>
             {
                 user?.uid ?
-                    <button className=' font-medium' onClick={handleLogout}>Logout</button>
+                    <button className='font-medium' onClick={handleLogout}>Logout</button>
                     :
                     <CustomLink to='/login'>Login</CustomLink>
             }

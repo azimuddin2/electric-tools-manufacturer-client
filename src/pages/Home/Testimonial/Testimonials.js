@@ -4,55 +4,26 @@ import { A11y, Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 import 'swiper/css/pagination';
-import people1 from '../../../assets/images/people1.png';
-import people2 from '../../../assets/images/people2.png';
-import people3 from '../../../assets/images/people3.png';
-import people4 from '../../../assets/images/people4.png';
-import people5 from '../../../assets/images/people5.png';
-import people6 from '../../../assets/images/people6.png';
 import Testimonial from './Testimonial';
 import './Testimonials.css';
-
-const testimonials = [
-    {
-        id: 1,
-        image: people1,
-        name: 'Awlad Hossain',
-        location: 'Businessman'
-    },
-    {
-        id: 2,
-        image: people2,
-        name: 'Miftahul Jannat',
-        location: 'India'
-    },
-    {
-        id: 3,
-        image: people3,
-        name: 'Tahiya Faiza',
-        location: 'Bangladesh'
-    },
-    {
-        id: 4,
-        image: people4,
-        name: 'Jhankar Mahbub',
-        location: 'USA'
-    },
-    {
-        id: 5,
-        image: people5,
-        name: 'Azim Uddin',
-        location: 'Bangladesh'
-    },
-    {
-        id: 6,
-        image: people6,
-        name: 'Munzereen',
-        location: 'Businessman'
-    },
-];
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Shared/Loading/Loading';
 
 const Testimonials = () => {
+
+    const { data: testimonials, isLoading } = useQuery({
+        queryKey: ['reviews'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/reviews');
+            const data = await res.json();
+            return data;
+        }
+    });
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     return (
         <section className='mt-20 mb-10 px-6 lg:px-8'>
             <div className='text-center'>
@@ -91,10 +62,10 @@ const Testimonials = () => {
                 }}
                 modules={[A11y, Pagination, Navigation, Autoplay]}
                 spaceBetween={8}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
+                // autoplay={{
+                //     delay: 2500,
+                //     disableOnInteraction: false,
+                // }}
                 navigation={true}
                 pagination={{
                     dynamicBullets: true,

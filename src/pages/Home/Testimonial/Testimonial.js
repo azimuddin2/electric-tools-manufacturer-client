@@ -1,8 +1,16 @@
 import React from 'react';
 import quote from '../../../assets/icons/quote.svg';
+import ReactStars from "react-rating-stars-component";
 
-const Testimonial = ({testimonial}) => {
-    const {name, image, location} = testimonial;
+const Testimonial = ({ testimonial }) => {
+    const { name, image, country, description, rating } = testimonial;
+
+    const thirdExample = {
+        size: 26,
+        count: 5,
+        color: "#ff9800",
+        activeColor: "#dadada",
+    };
 
     return (
         <div className="card p-6 border md:ml-2 md:mr-2 lg:ml-2 lg:mr-2 mb-14 mt-20">
@@ -15,7 +23,7 @@ const Testimonial = ({testimonial}) => {
                     </div>
                     <div className='ml-5'>
                         <h2 className='text-base lg:text-xl font-bold text-neutral'>{name}</h2>
-                        <p className='font-semibold text-accent'>{location}</p>
+                        <p className='font-semibold text-accent'>{country}</p>
                     </div>
                 </div>
                 <figure>
@@ -23,14 +31,8 @@ const Testimonial = ({testimonial}) => {
                 </figure>
             </div>
             <div className="mt-4">
-                <p className='text-sm text-accent capitalize leading-6'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, words which don't look even slightly believable. </p>
-                <div className="rating mt-3">
-                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary w-4 mr-1" />
-                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary w-4 mr-1" />
-                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary w-4 mr-1" />
-                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary w-4 mr-1" />
-                    <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary w-4 mr-1" />
-                </div>
+                <p className='text-sm text-accent capitalize leading-6'>{description}</p>
+                <p><ReactStars value={rating} {...thirdExample} /></p>
             </div>
         </div>
     );

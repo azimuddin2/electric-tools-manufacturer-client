@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import ReactStars from "react-rating-stars-component";
 import useTitle from '../../../hooks/useTitle';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Shared/Loading/Loading';
 
 const AddReview = () => {
     useTitle('Add Review');
@@ -14,11 +16,30 @@ const AddReview = () => {
     const [countries, setCountries] = useState([]);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+    const url = `http://localhost:5000/user?email=${user?.email}`;
+    const { data: userInfo, isLoading } = useQuery({
+        queryKey: ['user', user?.email],
+        queryFn: async () => {
+            try {
+                const res = await fetch(url, {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                const data = await res.json();
+                return data;
+            }
+            catch (error) {
+
+            }
+        }
+    });
+
     useEffect(() => {
         fetch('https://restcountries.com/v3.1/all')
             .then(res => res.json())
             .then(data => setCountries(data))
-    }, [])
+    }, []);
 
     const thirdExample = {
         size: 40,
@@ -34,10 +55,12 @@ const AddReview = () => {
 
     const handleReview = data => {
         const reviewData = {
-            ...data, rating: value,
-            name: user?.displayName,
-            email: user?.email,
-            image: user
+            name: userInfo.name,
+            email: userInfo.email,
+            image: userInfo.image,
+            country: data.country,
+            description: data.description,
+            rating: value,
         };
         console.log(reviewData);
         fetch('http://localhost:5000/review', {
@@ -60,6 +83,10 @@ const AddReview = () => {
             })
     };
 
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     return (
         <div>
             <div className="hero-content flex-col lg:flex-col-reverse">
@@ -70,31 +97,24 @@ const AddReview = () => {
                         </div>
                         <form onSubmit={handleSubmit(handleReview)}>
 
-                            <div className="form-control w-full max-w-xs">
+                            <div className="form-control w-full max-w-xs mb-3">
                                 <input
                                     type="text"
-                                    value={user?.displayName}
+                                    value={userInfo?.name}
                                     disabled
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("name")}
                                 />
-                                <label className="label">
-                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-                                </label>
                             </div>
 
-                            <div className="form-control w-full max-w-xs">
+                            <div className="form-control w-full max-w-xs mb-3">
                                 <input
                                     type="email"
-                                    value={user?.email}
+                                    value={userInfo?.email}
                                     disabled
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("email")}
                                 />
-                                <label className="label">
-                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                </label>
                             </div>
 
                             <div className="form-control w-full max-w-sm">
