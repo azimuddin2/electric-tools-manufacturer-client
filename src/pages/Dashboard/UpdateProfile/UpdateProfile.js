@@ -19,7 +19,7 @@ const UpdateProfile = () => {
     const navigate = useNavigate();
     const imageHostKey = process.env.REACT_APP_imgBB_key;
 
-    const url = `http://localhost:5000/user?email=${user?.email}`;
+    const url = `https://electric-tools-server-seven.vercel.app/user?email=${user?.email}`;
 
     const { data: userInfo, isLoading } = useQuery({
         queryKey: ['user', user?.email],
@@ -71,7 +71,7 @@ const UpdateProfile = () => {
                     handleUpdateUserProfile(data.name, imgData.data.url, data.phone);
 
                     // save user information to the database
-                    fetch(`http://localhost:5000/user/${userInfo._id}`, {
+                    fetch(`https://electric-tools-server-seven.vercel.app/user/${userInfo._id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

@@ -10,7 +10,7 @@ const AddProduct = () => {
 
     const onSubmit = async data => {
 
-        fetch('http://localhost:5000/tool', {
+        fetch('https://electric-tools-server-seven.vercel.app/tool', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

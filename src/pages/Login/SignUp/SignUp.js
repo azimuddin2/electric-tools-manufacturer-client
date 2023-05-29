@@ -57,7 +57,7 @@ const SignUp = () => {
     const saveUserDataBase = (name, email) => {
         const user = { name, email };
 
-        fetch('http://localhost:5000/user', {
+        fetch('https://electric-tools-server-seven.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

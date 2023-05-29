@@ -12,7 +12,7 @@ const Tools = () => {
     const { data: tools, isLoading, error } = useQuery({
         queryKey: ['all-tools', search],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/all-tools?search=${search}`);
+            const res = await fetch(`https://electric-tools-server-seven.vercel.app/all-tools?search=${search}`);
             const data = await res.json();
             return data;
         }

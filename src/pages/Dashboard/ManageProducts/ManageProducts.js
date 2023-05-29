@@ -16,14 +16,14 @@ const ManageProducts = () => {
     const { data: tools, isLoading, refetch } = useQuery({
         queryKey: ['tools'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/tools');
+            const res = await fetch('https://electric-tools-server-seven.vercel.app/tools');
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteProduct = (tool) => {
-        fetch(`http://localhost:5000/tool/${tool._id}`, {
+        fetch(`https://electric-tools-server-seven.vercel.app/tool/${tool._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
