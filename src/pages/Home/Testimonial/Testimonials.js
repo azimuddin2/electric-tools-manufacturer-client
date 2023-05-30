@@ -4,21 +4,13 @@ import { A11y, Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 import 'swiper/css/pagination';
-import Testimonial from './Testimonial';
+import Testimonial from '../../../components/Testimonial';
 import './Testimonials.css';
-import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Shared/Loading/Loading';
+import useReview from '../../../hooks/useReview';
 
 const Testimonials = () => {
-
-    const { data: testimonials, isLoading } = useQuery({
-        queryKey: ['reviews'],
-        queryFn: async () => {
-            const res = await fetch('https://electric-tools-server-seven.vercel.app/reviews');
-            const data = await res.json();
-            return data;
-        }
-    });
+    const [testimonials, isLoading] = useReview();
 
     if (isLoading) {
         return <Loading></Loading>

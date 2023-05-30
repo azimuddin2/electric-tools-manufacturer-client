@@ -15,6 +15,7 @@ import AdminRoute from "./AdminRoute";
 import AddReview from "../pages/Dashboard/AddReview/AddReview";
 import UpdateProfile from "../pages/Dashboard/UpdateProfile/UpdateProfile";
 import Profile from "../pages/Profile/Profile";
+import Reviews from "../pages/Reviews/Reviews";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
                 loader: async ({ params }) => {
                     return fetch(`https://electric-tools-server-seven.vercel.app/tool/${params.id}`)
                 }
+            },
+            {
+                path: 'reviews',
+                element: <Reviews></Reviews>
             },
             {
                 path: 'login',

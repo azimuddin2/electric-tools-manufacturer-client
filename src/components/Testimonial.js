@@ -1,5 +1,5 @@
 import React from 'react';
-import quote from '../../../assets/icons/quote.svg';
+import quote from '../assets/icons/quote.svg';
 import ReactStars from "react-rating-stars-component";
 
 const Testimonial = ({ testimonial }) => {
