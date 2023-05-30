@@ -27,9 +27,9 @@ const Tools = () => {
 
     return (
         <div className='px-6 lg:px-8 mb-12'>
-            <div className=' mb-10'>
-                <h1 className='text-center font-semibold text-primary text-lg'>What Our Have</h1>
-                <h1 className='text-center text-4xl text-secondary font-normal'>Electric Tools</h1>
+            <div className='text-center mb-10'>
+                <h1 className='font-semibold text-primary text-lg'>What Our Have</h1>
+                <h1 className='text-3xl leading-snug text-secondary'>Electric Tools</h1>
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {

@@ -4,7 +4,7 @@ import { A11y, Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 import 'swiper/css/pagination';
-import Testimonial from '../../../components/Testimonial';
+import Testimonial from './Testimonial';
 import './Testimonials.css';
 import Loading from '../../Shared/Loading/Loading';
 import useReview from '../../../hooks/useReview';

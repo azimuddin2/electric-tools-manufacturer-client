@@ -30,7 +30,7 @@ const Banner = () => {
     }
 
     return (
-        <div className="mt-14 lg:mt-20 px-6 lg:px-8">
+        <div className="mt-12 lg:mt-20 px-6 lg:px-8">
             <div className="lg:hero-content flex-col lg:flex-row-reverse">
                 <Swiper
                     className="mySwiper lg:flex-1"
