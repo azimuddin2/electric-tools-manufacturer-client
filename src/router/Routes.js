@@ -16,11 +16,13 @@ import AddReview from "../pages/Dashboard/AddReview/AddReview";
 import UpdateProfile from "../pages/Dashboard/UpdateProfile/UpdateProfile";
 import Profile from "../pages/Profile/Profile";
 import Reviews from "../pages/Reviews/Reviews";
+import DisplayError from "../pages/Shared/DisplayError/DisplayError";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -63,7 +65,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-        // errorElement: <DisplayError></DisplayError>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',

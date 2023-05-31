@@ -8,6 +8,7 @@ import ReactStars from "react-rating-stars-component";
 import useTitle from '../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Shared/Loading/Loading';
+import { useNavigate } from 'react-router-dom';
 
 const AddReview = () => {
     useTitle('Add Review');
@@ -15,6 +16,7 @@ const AddReview = () => {
     const { user } = useContext(AuthContext);
     const [countries, setCountries] = useState([]);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const navigate = useNavigate();
 
     const url = `https://electric-tools-server-seven.vercel.app/user?email=${user?.email}`;
     const { data: userInfo, isLoading } = useQuery({
@@ -77,6 +79,7 @@ const AddReview = () => {
                 if (inserted.insertedId) {
                     toast.success('review added successfully');
                     reset();
+                    navigate('/reviews');
                 } else {
                     toast.error("Failed to add review");
                 }
