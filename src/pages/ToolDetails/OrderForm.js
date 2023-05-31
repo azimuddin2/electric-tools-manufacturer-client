@@ -33,7 +33,7 @@ const OrderForm = ({ tool }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast.success('Order Complete');
+                    toast.success('Order Complete! Please Payment');
                     navigate('/dashboard');
                 }
             })

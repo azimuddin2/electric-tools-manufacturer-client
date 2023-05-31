@@ -8,6 +8,7 @@ const Testimonial = ({ testimonial }) => {
     const thirdExample = {
         size: 26,
         count: 5,
+        isHalf: true,
         color: "#ff9800",
         activeColor: "#dadada",
     };

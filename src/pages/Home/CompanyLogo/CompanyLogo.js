@@ -5,17 +5,18 @@ import daraz from '../../../assets/icons/Daraz.pk Logo.svg';
 import ebay from '../../../assets/icons/Ebay.svg';
 import rakuten from '../../../assets/icons/Rakuten.svg';
 import walmart from '../../../assets/icons/Walmart.svg';
+import Fade from 'react-reveal/Fade';
 
 const CompanyLogo = () => {
     return (
         <div className='px-6 lg:px-8 py-16 lg:py-20'>
             <div className='logo-container grid grid-cols-3 lg:grid-cols-6 gap-6 lg:px-20'>
-                <img src={alibaba} alt="alibaba" />
-                <img src={amazon} alt="amazon" />
-                <img src={daraz} alt="daraz" />
-                <img src={ebay} alt="ebay" />
-                <img src={rakuten} alt="rakuten" />
-                <img src={walmart} alt="walmart" />
+                <Fade top><img src={alibaba} alt="alibaba" /></Fade>
+                <Fade bottom><img src={amazon} alt="amazon" /></Fade>
+                <Fade top><img src={daraz} alt="daraz" /></Fade>
+                <Fade bottom><img src={ebay} alt="ebay" /></Fade>
+                <Fade top><img src={rakuten} alt="rakuten" /></Fade>
+                <Fade bottom><img src={walmart} alt="walmart" /></Fade>
             </div>
         </div>
     );

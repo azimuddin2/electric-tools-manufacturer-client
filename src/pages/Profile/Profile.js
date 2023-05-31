@@ -5,9 +5,10 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../Shared/Loading/Loading';
 import { FaEdit, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const Profile = () => {
-
+    useTitle('My Profile')
     const { user } = useContext(AuthContext);
     const url = `https://electric-tools-server-seven.vercel.app/user?email=${user?.email}`;
 
@@ -35,11 +36,11 @@ const Profile = () => {
 
     return (
         <div className="hero min-h-screen">
-            <div className="hero-content flex-col lg:flex-row shadow-xl rounded-xl lg:p-14">
-                <div className='text-center lg:mr-6'>
+            <div className="lg:hero-content flex-col lg:flex-row border shadow-xl rounded-xl lg:p-14">
+                <div className='text-center lg:mr-6 py-5 lg:py-0'>
                     {
                         userInfo.image ?
-                            <img src={userInfo?.image} alt='' className="rounded-full w-60 h-60" />
+                            <img src={userInfo?.image} alt='' className="rounded-full w-60 h-60 mx-auto" />
                             :
                             <FaUserCircle className=' text-9xl'></FaUserCircle>
                     }
@@ -48,16 +49,8 @@ const Profile = () => {
                     </Link>
                 </div>
 
-
                 <div className="overflow-x-auto">
                     <table className="table w-full">
-                        {/* <thead>
-                            <tr>
-                                <th></th>
-                                <th className=' capitalize'>My Profile</th>
-                                <th></th>
-                            </tr>
-                        </thead> */}
                         <tbody>
                             <tr>
                                 <td>Full Name :</td>
@@ -105,8 +98,6 @@ const Profile = () => {
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
     );

@@ -3,6 +3,7 @@ import Loading from '../Shared/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import Tool from '../../components/Tool';
 import useTitle from '../../hooks/useTitle';
+import { BiSearch } from 'react-icons/bi';
 
 const Tools = () => {
     useTitle('Tools');
@@ -31,15 +32,21 @@ const Tools = () => {
     }
 
     return (
-        <section className='max-w-screen-xl mx-auto px-6 lg:px-12 my-20'>
-            <div className='text-center'>
+        <section className='max-w-screen-xl mx-auto px-6 lg:px-12 my-16'>
+            <div className='relative mb-10 md:text-center'>
                 <input
                     ref={searchRef}
                     type="text"
                     placeholder="Search..."
-                    className="input input-bordered input-primary w-full max-w-xs"
+                    className="input input-primary w-72 lg:w-full max-w-xs lg:max-w-md input-bordered focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                 />
-                <button onClick={handleSearch} className='btn btn-primary text-white'>Search</button>
+                <button
+                    style={{ marginLeft: '-14px' }}
+                    onClick={handleSearch}
+                    className='btn btn-primary text-white absolute'
+                >
+                    <BiSearch className='text-2xl'></BiSearch>
+                </button>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {

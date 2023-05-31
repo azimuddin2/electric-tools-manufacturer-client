@@ -11,7 +11,7 @@ const Reviews = () => {
     }
 
     return (
-        <section className='my-14 max-w-screen-xl mx-auto'>
+        <section className='max-w-screen-xl mx-auto px-4 lg:px-8 my-14'>
             <div className='text-center'>
                 <p className='text-primary font-semibold text-lg'>Reviews</p>
                 <h1 className='text-2xl lg:text-3xl leading-snug text-secondary'>What Customer Says</h1>
