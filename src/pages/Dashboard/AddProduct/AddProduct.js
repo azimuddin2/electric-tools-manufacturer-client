@@ -31,10 +31,10 @@ const AddProduct = () => {
     };
 
     return (
-        <section className='h-full p-4 lg:p-10'>
+        <section className='lg:bg-gray-50 h-full p-4 lg:p-10'>
             <h1 className='text-2xl font-medium mb-5 lg:ml-28'>Add a New Product</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='card shadow-xl border grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 p-4 lg:p-8 lg:w-4/5 mx-auto'>
+                <div className='card bg-white shadow-xl grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 p-4 lg:p-8 lg:w-4/5 mx-auto'>
 
                     <div className="form-control w-full max-w-sm">
                         <label className="label">

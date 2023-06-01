@@ -47,7 +47,7 @@ const ManageProducts = () => {
     }
 
     return (
-        <section className='h-full p-4 lg:p-10'>
+        <section className='lg:bg-gray-50 p-4 lg:p-10'>
             <h1 className='text-2xl font-medium mb-5'>Manage Products</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">

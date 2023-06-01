@@ -91,9 +91,9 @@ const AddReview = () => {
     }
 
     return (
-        <div>
+        <section className='lg:bg-gray-50 h-full lg:pt-5'>
             <div className="hero-content flex-col lg:flex-col-reverse">
-                <div className="card shadow-xl">
+                <div className="card bg-white shadow-xl">
                     <div className="card-body w-96">
                         <div>
                             <h2 className='text-2xl font-medium text-center mb-5'>Add a Review</h2>
@@ -169,7 +169,7 @@ const AddReview = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

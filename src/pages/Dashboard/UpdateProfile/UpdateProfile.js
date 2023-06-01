@@ -110,14 +110,14 @@ const UpdateProfile = () => {
     }
 
     return (
-        <section>
-            <div className='h-full p-4 lg:p-10'>
+        <section className='lg:bg-gray-50 h-full'>
+            <div className='p-4 lg:p-10'>
                 <div>
                     <h2 className='text-2xl font-medium mb-5 lg:ml-28'>Edit Your Profile</h2>
                 </div>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className='card shadow-xl border grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 p-4 lg:p-8 lg:w-4/5 mx-auto'
+                    className='card bg-white shadow-xl grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 p-4 lg:p-8 lg:w-4/5 mx-auto'
                 >
 
                     <div className="form-control w-full max-w-sm">
@@ -238,7 +238,7 @@ const UpdateProfile = () => {
                         </label>
                     </div>
 
-                    <input className=' btn  w-full max-w-sm' type="submit" value="Save" />
+                    <input className='btn text-white  w-full max-w-sm' type="submit" value="Save" />
                 </form>
             </div>
         </section>

@@ -21,7 +21,7 @@ const DashboardLayout = () => {
                 <div className="drawer-content">
                     <Outlet></Outlet>
                 </div>
-                <div className="drawer-side lg:bg-gray-100" >
+                <div className="drawer-side">
                     <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-64 lg:bg-inherit bg-base-100 text-base-content">
                         <li><Sidebar to="/dashboard"> <HiOutlineClipboardDocumentList className='text-xl'></HiOutlineClipboardDocumentList> My Orders</Sidebar></li>

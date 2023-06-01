@@ -48,7 +48,7 @@ const MyOrders = () => {
         })
             .then(res => res.json())
             .then(result => {
-                if(result.acknowledged){
+                if (result.acknowledged) {
                     refetch();
                     toast.success(`Order ${order?.toolName} tool deleted successfully`);
                 }
@@ -64,7 +64,7 @@ const MyOrders = () => {
     }
 
     return (
-        <section>
+        <section className='lg:bg-gray-50'>
             {
                 orders?.length > 0 ?
                     <div className='h-full p-4 lg:p-10'>
