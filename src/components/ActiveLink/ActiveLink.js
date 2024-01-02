@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
-const Sidebar = ({ children, to, ...props }) => {
+const ActiveLink = ({ children, to, ...props }) => {
     let resolved = useResolvedPath(to);
     let match = useMatch({ path: resolved.pathname, end: true });
 
@@ -21,4 +21,4 @@ const Sidebar = ({ children, to, ...props }) => {
     );
 };
 
-export default Sidebar;
+export default ActiveLink;
