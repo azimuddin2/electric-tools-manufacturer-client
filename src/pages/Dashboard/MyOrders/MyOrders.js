@@ -19,7 +19,7 @@ const MyOrders = () => {
     const [payment, setPayment] = useState(null);
     const [deleteOrder, setDeleteOrder] = useState(null);
 
-    const url = `https://electric-tools-server-seven.vercel.app/orders?email=${user?.email}`;
+    const url = `http://localhost:5000/orders?email=${user?.email}`;
 
     const { data: orders, isLoading, refetch } = useQuery({
         queryKey: ['orders', user?.email],
@@ -40,7 +40,7 @@ const MyOrders = () => {
     });
 
     const handleDeleteOrder = (order) => {
-        fetch(`https://electric-tools-server-seven.vercel.app/order/${order._id}`, {
+        fetch(`http://localhost:5000/order/${order._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -38,7 +38,7 @@ const router = createBrowserRouter([
                     <ToolDetails></ToolDetails>
                 </PrivateRoute>,
                 loader: async ({ params }) => {
-                    return fetch(`https://electric-tools-server-seven.vercel.app/tool/${params.id}`)
+                    return fetch(`http://localhost:5000/tool/${params.id}`)
                 }
             },
             {

@@ -10,7 +10,7 @@ import useTitle from '../../hooks/useTitle';
 const Profile = () => {
     useTitle('My Profile')
     const { user } = useContext(AuthContext);
-    const url = `https://electric-tools-server-seven.vercel.app/user?email=${user?.email}`;
+    const url = `http://localhost:5000/user?email=${user?.email}`;
 
     const { data: userInfo, isLoading } = useQuery({
         queryKey: ['user', user?.email],

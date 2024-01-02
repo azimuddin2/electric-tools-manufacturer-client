@@ -18,7 +18,7 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
 
-    const url = `https://electric-tools-server-seven.vercel.app/user?email=${user?.email}`;
+    const url = `http://localhost:5000/user?email=${user?.email}`;
     const { data: userInfo, isLoading } = useQuery({
         queryKey: ['user', user?.email],
         queryFn: async () => {
@@ -65,7 +65,7 @@ const AddReview = () => {
             rating: value,
         };
         console.log(reviewData);
-        fetch('https://electric-tools-server-seven.vercel.app/review', {
+        fetch('http://localhost:5000/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

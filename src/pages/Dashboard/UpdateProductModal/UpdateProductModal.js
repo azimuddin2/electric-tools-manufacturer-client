@@ -16,7 +16,7 @@ const UpdateProductModal = ({ modalData, setUpdateProduct, refetch }) => {
             availableQuantity: data.availableQuantity
         };
 
-        fetch(`https://electric-tools-server-seven.vercel.app/tool/${_id}`, {
+        fetch(`http://localhost:5000/tool/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

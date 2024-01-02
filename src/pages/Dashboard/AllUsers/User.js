@@ -7,7 +7,7 @@ const User = ({ user, index, refetch, setDeletingUser }) => {
     const { _id, name, email } = user;
 
     const handleMakeAdmin = (id) => {
-        fetch(`https://electric-tools-server-seven.vercel.app/user/admin/${id}`, {
+        fetch(`http://localhost:5000/user/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
