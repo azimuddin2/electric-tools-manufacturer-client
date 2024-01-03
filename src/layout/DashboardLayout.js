@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Navbar from '../pages/Shared/Navbar/Navbar';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
-import Sidebar from '../components/Sidebar';
 import useAdmin from '../hooks/useAdmin';
 import { BiEdit } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
@@ -16,7 +15,7 @@ const DashboardLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="drawer drawer-mobile">
+            {/* <div className="drawer drawer-mobile">
                 <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <Outlet></Outlet>
@@ -37,7 +36,7 @@ const DashboardLayout = () => {
                         <li className='mt-auto'><Link to="/"> <HiOutlineHome className='text-xl'></HiOutlineHome> Back to Home</Link></li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

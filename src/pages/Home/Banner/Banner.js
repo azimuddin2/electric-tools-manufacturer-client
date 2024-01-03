@@ -3,12 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, A11y, Autoplay } from "swiper";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Button from '../../Shared/Button/Button';
 import { useQuery } from '@tanstack/react-query';
 import { HiArrowRight } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import Loading from '../../Shared/Loading/Loading';
+import Button from '../../../components/Button/Button';
 
 const Banner = () => {
 

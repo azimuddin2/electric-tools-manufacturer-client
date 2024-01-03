@@ -1,11 +1,11 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useRef, useState } from 'react';
 import Loading from '../Shared/Loading/Loading';
-import { useQuery } from '@tanstack/react-query';
-import Tool from '../../components/Tool';
-import useTitle from '../../hooks/useTitle';
 import { BiSearch } from 'react-icons/bi';
+import Tool from '../../components/Tool/Tool';
 
-const Tools = () => {
+
+const AllTools = () => {
     useTitle('Tools');
     const searchRef = useRef();
     const [search, setSearch] = useState('');
@@ -60,4 +60,4 @@ const Tools = () => {
     );
 };
 
-export default Tools;
+export default AllTools;
