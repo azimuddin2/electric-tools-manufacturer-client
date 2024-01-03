@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import Loading from '../../Shared/Loading/Loading';
 import Button from '../../../components/Button/Button';
+import ErrorMessage from '../../Shared/ErrorMessage/ErrorMessage';
 
 const Banner = () => {
 
@@ -26,11 +27,11 @@ const Banner = () => {
     }
 
     if (error) {
-        return <p className='text-red-500 text-center mt-10'>error: {error.message}</p>
+        return <ErrorMessage message={error.message}></ErrorMessage>
     }
 
     return (
-        <div className="mt-12 lg:mt-20 px-6 lg:px-8">
+        <div className="max-w-screen-lg lg:mx-auto mx-5 mt-12 lg:mt-20 ">
             <div className="lg:hero-content flex-col lg:flex-row-reverse">
                 <Swiper
                     className="mySwiper lg:flex-1"
@@ -52,7 +53,7 @@ const Banner = () => {
                 >
                     {
                         tools?.map(tool => <SwiperSlide key={tool._id}>
-                            <img src={tool.img} alt={tool.name} className='mb-16 mx-auto' />
+                            <img src={tool.image} alt={tool.name} className='mb-16 mx-auto' />
                         </SwiperSlide>)
                     }
                 </Swiper>
@@ -69,10 +70,10 @@ const Banner = () => {
                         speed={20}
                         repeat={Infinity}
                     />
-                    <h1 className="text-xl text-secondary mt-4 font-semibold">Hardware Equipments & Accessories manufacturer</h1>
-                    <p className="py-4 md:py-6 text-secondary text-sm">Electrical tools are used to do the electrical work like electrical wiring installations by using this tool we can do the tools of electrical wire properly and quickly.</p>
+                    <h1 className="text-xl lg:text-2xl text-secondary mt-4 font-semibold">Hardware Equipments manufacturer</h1>
+                    <p className="py-4 md:py-5 text-accent text-sm">Electrical tools are used to do the electrical work like electrical wiring installations by using this tool we can do the tools of electrical wire properly and quickly.</p>
                     <Link to='/tools'>
-                        <Button>Get Started <HiArrowRight className='ml-1 text-xl'></HiArrowRight> </Button>
+                        <Button>Get Started <HiArrowRight className='text-lg'></HiArrowRight> </Button>
                     </Link>
                 </div>
             </div>

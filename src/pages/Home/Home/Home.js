@@ -12,8 +12,8 @@ const Home = () => {
     useTitle('Home');
     return (
         <div className='max-w-screen-xl mx-auto'>
-            {/* <Banner></Banner> */}
-            {/* <CompanyLogo></CompanyLogo> */}
+            <Banner></Banner>
+            <CompanyLogo></CompanyLogo>
             {/* <Tools></Tools> */}
             {/* <BusinessOverview></BusinessOverview> */}
             {/* <Information></Information> */}
