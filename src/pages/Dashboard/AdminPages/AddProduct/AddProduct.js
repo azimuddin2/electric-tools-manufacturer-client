@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import useTitle from '../../../hooks/useTitle';
+import useTitle from '../../../../hooks/useTitle';
 
 const AddProduct = () => {
     useTitle('Add Product');

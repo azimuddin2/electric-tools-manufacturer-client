@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import ReactStars from "react-rating-stars-component";
-import useTitle from '../../../hooks/useTitle';
+import useTitle from '../../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
-import Loading from '../../Shared/Loading/Loading';
+import Loading from '../../../Shared/Loading/Loading';
 import { useNavigate } from 'react-router-dom';
 
 const AddReview = () => {

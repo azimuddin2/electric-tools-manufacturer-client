@@ -1,11 +1,11 @@
 import React from 'react';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import { useForm } from 'react-hook-form';
-import useTitle from '../../../hooks/useTitle';
+import useTitle from '../../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
-import Loading from '../../Shared/Loading/Loading';
+import Loading from '../../../Shared/Loading/Loading';
 import { BiImageAdd } from 'react-icons/bi';
 import { useState } from 'react';
 import { useEffect } from 'react';
