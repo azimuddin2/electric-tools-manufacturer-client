@@ -2,13 +2,16 @@ import React from 'react';
 import { FaGoogle, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import logo from '../../../assets/icons/logo.svg'
 import ScrollToTop from 'react-scroll-to-top';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="px-6 lg:px-12 bg-secondary text-gray-200 pb-10 pt-20 ">
-            <div className='footer max-w-screen-xl mx-auto pb-10'>
+        <footer className="px-5 lg:px-0 bg-secondary text-gray-200 pb-10 pt-20 ">
+            <div className='footer max-w-screen-lg mx-auto pb-10'>
                 <div>
-                    <img src={logo} alt="Logo" />
+                    <Link to={'/'}>
+                        <img src={logo} alt="Logo" />
+                    </Link>
                     <p className='mt-3'>Edwin Diaz is a software and web <br /> technologies engineer, a life coach <br /> trainer who is also a serial.</p>
                     <div className='flex items-center mt-4'>
                         <p className='bg-neutral-700 mr-2 p-3 rounded-full cursor-pointer'><FaGoogle></FaGoogle></p>
@@ -37,7 +40,7 @@ const Footer = () => {
                     <a href="/" className="link link-hover">Accessibility</a>
                 </div>
             </div>
-            <p className='text-center'><small>Copyright © 2023 Autozpro</small></p>
+            <p className='text-center'><small>Copyright © 2024 Autozpro</small></p>
             <ScrollToTop
                 smooth
                 className="animate-bounce flex justify-center items-center"
@@ -45,7 +48,7 @@ const Footer = () => {
                 width="18"
                 height="18"
                 top="400"
-                style={{ background: "#4158f3", boxShadow: 'none', borderRadius: "50px"}}
+                style={{ background: "#4158f3", boxShadow: 'none', borderRadius: "50px" }}
             />
         </footer>
     );
