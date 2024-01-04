@@ -8,7 +8,7 @@
 }
 
 .swiper-button-next {
-    left: 8% !important;
+    left: 8.6% !important;
     background-color: #4158f3;
     width: 40px;
     height: 40px;
@@ -32,10 +32,10 @@
 /* responsive mobile device */
 @media screen and (max-width: 576px) {
     .swiper-button-prev {
-        left: 6% !important;
+        left: 10% !important;
     }
 
     .swiper-button-next {
-        left: 21% !important;
+        left: 24% !important;
     }
 }

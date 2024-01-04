@@ -13,7 +13,7 @@ const Information = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 <Fade top>
-                    <div className="card card-side shadow-lg px-6 py-8 items-center">
+                    <div className="card card-side shadow px-6 py-8 items-center">
                         <figure>
                             <img src={quality} alt="Quality" />
                         </figure>
@@ -24,7 +24,7 @@ const Information = () => {
                     </div>
                 </Fade>
                 <Fade bottom>
-                    <div className="card card-side shadow-lg px-6 py-8 items-center">
+                    <div className="card card-side shadow px-6 py-8 items-center">
                         <figure>
                             <img src={shipping} alt="Delivary" />
                         </figure>
@@ -35,7 +35,7 @@ const Information = () => {
                     </div>
                 </Fade>
                 <Fade top>
-                    <div className="card card-side shadow-lg px-6 py-8 items-center">
+                    <div className="card card-side shadow px-6 py-8 items-center">
                         <figure>
                             <img src={support} alt="Support" />
                         </figure>

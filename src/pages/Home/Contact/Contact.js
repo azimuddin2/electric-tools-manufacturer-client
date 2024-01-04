@@ -21,11 +21,10 @@ const Contact = () => {
 
     return (
         <section
-            className='max-w-screen-xl mx-auto my-16'
+            className='max-w-screen-xl mx-auto my-12 lg:my-16 bg-fixed'
             style={{
                 background: `url(${backgroundImg})`,
                 width: '100%',
-                backgroundPosition: '100%',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover'
             }}

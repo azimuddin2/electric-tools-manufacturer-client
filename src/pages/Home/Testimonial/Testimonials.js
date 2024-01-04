@@ -8,16 +8,21 @@ import Testimonial from './Testimonial';
 import './Testimonials.css';
 import Loading from '../../Shared/Loading/Loading';
 import useReview from '../../../hooks/useReview';
+import ErrorMessage from '../../Shared/ErrorMessage/ErrorMessage';
 
 const Testimonials = () => {
-    const [testimonials, isLoading] = useReview();
+    const [testimonials, isLoading, error] = useReview();
 
     if (isLoading) {
         return <Loading></Loading>
     }
 
+    if (error) {
+        return <ErrorMessage message={error.message}></ErrorMessage>
+    }
+
     return (
-        <section className='mt-12 mb-10 px-6 lg:px-8'>
+        <section className='mb-12 max-w-screen-lg lg:mx-auto mx-5'>
             <div className='text-center'>
                 <p className='text-primary font-semibold text-lg'>Testimonial</p>
                 <h1 className='text-2xl lg:text-3xl leading-snug text-secondary'>What Customer Says</h1>
@@ -42,18 +47,18 @@ const Testimonials = () => {
                     },
                     768: {
                         width: 768,
-                        slidesPerView: 1,
+                        slidesPerView: 2,
                         spaceBetween: 12,
                     },
-                    1200: {
-                        width: 1200,
+                    1024: {
+                        width: 1024,
                         slidesPerView: 2,
                         spaceBetween: 12,
 
                     },
                 }}
                 modules={[A11y, Pagination, Navigation, Autoplay]}
-                spaceBetween={20}
+                spaceBetween={18}
                 autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,
@@ -65,7 +70,7 @@ const Testimonials = () => {
             >
                 <div>
                     {
-                        testimonials.map(testimonial => <SwiperSlide key={testimonial._id}>
+                        testimonials?.map(testimonial => <SwiperSlide key={testimonial._id}>
                             <Testimonial testimonial={testimonial}></Testimonial>
                         </SwiperSlide>)
                     }
