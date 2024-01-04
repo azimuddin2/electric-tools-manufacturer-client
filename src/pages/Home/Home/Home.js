@@ -11,11 +11,11 @@ import useTitle from '../../../hooks/useTitle';
 const Home = () => {
     useTitle('Home');
     return (
-        <div className='max-w-screen-xl mx-auto'>
+        <div>
             <Banner></Banner>
             <CompanyLogo></CompanyLogo>
             <Tools></Tools>
-            {/* <BusinessOverview></BusinessOverview> */}
+            <BusinessOverview></BusinessOverview>
             {/* <Information></Information> */}
             {/* <Contact></Contact> */}
             {/* <Testimonials></Testimonials> */}
