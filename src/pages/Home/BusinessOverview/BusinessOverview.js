@@ -16,20 +16,21 @@ const BusinessOverview = () => {
             style={{
                 backgroundImage: `url(${backgroundImg})`,
                 backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
                 width: '100%'
             }}
         >
-            <div className=' bg-black bg-opacity-60 py-16'>
+            <div className='bg-black bg-opacity-60 py-16 lg:py-20'>
                 <div className='max-w-screen-lg lg:mx-auto mx-5'>
                     <div className='mb-12'>
-                        <h1 className='text-center text-primary uppercase text-4xl font-semibold'>Millions of Clients trust us</h1>
+                        <h1 className='text-center text-primary uppercase text-4xl font-semibold mb-3 lg:mb-1'>Millions of Clients trust us</h1>
                         <h3 className='text-center capitalize text-white text-2xl'>try to understand Customer expectation</h3>
                     </div>
-                    <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                         <Fade top>
                             <div className="stats shadow">
-                                <div className="stat text-center">
-                                    <FaTools className='text-primary text-6xl mb-2 mx-auto'></FaTools>
+                                <div className="stat text-center py-6">
+                                    <FaTools className='text-primary text-6xl mb-2 mx-auto' />
                                     <ScrollTrigger onEnter={() => setCounter(true)} onExit={() => setCounter(false)}>
                                         <h2 className="stat-value">
                                             {counter && <CountUp start={1} end={100} duration={2} delay={0}></CountUp>}
@@ -40,11 +41,10 @@ const BusinessOverview = () => {
                                 </div>
                             </div>
                         </Fade>
-
                         <Fade bottom>
                             <div className="stats shadow">
-                                <div className="stat text-center">
-                                    <AiFillDollarCircle className='text-primary text-6xl mb-2 mx-auto'></AiFillDollarCircle>
+                                <div className="stat text-center py-6">
+                                    <AiFillDollarCircle className='text-primary text-6xl mb-2 mx-auto' />
                                     <ScrollTrigger onEnter={() => setCounter(true)} onExit={() => setCounter(false)}>
                                         <h2 className="stat-value">
                                             {counter && <CountUp start={1} end={200} duration={2} delay={0}></CountUp>}
@@ -55,11 +55,10 @@ const BusinessOverview = () => {
                                 </div>
                             </div>
                         </Fade>
-
                         <Fade top>
                             <div className="stats shadow">
-                                <div className="stat text-center">
-                                    <FaUsers className='text-primary text-6xl mb-2 mx-auto'></FaUsers>
+                                <div className="stat text-center py-6">
+                                    <FaUsers className='text-primary text-6xl mb-2 mx-auto' />
                                     <ScrollTrigger onEnter={() => setCounter(true)} onExit={() => setCounter(false)}>
                                         <h2 className="stat-value">
                                             {counter && <CountUp start={1} end={120} duration={2} delay={0}></CountUp>}
@@ -70,10 +69,9 @@ const BusinessOverview = () => {
                                 </div>
                             </div>
                         </Fade>
-
                         <Fade bottom>
                             <div className="stats shadow">
-                                <div className="stat text-center">
+                                <div className="stat text-center py-6">
                                     <img src={like} alt="Like" className='mb-2 mx-auto' />
                                     <ScrollTrigger onEnter={() => setCounter(true)} onExit={() => setCounter(false)}>
                                         <h2 className="stat-value">

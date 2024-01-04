@@ -10,7 +10,7 @@ const Tool = ({ tool }) => {
 
     return (
         <Fade bottom>
-            <div className="card lg:shadow-none shadow">
+            <div className="card lg:shadow-none shadow hover:shadow">
                 <figure>
                     <img className='w-56 mt-1 mx-auto' src={image} alt={name} />
                 </figure>

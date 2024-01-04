@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 import Tool from '../../../components/Tool/Tool';
 import ErrorMessage from '../../Shared/ErrorMessage/ErrorMessage';
+import { IoArrowForwardCircleOutline } from "react-icons/io5"
 
 const Tools = () => {
 
@@ -42,7 +43,9 @@ const Tools = () => {
             </div>
             <div className="mt-10 text-center">
                 <Link to='/tools'>
-                    <button className='btn btn-sm btn-outline'>SHOW ALL TOOLS</button>
+                    <button className='btn btn-sm btn-outline btn-primary'>
+                        SHOW ALL TOOLS <IoArrowForwardCircleOutline className='text-xl'/>
+                    </button>
                 </Link>
             </div>
         </section>
