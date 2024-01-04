@@ -3,7 +3,7 @@ import backgroundImg from '../../../assets/images/contact-bg.jpg';
 
 const Contact = () => {
 
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -16,12 +16,12 @@ const Contact = () => {
             message
         };
         console.log(contactInfo);
-
         form.reset();
-    }
+    };
 
     return (
         <section
+            className='max-w-screen-xl mx-auto my-16'
             style={{
                 background: `url(${backgroundImg})`,
                 width: '100%',
@@ -30,10 +30,10 @@ const Contact = () => {
                 backgroundSize: 'cover'
             }}
         >
-            <div className='text-center py-14 px-8 w-full sm:w-auto'>
+            <div className='text-center py-14 px-5 w-full'>
                 <h4 className='font-semibold text-primary text-lg'>Contact Us</h4>
                 <h1 className='text-2xl md:text-3xl text-white mb-10 font-normal'>Stay connected with us</h1>
-                <form onSubmit={handleSubmit} className='grid'>
+                <form onSubmit={handleSubmit} className='grid grid-cols-1'>
                     <input
                         className='w-full md:w-96 lg:w-96 mx-auto mb-4 p-3 rounded input-bordered focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary'
                         type="email"
@@ -45,7 +45,7 @@ const Contact = () => {
                         className='w-full md:w-96 lg:w-96 mx-auto mb-4 p-3 rounded input-bordered focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary'
                         type="text"
                         name='subject'
-                        placeholder='Subject'
+                        placeholder='Your Subject'
                         required
                     />
                     <textarea
