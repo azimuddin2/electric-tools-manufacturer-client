@@ -14,7 +14,7 @@ const Home = () => {
         <div className='max-w-screen-xl mx-auto'>
             <Banner></Banner>
             <CompanyLogo></CompanyLogo>
-            {/* <Tools></Tools> */}
+            <Tools></Tools>
             {/* <BusinessOverview></BusinessOverview> */}
             {/* <Information></Information> */}
             {/* <Contact></Contact> */}

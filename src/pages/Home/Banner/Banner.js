@@ -31,7 +31,7 @@ const Banner = () => {
     }
 
     return (
-        <div className="max-w-screen-lg lg:mx-auto mx-5 mt-12 lg:mt-20 ">
+        <section className="max-w-screen-lg lg:mx-auto mx-5 mt-12 lg:mt-20">
             <div className="lg:hero-content flex-col lg:flex-row-reverse">
                 <Swiper
                     className="mySwiper lg:flex-1"
@@ -77,7 +77,7 @@ const Banner = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

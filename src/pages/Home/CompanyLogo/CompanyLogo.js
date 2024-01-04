@@ -9,7 +9,7 @@ import Fade from 'react-reveal/Fade';
 
 const CompanyLogo = () => {
     return (
-        <div className='max-w-screen-lg lg:mx-auto mx-5 py-12 lg:py-20'>
+        <section className='max-w-screen-lg lg:mx-auto mx-5 py-12 lg:py-20'>
             <div className='logo-container grid grid-cols-3 lg:grid-cols-6 gap-6 lg:px-12'>
                 <Fade top><img src={alibaba} alt="alibaba" /></Fade>
                 <Fade bottom><img src={amazon} alt="amazon" /></Fade>
@@ -18,7 +18,7 @@ const CompanyLogo = () => {
                 <Fade top><img src={rakuten} alt="rakuten" /></Fade>
                 <Fade bottom><img src={walmart} alt="walmart" /></Fade>
             </div>
-        </div>
+        </section>
     );
 };
 
