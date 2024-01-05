@@ -3,6 +3,7 @@ import Main from "../layout/Main";
 import DisplayError from "../pages/Shared/DisplayError/DisplayError";
 import Home from "../pages/Home/Home/Home";
 import AllTools from "../pages/AllTools/AllTools";
+import Reviews from "../pages/Reviews/Reviews";
 
 const router = createBrowserRouter([
     {
@@ -30,10 +31,10 @@ const router = createBrowserRouter([
             //         return fetch(`http://localhost:5000/tool/${params.id}`)
             //     }
             // },
-            // {
-            //     path: 'reviews',
-            //     element: <Reviews></Reviews>
-            // },
+            {
+                path: 'reviews',
+                element: <Reviews></Reviews>
+            },
             // {
             //     path: 'login',
             //     element: <Login></Login>
