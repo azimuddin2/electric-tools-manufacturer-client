@@ -8,6 +8,7 @@ const CustomLink = ({ children, to, ...props }) => {
     return (
         <Link className='lg:mr-1 mb-1 lg:mb-0 rounded-md'
             style={{
+                color: 'white',
                 background: match ? '#4158f3' : 'none',
                 fontWeight: match ? '600' : '500'
             }}

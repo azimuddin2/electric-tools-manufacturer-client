@@ -1,13 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-import Home from "../pages/Home/Home/Home";
-import ToolDetails from "../pages/ToolDetails/ToolDetails";
-import Login from "../pages/Login/Login/Login";
-import SignUp from "../pages/Login/SignUp/SignUp";
-import PrivateRoute from "./PrivateRoute";
-import Profile from "../pages/Profile/Profile";
-import Reviews from "../pages/Reviews/Reviews";
 import DisplayError from "../pages/Shared/DisplayError/DisplayError";
+import Home from "../pages/Home/Home/Home";
+import AllTools from "../pages/AllTools/AllTools";
 
 const router = createBrowserRouter([
     {
@@ -19,10 +14,10 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>
             },
-            // {
-            //     path: 'tools',
-            //     element: <Tools></Tools>
-            // },
+            {
+                path: 'tools',
+                element: <AllTools></AllTools>
+            },
             // {
             //     path: '/tool/:id',
             //     element: <PrivateRoute>

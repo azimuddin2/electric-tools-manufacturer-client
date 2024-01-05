@@ -3,10 +3,11 @@ import React, { useRef, useState } from 'react';
 import Loading from '../Shared/Loading/Loading';
 import { BiSearch } from 'react-icons/bi';
 import Tool from '../../components/Tool/Tool';
-
+import useTitle from '../../hooks/useTitle';
+import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
 
 const AllTools = () => {
-    useTitle('Tools');
+    useTitle('All Tools');
     const searchRef = useRef();
     const [search, setSearch] = useState('');
 
@@ -28,16 +29,17 @@ const AllTools = () => {
     }
 
     if (error) {
-        return <p className='text-red-500 text-center'>error: {error.message}</p>
+        return <ErrorMessage message={error.message}></ErrorMessage>
     }
 
     return (
-        <section className='max-w-screen-xl mx-auto px-6 lg:px-12 my-16'>
+        <section className='max-w-screen-lg lg:mx-auto mx-5 my-16'>
+
             <div className='relative mb-10 md:text-center'>
                 <input
                     ref={searchRef}
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Search for tool..."
                     className="input input-primary w-72 lg:w-full max-w-xs lg:max-w-md input-bordered focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                 />
                 <button
@@ -48,7 +50,8 @@ const AllTools = () => {
                     <BiSearch className='text-2xl'></BiSearch>
                 </button>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     tools?.map(tool => <Tool
                         key={tool._id}
@@ -56,6 +59,7 @@ const AllTools = () => {
                     ></Tool>)
                 }
             </div>
+
         </section>
     );
 };
