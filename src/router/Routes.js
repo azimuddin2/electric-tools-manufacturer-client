@@ -16,7 +16,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'tools',
-                element: <AllTools></AllTools>
+                element: <AllTools></AllTools>,
+                loader: async () => {
+                    return fetch('http://localhost:5000/totalTools')
+                }
             },
             // {
             //     path: '/tool/:id',
