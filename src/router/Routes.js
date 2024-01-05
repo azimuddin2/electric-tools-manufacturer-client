@@ -4,6 +4,8 @@ import DisplayError from "../pages/Shared/DisplayError/DisplayError";
 import Home from "../pages/Home/Home/Home";
 import AllTools from "../pages/AllTools/AllTools";
 import Reviews from "../pages/Reviews/Reviews";
+import Login from "../pages/Login/Login/Login";
+import SignUp from "../pages/Login/SignUp/SignUp";
 
 const router = createBrowserRouter([
     {
@@ -35,14 +37,14 @@ const router = createBrowserRouter([
                 path: 'reviews',
                 element: <Reviews></Reviews>
             },
-            // {
-            //     path: 'login',
-            //     element: <Login></Login>
-            // },
-            // {
-            //     path: 'signup',
-            //     element: <SignUp></SignUp>
-            // },
+            {
+                path: 'login',
+                element: <Login></Login>
+            },
+            {
+                path: 'signup',
+                element: <SignUp></SignUp>
+            },
             // {
             //     path: 'profile',
             //     element: <PrivateRoute>

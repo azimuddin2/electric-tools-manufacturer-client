@@ -7,7 +7,7 @@ import useToken from '../../../hooks/useToken';
 import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import login from '../../../assets/images/login.gif';
+import loginGif from '../../../assets/images/login.gif';
 
 const Login = () => {
     useTitle('Login');
@@ -43,11 +43,11 @@ const Login = () => {
         <section className='hero my-12'>
             <div className='hero-content grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-20'>
                 <div>
-                    <img src={login} alt="Login" />
+                    <img src={loginGif} alt="Login" />
                 </div>
-                <div className="card lg:w-4/5 shadow-lg">
+                <div className="card w/full shadow py-2">
                     <div className="card-body px-5 md:px-8">
-                        <h2 className="text-center text-2xl">Login</h2>
+                        <h2 className="text-center text-2xl font-semibold">Login</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             <div className="form-control w-full max-w-md">

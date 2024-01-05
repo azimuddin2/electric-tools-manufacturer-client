@@ -9,7 +9,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import login from '../../../assets/images/login.gif';
+import signupGif from '../../../assets/images/signup.gif';
 
 const SignUp = () => {
     useTitle('Signup');
@@ -74,9 +74,9 @@ const SignUp = () => {
         <section className='hero my-12'>
             <div className="hero-content grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-20">
                 <div>
-                    <img src={login} alt="login" />
+                    <img src={signupGif} alt="Signup" />
                 </div>
-                <div className="card lg:w-4/5 shadow-lg">
+                <div className="card shadow">
                     <div className="card-body px-5 md:px-8">
                         <h2 className="text-center text-2xl">Sign Up</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
