@@ -37,6 +37,7 @@ const SocialLogin = () => {
 
     return (
         <div>
+            <div className="divider">Or</div>
             <button
                 onClick={handleSignInWithGoogle}
                 className="btn btn-outline w-full max-w-md"

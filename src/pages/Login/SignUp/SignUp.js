@@ -10,9 +10,10 @@ import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import signupGif from '../../../assets/images/signup.gif';
+import { MdErrorOutline } from 'react-icons/md';
 
 const SignUp = () => {
-    useTitle('Signup');
+    useTitle('SignUp');
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
@@ -71,19 +72,18 @@ const SignUp = () => {
     };
 
     return (
-        <section className='hero my-12'>
-            <div className="hero-content grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-20">
+        <section className='max-w-screen-lg lg:mx-auto hero my-12 lg:my-16'>
+            <div className="hero-content grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-12">
                 <div>
-                    <img src={signupGif} alt="Signup" />
+                    <img src={signupGif} alt="Signup" className='w-full' />
                 </div>
-                <div className="card shadow">
+                <div className="card w/full shadow lg:shadow-none lg:border py-2">
                     <div className="card-body px-5 md:px-8">
-                        <h2 className="text-center text-2xl">Sign Up</h2>
+                        <h2 className="text-center text-3xl">Sign Up</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
-
-                            <div className="form-control w-full max-w-md">
+                            <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Your Name</span>
+                                    <span className="label-text font-medium">Name</span>
                                 </label>
                                 <input
                                     {...register("name", {
@@ -93,17 +93,15 @@ const SignUp = () => {
                                         },
                                     })}
                                     type="text"
-                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                    className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <label className="label">
-                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-
+                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.name.message}</span>}
                                 </label>
                             </div>
-
-                            <div className="form-control w-full max-w-md">
+                            <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text font-medium">Email</span>
                                 </label>
                                 <input
                                     {...register("email", {
@@ -117,31 +115,26 @@ const SignUp = () => {
                                         }
                                     })}
                                     type="email"
-                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                    className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <label className="label">
-                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.email.message}</span>}
+                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.email.message}</span>}
                                 </label>
                             </div>
-
-                            <div className="form-control w-full max-w-md">
+                            <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text font-medium">Password</span>
                                 </label>
                                 <input
                                     {...register("password", {
                                         required: {
                                             value: true,
                                             message: 'Password is required',
-                                        },
-                                        minLength: {
-                                            value: 6,
-                                            message: 'Must be 6 characters or longer',
                                         }
                                     })}
                                     type={showPassword ? 'text' : 'password'}
-                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                    className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <p
                                     className='m-12'
@@ -156,14 +149,16 @@ const SignUp = () => {
                                     }
                                 </p>
                                 <label className="label">
-                                    {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                                    {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                                    {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.password.message}</span>}
                                 </label>
                             </div>
-                            <input className="btn btn-primary text-white w-full max-w-md mt-2" type="submit" value='Signup' />
+                            <input
+                                className="btn btn-primary text-white w-full max-w-md mt-2 text-base"
+                                type="submit"
+                                value='SignUp'
+                            />
                         </form>
-                        <p className='text-center'><small>Already have an Account? <Link to='/login' className='text-primary'>Please Login</Link></small></p>
-                        <div className="divider">OR</div>
+                        <p className='text-center text-lg'><small>Already have an Account? <Link to='/login' className='text-primary link font-medium'>Please Login</Link></small></p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import loginGif from '../../../assets/images/login.gif';
+import { MdErrorOutline } from 'react-icons/md';
 
 const Login = () => {
     useTitle('Login');
@@ -40,19 +41,18 @@ const Login = () => {
     };
 
     return (
-        <section className='hero my-12'>
-            <div className='hero-content grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-20'>
+        <section className='max-w-screen-lg lg:mx-auto hero my-12 lg:my-16'>
+            <div className='hero-content grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10'>
                 <div>
-                    <img src={loginGif} alt="Login" />
+                    <img src={loginGif} alt="Login" className='w-full' />
                 </div>
-                <div className="card w/full shadow py-2">
+                <div className="card w/full shadow lg:shadow-none lg:border py-2">
                     <div className="card-body px-5 md:px-8">
-                        <h2 className="text-center text-2xl font-semibold">Login</h2>
+                        <h2 className="text-center text-3xl">Login</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
-
-                            <div className="form-control w-full max-w-md">
+                            <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text font-medium">Email</span>
                                 </label>
                                 <input
                                     {...register("email", {
@@ -66,17 +66,16 @@ const Login = () => {
                                         }
                                     })}
                                     type="email"
-                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                    className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <label className="label">
-                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.email.message}</span>}
+                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.email.message}</span>}
                                 </label>
                             </div>
-
-                            <div className="form-control w-full max-w-md">
+                            <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text font-medium">Password</span>
                                 </label>
                                 <input
                                     {...register("password", {
@@ -90,7 +89,7 @@ const Login = () => {
                                         }
                                     })}
                                     type={showPassword ? "text" : "password"}
-                                    className="input input-bordered w-full max-w-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                    className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
                                 <p className='m-12'
                                     onClick={() => setShowPassword(!showPassword)}
@@ -104,14 +103,17 @@ const Login = () => {
                                     }
                                 </p>
                                 <label className="label">
-                                    {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                                    {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                                    {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.password.message}</span>}
+                                    {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.password.message}</span>}
                                 </label>
                             </div>
-                            <input className="btn btn-primary text-white w-full max-w-md mt-2" type="submit" value='Login' />
+                            <input
+                                type="submit"
+                                value='Login'
+                                className="btn btn-primary text-white w-full mt-2 text-base"
+                            />
                         </form>
-                        <p className='text-center'><small>New to Doctors Portal? <Link className='text-primary' to='/signup'>Create new account</Link></small></p>
-                        <div className="divider">OR</div>
+                        <p className='text-center text-lg'><small>New to Autozpro? <Link className='text-primary link font-medium' to='/signup'>SignUp Now</Link></small></p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>
