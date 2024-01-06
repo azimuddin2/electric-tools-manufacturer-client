@@ -28,10 +28,29 @@ const SocialLogin = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                saveUserDataBase(user.displayName, user.email);
                 setLoginUserEmail(user.email);
             })
             .catch(error => {
                 toast.error(error.message);
+            })
+    };
+
+    const saveUserDataBase = (name, email) => {
+        const userInfo = {
+            name,
+            email
+        };
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
             })
     };
 

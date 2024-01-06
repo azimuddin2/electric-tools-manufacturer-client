@@ -6,7 +6,6 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import useToken from '../../../hooks/useToken';
 import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import SocialLogin from '../SocialLogin/SocialLogin';
 import loginGif from '../../../assets/images/login.gif';
 import { MdErrorOutline } from 'react-icons/md';
 
@@ -32,11 +31,30 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setLoginUserEmail(data.email);
+                saveUserDataBase(user.displayName, user.email);
+                setLoginUserEmail(user.email);
                 reset();
             })
             .catch(error => {
                 toast.error(error.message);
+            })
+    };
+
+    const saveUserDataBase = (name, email) => {
+        const userInfo = {
+            name,
+            email
+        };
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
             })
     };
 
@@ -114,7 +132,6 @@ const Login = () => {
                             />
                         </form>
                         <p className='text-center text-lg'><small>New to Autozpro? <Link className='text-primary link font-medium' to='/signup'>SignUp Now</Link></small></p>
-                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

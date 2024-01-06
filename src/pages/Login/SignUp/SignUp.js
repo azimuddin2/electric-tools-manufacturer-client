@@ -7,7 +7,6 @@ import useTitle from '../../../hooks/useTitle';
 import useToken from '../../../hooks/useToken';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import SocialLogin from '../SocialLogin/SocialLogin';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import signupGif from '../../../assets/images/signup.gif';
 import { MdErrorOutline } from 'react-icons/md';
@@ -33,10 +32,11 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setCreatedUserEmail(user.email);
                 toast.success('User Created Successfully.')
                 handleUpdateUserProfile(data.name);
-                reset();
                 saveUserDataBase(data.name, data.email);
+                reset();
             })
             .catch(error => {
                 toast.error(error.message);
@@ -47,7 +47,6 @@ const SignUp = () => {
         const userInfo = {
             displayName: name
         };
-
         updateUserProfile(userInfo)
             .then(() => { })
             .catch(error => {
@@ -56,18 +55,18 @@ const SignUp = () => {
     };
 
     const saveUserDataBase = (name, email) => {
-        const user = { name, email };
+        const userInfo = { name, email };
 
         fetch('http://localhost:5000/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(userInfo)
         })
             .then(res => res.json())
             .then(data => {
-                setCreatedUserEmail(email);
+
             })
     };
 
@@ -159,7 +158,6 @@ const SignUp = () => {
                             />
                         </form>
                         <p className='text-center text-lg'><small>Already have an Account? <Link to='/login' className='text-primary link font-medium'>Please Login</Link></small></p>
-                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

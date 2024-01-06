@@ -72,7 +72,7 @@ const Navbar = () => {
                     )
             }
         </li>
-        {
+        {/* {
             user?.uid && (
                 <li title='View Profile'>
                     <Link to='/profile'>
@@ -85,7 +85,7 @@ const Navbar = () => {
                     </Link>
                 </li>
             )
-        }
+        } */}
     </>
 
     return (
