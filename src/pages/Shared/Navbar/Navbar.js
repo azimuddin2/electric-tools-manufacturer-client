@@ -17,7 +17,9 @@ const Navbar = () => {
 
     const handleLogout = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                localStorage.removeItem('accessToken');
+            })
             .catch(error => {
                 toast.error(error.message);
             })

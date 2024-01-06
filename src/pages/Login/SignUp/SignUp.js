@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import signupGif from '../../../assets/images/signup.gif';
 import { MdErrorOutline } from 'react-icons/md';
+import swal from 'sweetalert';
 
 const SignUp = () => {
     useTitle('SignUp');
@@ -32,11 +33,14 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setCreatedUserEmail(user.email);
-                toast.success('User Created Successfully.')
                 handleUpdateUserProfile(data.name);
                 saveUserDataBase(data.name, data.email);
                 reset();
+                swal({
+                    title: "User SignUp Successful!",
+                    text: `Welcome - ${data.name}`,
+                    icon: "success"
+                });
             })
             .catch(error => {
                 toast.error(error.message);
@@ -66,7 +70,7 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-
+                setCreatedUserEmail(email);
             })
     };
 

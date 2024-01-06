@@ -8,6 +8,7 @@ import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import loginGif from '../../../assets/images/login.gif';
 import { MdErrorOutline } from 'react-icons/md';
+import swal from 'sweetalert';
 
 const Login = () => {
     useTitle('Login');
@@ -34,6 +35,11 @@ const Login = () => {
                 saveUserDataBase(user.displayName, user.email);
                 setLoginUserEmail(user.email);
                 reset();
+                swal({
+                    title: "User Login Successful!",
+                    text: `Welcome - ${user.displayName}`,
+                    icon: "success"
+                });
             })
             .catch(error => {
                 toast.error(error.message);
