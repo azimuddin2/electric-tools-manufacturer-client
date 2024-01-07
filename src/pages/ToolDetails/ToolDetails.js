@@ -1,18 +1,39 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import OrderForm from './OrderForm';
 import useTitle from '../../hooks/useTitle';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../Shared/Loading/Loading';
+import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
 
 const ToolDetails = () => {
     useTitle('Tool Details');
-    const tool = useLoaderData();
-    const { name, img, price, rating, description, minimumQuantity, availableQuantity } = tool;
+    const { toolId } = useParams();
+
+    const { data: tool = {}, isLoading, error } = useQuery({
+        queryKey: ['tool', toolId],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/tool/${toolId}`);
+            const data = await res.json();
+            return data;
+        }
+    })
+
+    const { name, image, price, rating, description, minimumQuantity, availableQuantity } = tool;
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
+    if (error) {
+        return <ErrorMessage message={error.message}></ErrorMessage>
+    }
 
     return (
-        <section className='max-w-screen-xl mx-auto py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 px-4 lg:px-12'>
+        <section className='max-w-screen-lg lg:mx-auto py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 px-4 lg:px-12'>
             <div className="rounded-xl shadow-lg">
                 <figure>
-                    <img src={img} alt={name} className='mx-auto' />
+                    <img src={image} alt={name} className='mx-auto' />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title text-xl">{name}</h2>

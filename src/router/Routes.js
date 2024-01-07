@@ -6,6 +6,8 @@ import AllTools from "../pages/AllTools/AllTools";
 import Reviews from "../pages/Reviews/Reviews";
 import Login from "../pages/Login/Login/Login";
 import SignUp from "../pages/Login/SignUp/SignUp";
+import ToolDetails from "../pages/ToolDetails/ToolDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -24,15 +26,10 @@ const router = createBrowserRouter([
                     return fetch('http://localhost:5000/totalTools')
                 }
             },
-            // {
-            //     path: '/tool/:id',
-            //     element: <PrivateRoute>
-            //         <ToolDetails></ToolDetails>
-            //     </PrivateRoute>,
-            //     loader: async ({ params }) => {
-            //         return fetch(`http://localhost:5000/tool/${params.id}`)
-            //     }
-            // },
+            {
+                path: '/tool/:toolId',
+                element: <PrivateRoute><ToolDetails></ToolDetails></PrivateRoute>
+            },
             {
                 path: 'reviews',
                 element: <Reviews></Reviews>
