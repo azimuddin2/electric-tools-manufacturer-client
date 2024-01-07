@@ -64,8 +64,8 @@ const MyOrders = () => {
     }
 
     return (
-        <section className='lg:bg-gray-50'>
-            {
+        <section className='bg-gray-50 h-screen'>
+            {/* {
                 orders?.length > 0 ?
                     <div className='h-full p-4 lg:p-10'>
                         <h1 className='text-2xl font-medium mb-5'>My Orders</h1>
@@ -117,7 +117,7 @@ const MyOrders = () => {
                     closeModal={closeModal}
                     successModal={handleDeleteOrder}
                 ></ConfirmationModal>
-            }
+            } */}
         </section>
     );
 };
