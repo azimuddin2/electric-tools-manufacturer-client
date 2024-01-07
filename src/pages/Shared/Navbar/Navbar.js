@@ -11,9 +11,11 @@ import { BsCheck2Circle, BsTools } from 'react-icons/bs';
 import { BiMessageDetail } from 'react-icons/bi';
 import { MdOutlineDashboard } from 'react-icons/md';
 import { CgLogIn, CgLogOut } from 'react-icons/cg';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
 
     const handleLogout = () => {
         logOut()
@@ -49,9 +51,16 @@ const Navbar = () => {
         {
             user?.uid && (
                 <li>
-                    <CustomLink to='/dashboard'>
-                        <MdOutlineDashboard className='text-xl lg:hidden'></MdOutlineDashboard>Dashboard
-                    </CustomLink>
+                    {
+                        isAdmin ?
+                            <CustomLink to='/dashboard'>
+                                <MdOutlineDashboard className='text-xl lg:hidden'></MdOutlineDashboard>Dashboard
+                            </CustomLink>
+                            :
+                            <CustomLink to='/dashboard/my-orders'>
+                                <MdOutlineDashboard className='text-xl lg:hidden'></MdOutlineDashboard>Dashboard
+                            </CustomLink>
+                    }
                 </li>
             )
         }

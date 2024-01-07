@@ -7,6 +7,7 @@ import { BiEdit } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
 import { MdManageHistory, MdOutlineRateReview, MdPostAdd } from 'react-icons/md';
 import { HiOutlineClipboardDocumentList, HiOutlineHome } from 'react-icons/hi2';
+import ActiveLink from '../components/ActiveLink/ActiveLink';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
@@ -15,28 +16,72 @@ const DashboardLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            {/* <div className="drawer drawer-mobile">
+            <div className="drawer block lg:grid lg:drawer-open mx-auto max-w-screen-2xl">
                 <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <Outlet></Outlet>
                 </div>
+
                 <div className="drawer-side">
                     <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-64 lg:bg-inherit bg-base-100 text-base-content">
-                        <li><Sidebar to="/dashboard"> <HiOutlineClipboardDocumentList className='text-xl'></HiOutlineClipboardDocumentList> My Orders</Sidebar></li>
-                        <li><Sidebar to="/dashboard/edit-profile"> <BiEdit className='text-xl'></BiEdit> Edit Profile</Sidebar></li>
-                        <li><Sidebar to="/dashboard/add-review"> <MdOutlineRateReview className='text-xl'></MdOutlineRateReview> Add Review</Sidebar></li>
+
+
+
                         {
-                            isAdmin && <>
-                                <li><Sidebar to="/dashboard/users"> <FiUsers className='text-xl'></FiUsers> All Users</Sidebar></li>
-                                <li><Sidebar to="/dashboard/add-product"> <MdPostAdd className='text-xl'></MdPostAdd> Add Product</Sidebar></li>
-                                <li><Sidebar to="/dashboard/manage-products"> <MdManageHistory className='text-xl'></MdManageHistory> Manage Products</Sidebar></li>
-                            </>
+                            isAdmin ?
+                                <>
+                                    <li>
+                                        <ActiveLink to="dashboard">
+                                            Dashboard
+                                        </ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink to="/dashboard/users">
+                                            <FiUsers className='text-xl' /> All Users
+                                        </ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink to="/dashboard/add-product">
+                                            <MdPostAdd className='text-xl' /> Add Product
+                                        </ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink to="/dashboard/manage-products">
+                                            <MdManageHistory className='text-xl' /> Manage Products
+                                        </ActiveLink>
+                                    </li>
+                                </>
+                                :
+                                <>
+                                    <li>
+                                        <ActiveLink to="/dashboard/my-orders">
+                                            <HiOutlineClipboardDocumentList className='text-xl' /> My Orders
+                                        </ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink to="/dashboard/edit-profile">
+                                            <BiEdit className='text-xl' /> Edit Profile
+                                        </ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink to="/dashboard/add-review">
+                                            <MdOutlineRateReview className='text-xl' /> Add Review
+                                        </ActiveLink>
+                                    </li>
+                                </>
                         }
-                        <li className='mt-auto'><Link to="/"> <HiOutlineHome className='text-xl'></HiOutlineHome> Back to Home</Link></li>
+
+                        <li className='mt-auto'>
+                            <Link to="/">
+                                <HiOutlineHome className='text-xl' /> Back to Home
+                            </Link>
+                        </li>
+
                     </ul>
                 </div>
-            </div> */}
+
+            </div>
         </div>
     );
 };

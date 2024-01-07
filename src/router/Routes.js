@@ -8,6 +8,8 @@ import Login from "../pages/Login/Login/Login";
 import SignUp from "../pages/Login/SignUp/SignUp";
 import ToolDetails from "../pages/ToolDetails/ToolDetails";
 import PrivateRoute from "./PrivateRoute";
+import MyOrders from "../pages/Dashboard/UserPages/MyOrders/MyOrders";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const router = createBrowserRouter([
     {
@@ -51,44 +53,53 @@ const router = createBrowserRouter([
         ]
     },
 
-    // {
-    //     path: '/dashboard',
-    //     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-    //     errorElement: <DisplayError></DisplayError>,
-    //     children: [
-    //         {
-    //             path: '/dashboard',
-    //             element: <MyOrders></MyOrders>
-    //         },
-    //         {
-    //             path: '/dashboard/edit-profile',
-    //             element: <UpdateProfile></UpdateProfile>
-    //         },
-    //         {
-    //             path: '/dashboard/add-review',
-    //             element: <AddReview></AddReview>
-    //         },
-    //         {
-    //             path: '/dashboard/users',
-    //             element: <AdminRoute>
-    //                 <AllUsers></AllUsers>
-    //             </AdminRoute>
-    //         },
-    //         {
-    //             path: '/dashboard/add-product',
-    //             element: <AdminRoute>
-    //                 <AddProduct></AddProduct>
-    //             </AdminRoute>
+    {
+        path: 'dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
+        children: [
 
-    //         },
-    //         {
-    //             path: '/dashboard/manage-products',
-    //             element: <AdminRoute>
-    //                 <ManageProducts></ManageProducts>
-    //             </AdminRoute>
-    //         }
-    //     ]
-    // },
+
+             // {
+            //     path: '/dashboard/users',
+            //     element: <AdminRoute>
+            //         <AllUsers></AllUsers>
+            //     </AdminRoute>
+            // },
+            // {
+            //     path: '/dashboard/add-product',
+            //     element: <AdminRoute>
+            //         <AddProduct></AddProduct>
+            //     </AdminRoute>
+
+            // },
+            // {
+            //     path: '/dashboard/manage-products',
+            //     element: <AdminRoute>
+            //         <ManageProducts></ManageProducts>
+            //     </AdminRoute>
+            // }
+
+
+            // NOTE: User Routes
+            {
+                path: 'my-orders',
+                element: <MyOrders></MyOrders>
+            },
+            // {
+            //     path: '/dashboard/edit-profile',
+            //     element: <UpdateProfile></UpdateProfile>
+            // },
+            // {
+            //     path: '/dashboard/add-review',
+            //     element: <AddReview></AddReview>
+            // },
+
+
+           
+        ]
+    },
+
 ]);
 
 export default router;

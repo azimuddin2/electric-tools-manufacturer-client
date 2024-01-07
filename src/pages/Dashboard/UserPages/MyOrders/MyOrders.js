@@ -1,17 +1,17 @@
 import React from 'react';
 import { useContext } from 'react';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import useTitle from '../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
-import Loading from '../../Shared/Loading/Loading';
 import Order from './Order';
-import orderGif from '../../../assets/images/order.gif';
 import { Link } from 'react-router-dom';
 import { HiArrowRight } from 'react-icons/hi';
 import { useState } from 'react';
-import PaymentModal from '../PaymentModal/PaymentModal';
-import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 import { toast } from 'react-toastify';
+import useTitle from '../../../../hooks/useTitle';
+import Loading from '../../../Shared/Loading/Loading';
+import PaymentModal from '../PaymentModal/PaymentModal';
+import ConfirmationModal from '../../../../components/ConfirmationModal/ConfirmationModal';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
+import orderGif from '../../../../assets/images/order.gif';
 
 const MyOrders = () => {
     useTitle('My Orders');
