@@ -54,11 +54,11 @@ const MyOrders = () => {
                     toast.success(`Order ${order?.toolName} tool deleted successfully`);
                 }
             })
-    }
+    };
 
     const closeModal = () => {
         setDeleteOrder(null);
-    }
+    };
 
     if (error) {
         return <ErrorMessage message={error.message}></ErrorMessage>

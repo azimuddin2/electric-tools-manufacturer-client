@@ -2,17 +2,16 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
-import { BiEdit } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
 import { MdManageHistory, MdPostAdd } from 'react-icons/md';
 import { LuListTodo } from "react-icons/lu";
 import { FaHome } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import { TbPencilStar } from "react-icons/tb";
+import { BsInfoCircle } from 'react-icons/bs';
 import ActiveLink from '../components/ActiveLink/ActiveLink';
 import DashboardNavbar from '../pages/Shared/DashboardNavbar/DashboardNavbar';
 import logo from '../assets/icons/logo-black.svg';
-import { BsFillInfoCircleFill, BsInfoCircle, BsInfoSquare } from 'react-icons/bs';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);

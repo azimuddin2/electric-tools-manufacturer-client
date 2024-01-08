@@ -35,7 +35,7 @@ const Order = ({ order, index, setPayment, setDeleteOrder }) => {
                             <label
                                 onClick={() => setPayment(order)}
                                 htmlFor="payment-modal"
-                                className="btn btn-sm capitalize btn-primary text-white font-medium bg-primary"
+                                className="btn btn-sm capitalize btn-primary text-white font-medium bg-primary rounded-sm"
                             >
                                 Pay
                             </label>
