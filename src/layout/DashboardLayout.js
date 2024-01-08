@@ -12,6 +12,7 @@ import { TbPencilStar } from "react-icons/tb";
 import ActiveLink from '../components/ActiveLink/ActiveLink';
 import DashboardNavbar from '../pages/Shared/DashboardNavbar/DashboardNavbar';
 import logo from '../assets/icons/logo-black.svg';
+import { BsFillInfoCircleFill, BsInfoCircle, BsInfoSquare } from 'react-icons/bs';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
@@ -68,15 +69,15 @@ const DashboardLayout = () => {
                                         </ActiveLink>
                                     </li>
                                     <li>
-                                        <ActiveLink to="/dashboard/edit-profile">
-                                            <BiEdit className='text-xl' />
-                                            <span>Edit Profile</span>
-                                        </ActiveLink>
-                                    </li>
-                                    <li>
                                         <ActiveLink to="/dashboard/add-review">
                                             <TbPencilStar className='text-xl' />
                                             <span>Add Review</span>
+                                        </ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink to="/dashboard/payment-history">
+                                            <BsInfoCircle className='text-xl' />
+                                            <span>Payment History</span>
                                         </ActiveLink>
                                     </li>
                                 </>

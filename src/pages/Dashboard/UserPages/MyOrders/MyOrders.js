@@ -70,7 +70,6 @@ const MyOrders = () => {
 
     return (
         <section className='bg-gray-50 h-screen lg:h-full py-16'>
-
             {
                 orders?.length > 0 ?
                     <div className='bg-white w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10'>
@@ -110,8 +109,6 @@ const MyOrders = () => {
                         </Link>
                     </div>
             }
-
-
             {
                 payment && <PaymentModal
                     payment={payment}
