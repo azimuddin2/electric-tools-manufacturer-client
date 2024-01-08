@@ -35,7 +35,7 @@ const OrderForm = ({ tool }) => {
             .then(data => {
                 if (data.acknowledged) {
                     toast.success('Order Complete! Please Payment');
-                    navigate('/dashboard');
+                    navigate('/dashboard/my-orders');
                 }
             })
     };

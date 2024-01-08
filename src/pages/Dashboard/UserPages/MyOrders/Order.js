@@ -1,8 +1,10 @@
 import React from 'react';
-import { RiDeleteBin5Line } from 'react-icons/ri';
+import { RiDeleteBin5Fill, RiDeleteBin5Line } from 'react-icons/ri';
 import { FcPrint } from 'react-icons/fc';
+import { BsFillInfoSquareFill } from "react-icons/bs";
 
 const Order = ({ order, index, setPayment, setDeleteOrder }) => {
+
     const { customerName, customerEmail, customerPhone, toolName, toolPrice, orderQuantity, paid, transactionId } = order;
     const totalToolPrice = toolPrice * orderQuantity;
 
@@ -16,7 +18,7 @@ const Order = ({ order, index, setPayment, setDeleteOrder }) => {
             </td>
             <td>{customerPhone}</td>
             <td>{toolName}</td>
-            <td>${totalToolPrice}</td>
+            <td className='text-secondary font-semibold'>${totalToolPrice}</td>
             <td>
                 {
                     paid ?
@@ -36,20 +38,18 @@ const Order = ({ order, index, setPayment, setDeleteOrder }) => {
             </td>
             <td>
                 {
-                    paid ?
-                        <div className="tooltip tooltip-top print:hidden" data-tip="Print">
-                            <FcPrint
-                                onClick={() => window.print()}
-                                className='text-3xl cursor-pointer print:hidden'
-                            ></FcPrint>
+                    paid === true ?
+                        <div className="tooltip tooltip-top print:hidden" data-tip="Payment Information">
+                            <BsFillInfoSquareFill className='text-2xl text-primary cursor-pointer' />
                         </div>
                         :
                         <label
                             onClick={() => setDeleteOrder(order)}
                             htmlFor="confirmation-modal"
-                            title='Delete'
+                            className="tooltip tooltip-top print:hidden"
+                            data-tip="Delete"
                         >
-                            <RiDeleteBin5Line className='text-2xl text-red-500 cursor-pointer'></RiDeleteBin5Line>
+                            <RiDeleteBin5Fill className='text-2xl text-red-500 cursor-pointer'></RiDeleteBin5Fill>
                         </label>
                 }
             </td>
