@@ -8,10 +8,11 @@ const ActiveLink = ({ children, to, ...props }) => {
     return (
         <Link
             style={{
-                color: match ? '#4158f3' : '',
-                fontWeight: match ? '500' : '',
-                borderLeft: match ? '3px solid #4158f3' : '',
+                color: match ? '#4158f3' : '#212121',
+                fontWeight: match ? '700' : '500',
+                borderLeft: match ? '3px solid #4158f3' : 'none',
                 borderRadius: '0px',
+                fontSize: '16px'
             }}
             to={to}
             {...props}

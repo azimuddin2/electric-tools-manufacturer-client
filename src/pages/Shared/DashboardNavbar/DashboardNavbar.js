@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { BiSolidEdit } from 'react-icons/bi';
@@ -9,23 +9,20 @@ import logo from '../../../assets/icons/logo-black.svg'
 
 const DashboardNavbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const navigate = useNavigate();
 
     const handleLogout = () => {
         logOut()
-            .then(() => {
-
-            })
+            .then(() => { })
             .catch(error => {
                 toast.error(error.message);
             })
-    }
+    };
 
     return (
-        <div className="navbar bg-white mx-auto max-w-screen-2xl lg:px-6">
+        <div className="navbar bg-white max-w-screen-2xl mx-auto lg:px-6">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <label tabIndex="1" htmlFor="dashboard-sidebar" className="btn btn-ghost text-white lg:hidden">
+                    <label tabIndex="1" htmlFor="dashboard-sidebar" className="btn btn-ghost btn-sm text-secondary lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                 </div>
@@ -42,10 +39,10 @@ const DashboardNavbar = () => {
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div>
                             {
-                                user.photoURL ?
+                                user?.photoURL ?
                                     <div className="avatar online">
                                         <div className="w-10 rounded-full">
-                                            <img src={user.photoURL} alt="userImg" />
+                                            <img src={user?.photoURL} alt="userImg" />
                                         </div>
                                     </div>
                                     :
@@ -61,10 +58,10 @@ const DashboardNavbar = () => {
                         <div className='text-center mb-4'>
                             <div>
                                 {
-                                    user.photoURL ?
+                                    user?.photoURL ?
                                         <div className="avatar online">
                                             <div className="w-20 rounded-full">
-                                                <img src={user.photoURL} alt="userImg" />
+                                                <img src={user?.photoURL} alt="userImg" />
                                             </div>
                                         </div>
                                         :
@@ -79,13 +76,19 @@ const DashboardNavbar = () => {
                             <h1 className='text-md mb-3'>{user.email}</h1>
                         </div>
                         <li>
-                            <Link to={'/dashboard/edit-profile'} className="justify-between text-lg hover:bg-[#F1F5F9] hover:text-primary font-medium">
+                            <Link
+                                to={'/dashboard/edit-profile'}
+                                className="justify-between text-lg hover:bg-[#F1F5F9] hover:text-secondary font-medium"
+                            >
                                 Edit Profile
                                 <span className="badge"><BiSolidEdit className='text-lg' /></span>
                             </Link>
                         </li>
                         <li>
-                            <button onClick={handleLogout} className='text-lg hover:bg-[#F1F5F9] hover:text-primary font-medium'>
+                            <button
+                                onClick={handleLogout}
+                                className='text-lg bg-primary text-white hover:bg-[#F1F5F9] hover:text-secondary font-medium mt-2'
+                            >
                                 Logout
                                 <span className="badge"><CgLogOut className='text-lg' /></span>
                             </button>
