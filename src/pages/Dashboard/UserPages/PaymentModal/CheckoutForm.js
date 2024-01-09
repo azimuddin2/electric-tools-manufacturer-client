@@ -73,14 +73,16 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
         if (paymentIntent.status === "succeeded") {
             // store payment info in the database
             const paymentInfo = {
+                date: new Date(),
                 totalToolPrice,
                 transactionId: paymentIntent.id,
+                customerName,
                 customerEmail,
-                paymentId: _id
+                paymentId: _id,
             };
 
-            fetch('http://localhost:5000/payments', {
-                method: 'POST',
+            fetch(`http://localhost:5000/order/${_id}`, {
+                method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -89,7 +91,7 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.insertedId) {
+                    if (data.acknowledged) {
                         toast.success(`Congrats! Your payment completed. Your Transaction: ${paymentIntent.id}`);
                         setPayment(null);
                         refetch();

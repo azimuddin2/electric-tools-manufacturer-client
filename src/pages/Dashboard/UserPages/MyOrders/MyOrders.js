@@ -13,12 +13,14 @@ import ConfirmationModal from '../../../../components/ConfirmationModal/Confirma
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import orderGif from '../../../../assets/images/order.gif';
 import ErrorMessage from '../../../Shared/ErrorMessage/ErrorMessage';
+import PaymentInformationModal from '../../../../components/PaymentInformationModal/PaymentInformationModal';
 
 const MyOrders = () => {
     useTitle('My Orders');
     const { user } = useContext(AuthContext);
     const [payment, setPayment] = useState(null);
     const [deleteOrder, setDeleteOrder] = useState(null);
+    const [paymentInformationModal, setPaymentInformationModal] = useState(null);
 
     const url = `http://localhost:5000/orders?email=${user?.email}`;
 
@@ -95,6 +97,7 @@ const MyOrders = () => {
                                             index={index}
                                             setPayment={setPayment}
                                             setDeleteOrder={setDeleteOrder}
+                                            setPaymentInformationModal={setPaymentInformationModal}
                                         ></Order>)
                                     }
                                 </tbody>
@@ -122,6 +125,11 @@ const MyOrders = () => {
                     closeModal={closeModal}
                     successModal={handleDeleteOrder}
                 ></ConfirmationModal>
+            }
+            {
+                paymentInformationModal && <PaymentInformationModal
+                    paymentInformationModal={paymentInformationModal}
+                ></PaymentInformationModal>
             }
         </section>
     );
