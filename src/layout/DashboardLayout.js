@@ -5,7 +5,7 @@ import useAdmin from '../hooks/useAdmin';
 import { FiUsers } from 'react-icons/fi';
 import { MdManageHistory, MdPostAdd } from 'react-icons/md';
 import { LuListTodo } from "react-icons/lu";
-import { FaHome } from "react-icons/fa";
+import { IoHomeOutline } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
 import { TbPencilStar } from "react-icons/tb";
 import { BsInfoCircle } from 'react-icons/bs';
@@ -83,7 +83,7 @@ const DashboardLayout = () => {
                         }
                         <li className='mt-auto'>
                             <Link to="/">
-                                <FaHome className='text-xl' />
+                                <IoHomeOutline className='text-xl' />
                                 <span style={{ fontWeight: '500', fontSize: '16px' }} className='font-semibold'>Back to Home</span>
                             </Link>
                         </li>

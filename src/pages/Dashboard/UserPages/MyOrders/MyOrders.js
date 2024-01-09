@@ -75,7 +75,7 @@ const MyOrders = () => {
             {
                 orders?.length > 0 ?
                     <div className='bg-white w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10'>
-                        <h1 className='text-2xl font-medium mb-4'>My Orders</h1>
+                        <h1 className='text-2xl font-medium mb-4'>My Orders: 0{orders.length}</h1>
                         <div className="overflow-x-auto">
                             <table className="table w-full">
                                 <thead className='bg-gray-100 font-bold uppercase'>
