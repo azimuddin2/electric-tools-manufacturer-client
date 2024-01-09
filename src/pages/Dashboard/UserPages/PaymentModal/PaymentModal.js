@@ -14,15 +14,14 @@ const PaymentModal = ({ payment, setPayment, refetch }) => {
         <div>
             <input type="checkbox" id="payment-modal" className="modal-toggle" />
             <div className="modal">
-                <div className="modal-box">
+                <div className="modal-box py-8">
                     <div>
-                        <label htmlFor="payment-modal" className="btn btn-sm btn-accent btn-circle absolute right-2 top-2 text-white">✕</label>
+                        <label htmlFor="payment-modal" className="btn btn-sm bg-[#0b1130] hover:bg-[#212121] btn-circle absolute right-2 top-2 text-white">✕</label>
                         <h4 style={{ color: '#3CBCA2' }} className='text-lg font-semibold'>Hello, {customerName}!</h4>
                         <h3 className="font-medium text-xl mt-2">Please Pay for <span className='font-semibold' style={{ color: '#F0AA22' }}>{toolName} Tools</span></h3>
                         <h2 className='text-xl font-medium mt-1'>Please Pay: <span className='text-primary'>${totalToolPrice}</span></h2>
                     </div>
-                    <div className="divider"></div>
-                    <div>
+                    <div className='mt-6'>
                         <Elements stripe={stripePromise}>
                             <CheckoutForm
                                 refetch={refetch}

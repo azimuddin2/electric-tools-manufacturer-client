@@ -14,24 +14,24 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.025em;
-    background-color: #07332F !important;
+    background-color: #0b1130 !important;
     text-decoration: none;
     -webkit-transition: all 150ms ease;
     transition: all 150ms ease;
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 .payment-btn:hover {
     color: #fff;
     cursor: pointer;
-    background-color: #06302b !important;
+    background-color: #090e24 !important;
     transform: translateY(-1px);
     box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* .payment-btn[disabled] {
+.payment-btn[disabled] {
     opacity: 0.6;
-} */
+}
 
 .payment-input-field {
     display: block;

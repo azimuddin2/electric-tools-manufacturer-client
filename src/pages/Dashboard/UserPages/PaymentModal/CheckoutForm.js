@@ -102,6 +102,7 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
     return (
         <form onSubmit={handleSubmit}>
             <CardElement
+                className='payment-input-field'
                 options={{
                     style: {
                         base: {
@@ -118,7 +119,7 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
                 }}
             />
             <button
-                className='btn btn-accent w-full text-white text-xl font-medium mt-5'
+                className='payment-btn'
                 type="submit"
                 disabled={!stripe || !clientSecret || processing}
             >
