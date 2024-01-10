@@ -127,7 +127,7 @@ const AddReview = () => {
                                 <ReactStars {...thirdExample} />
                             </h4>
                         </div>
-                        <input className='btn btn-primary bg-gradient-to-r from-secondary to-primary w-full text-white uppercase' type="submit" value="Save" />
+                        <input className='btn btn-primary w-full text-white uppercase' type="submit" value="Save" />
                     </form>
                 </div>
             </div>
