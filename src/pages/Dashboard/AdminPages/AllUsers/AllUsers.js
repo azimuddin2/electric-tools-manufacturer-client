@@ -1,23 +1,28 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import Loading from '../../Shared/Loading/Loading';
 import User from './User';
-import useTitle from '../../../hooks/useTitle';
 import { toast } from 'react-toastify';
-import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
+import Loading from '../../../Shared/Loading/Loading';
+import ConfirmationModal from '../../../../components/ConfirmationModal/ConfirmationModal';
+import useTitle from '../../../../hooks/useTitle';
+import ErrorMessage from '../../../Shared/ErrorMessage/ErrorMessage';
 
 const AllUsers = () => {
     useTitle('All Users');
     const [deletingUser, setDeletingUser] = useState(null);
 
-    const { data: users, isLoading, refetch } = useQuery({
+    const { data: users = [], isLoading, error, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('http://localhost:5000/users', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
-    })
+    });
 
     const handleDeleteUser = (user) => {
         fetch(`http://localhost:5000/user/${user._id}`, {
@@ -39,37 +44,42 @@ const AllUsers = () => {
         setDeletingUser(null);
     };
 
+    if (error) {
+        return <ErrorMessage message={error.message}></ErrorMessage>
+    }
 
     if (isLoading) {
         return <Loading></Loading>
     }
 
     return (
-        <div className='lg:bg-gray-50 h-full p-4 lg:p-10'>
-            <h1 className='text-2xl font-medium mb-5'>All Users</h1>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Job</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            users?.map((user, index) => <User
-                                key={user._id}
-                                index={index}
-                                user={user}
-                                refetch={refetch}
-                                setDeletingUser={setDeletingUser}
-                            ></User>)
-                        }
-                    </tbody>
-                </table>
+        <div className='bg-gray-50 h-screen lg:h-full py-12 lg:py-16'>
+            <div className='bg-white w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10'>
+                <h1 className='text-2xl font-medium mb-4'>All Users</h1>
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        <thead className='bg-gray-100 font-bold uppercase'>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Job</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                users?.map((user, index) => <User
+                                    key={user._id}
+                                    index={index}
+                                    user={user}
+                                    refetch={refetch}
+                                    setDeletingUser={setDeletingUser}
+                                ></User>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             {
                 deletingUser && <ConfirmationModal

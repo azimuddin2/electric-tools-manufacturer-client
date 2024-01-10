@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import MyOrders from "../pages/Dashboard/UserPages/MyOrders/MyOrders";
 import DashboardLayout from "../layout/DashboardLayout";
 import AddReview from "../pages/Dashboard/UserPages/AddReview/AddReview";
+import AllUsers from "../pages/Dashboard/AdminPages/AllUsers/AllUsers";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -61,12 +63,12 @@ const router = createBrowserRouter([
         children: [
 
             // NOTE: Admin Route
-            // {
-            //     path: '/dashboard/users',
-            //     element: <AdminRoute>
-            //         <AllUsers></AllUsers>
-            //     </AdminRoute>
-            // },
+            {
+                path: 'users',
+                element: <AdminRoute>
+                    <AllUsers></AllUsers>
+                </AdminRoute>
+            },
             // {
             //     path: '/dashboard/add-product',
             //     element: <AdminRoute>
