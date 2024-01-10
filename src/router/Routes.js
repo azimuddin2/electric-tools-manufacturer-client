@@ -10,6 +10,7 @@ import ToolDetails from "../pages/ToolDetails/ToolDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyOrders from "../pages/Dashboard/UserPages/MyOrders/MyOrders";
 import DashboardLayout from "../layout/DashboardLayout";
+import AddReview from "../pages/Dashboard/UserPages/AddReview/AddReview";
 
 const router = createBrowserRouter([
     {
@@ -59,8 +60,8 @@ const router = createBrowserRouter([
         errorElement: <DisplayError></DisplayError>,
         children: [
 
-
-             // {
+            // NOTE: Admin Route
+            // {
             //     path: '/dashboard/users',
             //     element: <AdminRoute>
             //         <AllUsers></AllUsers>
@@ -86,17 +87,12 @@ const router = createBrowserRouter([
                 path: 'my-orders',
                 element: <MyOrders></MyOrders>
             },
-            // {
-            //     path: '/dashboard/edit-profile',
-            //     element: <UpdateProfile></UpdateProfile>
-            // },
-            // {
-            //     path: '/dashboard/add-review',
-            //     element: <AddReview></AddReview>
-            // },
+            {
+                path: 'add-review',
+                element: <AddReview></AddReview>
+            },
 
 
-           
         ]
     },
 

@@ -9,6 +9,7 @@ import useTitle from '../../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../../Shared/Loading/Loading';
 import { useNavigate } from 'react-router-dom';
+import { MdErrorOutline } from 'react-icons/md';
 
 const AddReview = () => {
     useTitle('Add Review');
@@ -91,82 +92,78 @@ const AddReview = () => {
     }
 
     return (
-        <section className='lg:bg-gray-50 h-full lg:pt-5'>
-            <div className="hero-content flex-col lg:flex-col-reverse">
-                <div className="card bg-white shadow-xl">
-                    <div className="card-body w-96">
-                        <div>
-                            <h2 className='text-2xl font-medium text-center mb-5'>Add a Review</h2>
-                        </div>
-                        <form onSubmit={handleSubmit(handleReview)}>
-
-                            <div className="form-control w-full max-w-xs mb-3">
-                                <input
-                                    type="text"
-                                    value={userInfo?.name}
-                                    disabled
-                                    className="input input-bordered w-full max-w-xs"
-                                    {...register("name")}
-                                />
-                            </div>
-
-                            <div className="form-control w-full max-w-xs mb-3">
-                                <input
-                                    type="email"
-                                    value={userInfo?.email}
-                                    disabled
-                                    className="input input-bordered w-full max-w-xs"
-                                    {...register("email")}
-                                />
-                            </div>
-
-                            <div className="form-control w-full max-w-sm">
-                                <select
-                                    {...register("country", {
-                                        required: {
-                                            value: true,
-                                            message: 'Country is required'
-                                        }
-                                    })}
-                                    className="input input-bordered w-full max-w-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
-                                    <option disabled selected>Select your country</option>
-                                    {
-                                        countries.map((country) => <option
-                                            key={country.cca3}
-                                            value={country.name.common}
-                                        >{country?.name.common}</option>)
-                                    }
-                                </select>
-                                <label className="label">
-                                    {errors.country?.type === 'required' && <span className="label-text-alt text-red-500">{errors.country.message}</span>}
-                                </label>
-                            </div>
-
-                            <div className="form-control w-full max-w-xs">
-                                <textarea
-                                    placeholder='Review description...'
-                                    type="text"
-                                    className="pt-1 input input-bordered w-full max-w-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-                                    {...register("description", {
-                                        required: {
-                                            value: true,
-                                            message: 'Review is Required'
-                                        }
-                                    })}
-                                />
-                                <label className="label">
-                                    {errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
-                                    {errors.description?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
-                                </label>
-                            </div>
-
-                            <p className='text-secondary font-medium'>Please Rating :</p>
-                            <div className='flex justify-center items-center '>
-                                <ReactStars {...thirdExample} />
-                            </div>
-                            <input className='text-white btn w-full max-w-xs' type="submit" value="Save" />
-                        </form>
+        <section className='bg-gray-50 h-screen lg:h-full py-16'>
+            <div className="card bg-white shadow w-11/12 lg:w-2/5 mx-auto">
+                <div className="card-body p-6 lg:p-8">
+                    <div>
+                        <h2 className='text-2xl font-medium text-center mb-3 uppercase'>Add a Review</h2>
                     </div>
+                    <form onSubmit={handleSubmit(handleReview)}>
+
+                        <div className="form-control mb-3">
+                            <input
+                                type="text"
+                                value={userInfo?.name}
+                                disabled
+                                className="input input-bordered w-full"
+                                {...register("name")}
+                            />
+                        </div>
+
+                        <div className="form-control">
+                            <select
+                                {...register("country", {
+                                    required: {
+                                        value: true,
+                                        message: 'Country is required'
+                                    }
+                                })}
+                                className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                                <option disabled selected>Select your country</option>
+                                {
+                                    countries.map((country) => <option
+                                        key={country.cca3}
+                                        value={country.name.common}
+                                    >{country?.name.common}</option>)
+                                }
+                            </select>
+                            <label className="label">
+                                {errors.country?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.country.message}</span>}
+                            </label>
+                        </div>
+
+                        <div className="form-control">
+
+                            <textarea
+                                {...register('description', {
+                                    required: {
+                                        value: true,
+                                        message: 'Review field is required'
+                                    }
+                                })}
+                                name="description"
+                                cols="30"
+                                rows="4"
+                                placeholder='Type here review message...'
+                                className='textarea textarea-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary'
+                            ></textarea>
+
+                            <label className="label">
+                                {errors.description?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.description.message}</span>}
+                            </label>
+
+                        </div>
+
+                        <div className='my-2'>
+                            <h3 className='text-secondary font-medium'>Please Rating:</h3>
+                            <h4 className='flex justify-center items-center '>
+                                <ReactStars {...thirdExample} />
+                            </h4>
+                        </div>
+
+                        <input className='btn btn-primary w-full text-white uppercase' type="submit" value="Save" />
+
+                    </form>
                 </div>
             </div>
         </section>
