@@ -14,6 +14,7 @@ import AddReview from "../pages/Dashboard/UserPages/AddReview/AddReview";
 import AllUsers from "../pages/Dashboard/AdminPages/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddProduct from "../pages/Dashboard/AdminPages/AddProduct/AddProduct";
+import ManageProducts from "../pages/Dashboard/AdminPages/ManageProducts/ManageProducts";
 
 const router = createBrowserRouter([
     {
@@ -75,14 +76,15 @@ const router = createBrowserRouter([
                     <AddProduct></AddProduct>
                 </AdminRoute>
             },
-            // {
-            //     path: '/dashboard/manage-products',
-            //     element: <AdminRoute>
-            //         <ManageProducts></ManageProducts>
-            //     </AdminRoute>
-            // }
-
-
+            {
+                path: 'manage-products',
+                element: <AdminRoute>
+                    <ManageProducts></ManageProducts>
+                </AdminRoute>,
+                loader: async () => {
+                    return await fetch('http://localhost:5000/totalTools')
+                }
+            },
             // NOTE: User Routes
             {
                 path: 'my-orders',

@@ -1,22 +1,42 @@
-import React from 'react';
-import Loading from '../../Shared/Loading/Loading';
+import React, { useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
-import ProductRow from './ProductRow';
-import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 import { toast } from 'react-toastify';
-import useTitle from '../../../hooks/useTitle';
+import Loading from '../../../Shared/Loading/Loading';
+import ProductRow from './ProductRow';
 import UpdateProductModal from '../UpdateProductModal/UpdateProductModal';
+import ConfirmationModal from '../../../../components/ConfirmationModal/ConfirmationModal';
+import useTitle from '../../../../hooks/useTitle';
+import { useLoaderData } from 'react-router-dom';
+import { IoSearch } from 'react-icons/io5';
 
 const ManageProducts = () => {
     useTitle('Manage Products');
     const [deletingProduct, setDeletingProduct] = useState(null);
     const [updateProduct, setUpdateProduct] = useState(null);
+    const searchRef = useRef();
+    const [search, setSearch] = useState('');
+    const { totalTools } = useLoaderData();
+    const [currentPage, setCurrentPage] = useState(0);
+    const [toolsPerPage, setToolsPerPage] = useState(6);
+
+    const totalPages = Math.ceil(totalTools / toolsPerPage);
+    const pageNumbers = [...Array(totalPages).keys()];
+
+    const options = [3, 4, 5, 6, 7, 8, 9];
+    const handleSelectChange = (event) => {
+        setToolsPerPage(parseInt(event.target.value));
+        setCurrentPage(0);
+    };
+
+    const handleSearch = () => {
+        setSearch(searchRef.current.value);
+    };
 
     const { data: tools, isLoading, refetch } = useQuery({
-        queryKey: ['tools'],
+        queryKey: ['tools', currentPage, totalPages],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/tools');
+            const res = await fetch(`http://localhost:5000/all-tools?page=${currentPage}&limit=${toolsPerPage}&search=${search}`);
             const data = await res.json();
             return data;
         }
@@ -47,35 +67,89 @@ const ManageProducts = () => {
     }
 
     return (
-        <section className='lg:bg-gray-50 p-4 lg:p-10'>
-            <h1 className='text-2xl font-medium mb-5'>Manage Products</h1>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Avatar</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Description</th>
-                            <th>MinimumQuantity</th>
-                            <th>AvailableQuantity</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            tools?.map((tool, index) => <ProductRow
-                                key={tool._id}
-                                tool={tool}
-                                index={index}
-                                setUpdateProduct={setUpdateProduct}
-                                setDeletingProduct={setDeletingProduct}
-                            ></ProductRow>)
-                        }
-                    </tbody>
-                </table>
+        <section className='bg-gray-50 min-h-screen py-12 lg:py-16'>
+
+            <div className='bg-white w-11/12 mx-auto p-5 lg:p-10'>
+
+                <div>
+                    <div className='lg:flex items-center justify-between mb-3 lg:mb-5'>
+                        <h2 className='text-xl lg:text-2xl font-semibold text-primary'>All Users</h2>
+                        <div className="join w-full lg:w-1/2 mt-2 lg:mt-0 flex">
+                            <input
+                                type='text'
+                                ref={searchRef}
+                                className="input input-sm w-full rounded input-bordered join-item focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                placeholder="Search for user..."
+                            />
+                            <button
+                                className="btn btn-sm join-item rounded bg-primary hover:bg-secondary text-white"
+                                onClick={handleSearch}
+                            >
+                                <IoSearch className='text-xl' />
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        {/* {
+                            search && <h2 className='text-lg flex justify-end text-primary mb-1'>Matching Results: 0{users?.length}</h2>
+                        } */}
+                    </div>
+                </div>
+
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        <thead className='bg-gray-100 font-bold'>
+                            <tr>
+                                <th>No</th>
+                                <th>Avatar</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>MinimumQuantity</th>
+                                <th>AvailableQuantity</th>
+                                <th>Product Rating Star</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                tools?.map((tool, index) => <ProductRow
+                                    key={tool._id}
+                                    tool={tool}
+                                    index={index}
+                                    setUpdateProduct={setUpdateProduct}
+                                    setDeletingProduct={setDeletingProduct}
+                                ></ProductRow>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            {/* pagination */}
+            <div className='text-center mt-6 mb-2 w-full mx-auto'>
+                {
+                    pageNumbers?.map(number => <button
+                        onClick={() => setCurrentPage(number)}
+                        className={`btn btn-sm mr-2 ${currentPage === number ? 'bg-primary text-white hover:bg-primary' : 'bg-white'}`}
+                        key={number}
+                    >{number + 1}</button>)
+                }
+                <select
+                    className='select select-sm select-bordered'
+                    value={toolsPerPage}
+                    onChange={handleSelectChange}
+                >
+                    {
+                        options.map(option => <option
+                            key={option}
+                            value={option}
+                        >{option}</option>)
+                    }
+                </select>
+            </div>
+
+
+
             {
                 updateProduct && <UpdateProductModal
                     modalData={updateProduct}

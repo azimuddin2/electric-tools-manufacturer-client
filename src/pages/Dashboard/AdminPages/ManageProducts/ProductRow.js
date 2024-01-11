@@ -1,15 +1,16 @@
 import React from 'react';
 import { BiEdit } from 'react-icons/bi';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import StarRatings from 'react-star-ratings';
 
 const ProductRow = ({ tool, index, setDeletingProduct, setUpdateProduct }) => {
-    const { name, img, price, description, minimumQuantity, availableQuantity } = tool;
+    const { name, image, price, description, minimumQuantity, availableQuantity, rating } = tool;
 
     return (
         <tr>
             <th>{index + 1}</th>
             <td>
-                <img src={img} alt={name} className='w-20'/>
+                <img src={image} alt={name} />
             </td>
             <td>{name}</td>
             <td>${price}</td>
@@ -21,8 +22,17 @@ const ProductRow = ({ tool, index, setDeletingProduct, setUpdateProduct }) => {
                         <>{description}</>
                 }
             </td>
-            <td>{minimumQuantity}</td>
-            <td>{availableQuantity}</td>
+            <td>{minimumQuantity} OrderQuantity</td>
+            <td>{availableQuantity} OrderQuantity</td>
+            <td>
+                <StarRatings
+                    rating={rating}
+                    starRatedColor="#ff9800"
+                    name="rating"
+                    starSpacing="0px"
+                    starDimension="20px"
+                />
+            </td>
             <td>
                 <div className=' flex justify-between items-center'>
                     <label
@@ -30,7 +40,7 @@ const ProductRow = ({ tool, index, setDeletingProduct, setUpdateProduct }) => {
                         htmlFor="update-product-modal"
                         title='Edit'
                     >
-                        <BiEdit className='text-2xl text-green-500 mr-3 cursor-pointer'></BiEdit>
+                        <BiEdit className='text-2xl text-primary mr-3 cursor-pointer'></BiEdit>
                     </label>
 
                     <label
