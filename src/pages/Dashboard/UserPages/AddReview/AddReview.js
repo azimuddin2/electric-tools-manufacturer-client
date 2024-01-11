@@ -65,9 +65,9 @@ const AddReview = () => {
     };
 
     return (
-        <section className='bg-gray-50 h-screen lg:h-full py-16'>
+        <section className='bg-gray-50 min-h-screen py-12 lg:py-16'>
             <div className="card bg-white shadow w-11/12 lg:w-2/5 mx-auto">
-                <div className="card-body p-6 lg:p-8">
+                <div className="card-body p-5 lg:p-8">
                     <div>
                         <h2 className='text-2xl font-medium text-center mb-3 uppercase'>Add a Review</h2>
                     </div>

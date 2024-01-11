@@ -13,6 +13,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import AddReview from "../pages/Dashboard/UserPages/AddReview/AddReview";
 import AllUsers from "../pages/Dashboard/AdminPages/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
+import AddProduct from "../pages/Dashboard/AdminPages/AddProduct/AddProduct";
 
 const router = createBrowserRouter([
     {
@@ -61,7 +62,6 @@ const router = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         errorElement: <DisplayError></DisplayError>,
         children: [
-
             // NOTE: Admin Route
             {
                 path: 'users',
@@ -69,13 +69,12 @@ const router = createBrowserRouter([
                     <AllUsers></AllUsers>
                 </AdminRoute>
             },
-            // {
-            //     path: '/dashboard/add-product',
-            //     element: <AdminRoute>
-            //         <AddProduct></AddProduct>
-            //     </AdminRoute>
-
-            // },
+            {
+                path: 'add-product',
+                element: <AdminRoute>
+                    <AddProduct></AddProduct>
+                </AdminRoute>
+            },
             // {
             //     path: '/dashboard/manage-products',
             //     element: <AdminRoute>
@@ -93,8 +92,6 @@ const router = createBrowserRouter([
                 path: 'add-review',
                 element: <AddReview></AddReview>
             },
-
-
         ]
     },
 

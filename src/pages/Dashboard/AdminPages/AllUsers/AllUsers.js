@@ -53,7 +53,7 @@ const AllUsers = () => {
     }
 
     return (
-        <div className='bg-gray-50 h-screen lg:h-full py-12 lg:py-16'>
+        <div className='bg-gray-50 min-h-screen py-12 lg:py-16'>
             <div className='bg-white w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10'>
                 <h1 className='text-2xl font-medium mb-4'>All Users: {users.length}</h1>
                 <div className="overflow-x-auto">
