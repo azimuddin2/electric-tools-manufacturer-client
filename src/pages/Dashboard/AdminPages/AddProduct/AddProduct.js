@@ -4,35 +4,47 @@ import { toast } from 'react-toastify';
 import useTitle from '../../../../hooks/useTitle';
 import { MdErrorOutline } from 'react-icons/md';
 import StarRatings from 'react-star-ratings';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
     useTitle('Add Product');
     const [accepted, setAccepted] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [rating, setRating] = useState(2);
+    const navigate = useNavigate();
 
     const changeRating = (newRating) => {
         setRating(newRating);
     };
 
-    const onSubmit = async data => {
-
+    const onSubmit = (data) => {
+        const { name, image, minimumQuantity, availableQuantity, price, description } = data;
+        const newToolData = {
+            name,
+            image,
+            minimumQuantity,
+            availableQuantity,
+            price,
+            description,
+            rating
+        };
         fetch('http://localhost:5000/tool', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(newToolData)
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
+            .then(result => {
+                if (result.insertedId) {
                     toast.success('Product added successfully');
                     reset();
+                    navigate('/dashboard/manage-products');
                 }
                 else {
-                    toast.error('Failed to add the Product')
+                    toast.error(result.message);
                 }
             })
     };
@@ -40,7 +52,6 @@ const AddProduct = () => {
     return (
         <section className='bg-gray-50 min-h-screen py-12 lg:py-16'>
             <h1 className='text-2xl font-medium mb-5 lg:ml-28 text-center lg:text-left'>Add a New Product</h1>
-
             <div className='bg-white shadow w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10 rounded-lg'>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
@@ -65,7 +76,6 @@ const AddProduct = () => {
                             {errors.name?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.name.message}</span>}
                         </label>
                     </div>
-
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-medium">Image URL*</span>
@@ -85,7 +95,6 @@ const AddProduct = () => {
                             {errors.image?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.image.message}</span>}
                         </label>
                     </div>
-
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-medium">Minimum Quantity*</span>
@@ -110,7 +119,6 @@ const AddProduct = () => {
                             {errors.minimumQuantity?.type === 'min' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.minimumQuantity.message}</span>}
                         </label>
                     </div>
-
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-medium">Available Quantity*</span>
@@ -135,7 +143,6 @@ const AddProduct = () => {
                             {errors.availableQuantity?.type === 'max' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.availableQuantity.message}</span>}
                         </label>
                     </div>
-
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-medium">Price*</span>
@@ -155,7 +162,6 @@ const AddProduct = () => {
                             {errors.price?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.price.message}</span>}
                         </label>
                     </div>
-
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-medium">Description*</span>
@@ -177,18 +183,17 @@ const AddProduct = () => {
                             {errors.description?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.description.message}</span>}
                         </label>
                     </div>
-
                     <div className="form-control lg:mt-[-40px]">
                         <h2 className='font-medium'>Product Rating*</h2>
                         <div className='text-center'>
                             <StarRatings
                                 rating={rating}
-                                starRatedColor="#F2871D"
+                                starRatedColor="#4158f3"
                                 name="rating"
                                 starSpacing="1px"
                                 changeRating={changeRating}
-                                starDimension="34px"
-                                starHoverColor="#F2871D"
+                                starDimension="30px"
+                                starHoverColor="#4158f3"
                             />
                         </div>
                         <label className="label flex justify-start items-center mt-3">
@@ -199,18 +204,14 @@ const AddProduct = () => {
                             <span className="label-text ml-3 text-secondary font-semibold text-lg">Remember me</span>
                         </label>
                     </div>
-
                     <input
                         disabled={!accepted}
                         className='btn btn-primary text-white w-full uppercase mt-2 lg:mt-5'
                         type="submit"
                         value="Save"
                     />
-
                 </form>
-
             </div>
-
         </section>
     );
 };
