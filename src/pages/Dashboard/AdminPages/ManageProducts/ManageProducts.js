@@ -151,7 +151,7 @@ const ManageProducts = () => {
             </div>
             {
                 updateProduct && <UpdateProductModal
-                    modalData={updateProduct}
+                    updateProduct={updateProduct}
                     setUpdateProduct={setUpdateProduct}
                     refetch={refetch}
                 ></UpdateProductModal>

@@ -24,7 +24,7 @@ const AddProduct = () => {
             image,
             minimumQuantity,
             availableQuantity,
-            price,
+            price: parseInt(price),
             description,
             rating
         };
