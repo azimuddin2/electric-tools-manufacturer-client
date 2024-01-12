@@ -3,13 +3,14 @@ import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import { useForm } from 'react-hook-form';
-import useTitle from '../../../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
-import Loading from '../../../Shared/Loading/Loading';
 import { BiImageAdd } from 'react-icons/bi';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../../../../hooks/useTitle';
+import Loading from '../../../Shared/Loading/Loading';
+import { MdErrorOutline } from 'react-icons/md';
 
 const UpdateProfile = () => {
     useTitle('Edit Profile');
@@ -110,136 +111,137 @@ const UpdateProfile = () => {
     }
 
     return (
-        <section className='lg:bg-gray-50 h-full'>
-            <div className='p-4 lg:p-10'>
+        <section className='bg-gray-50 min-h-screen py-12 lg:py-16'>
+            <div className='w-11/12 lg:w-4/5 mx-auto'>
                 <div>
-                    <h2 className='text-2xl font-medium mb-5 lg:ml-28'>Edit Your Profile</h2>
+                    <h2 className='text-2xl font-normal mb-4 lg:ml-6 lg:text-left text-center font-family'>Edit Your Profile</h2>
                 </div>
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className='card bg-white shadow-xl grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 p-4 lg:p-8 lg:w-4/5 mx-auto'
-                >
-
-                    <div className="form-control w-full max-w-sm">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input
-                            {...register("email")}
-                            type="email"
-                            defaultValue={userInfo?.email}
-                            className="input input-bordered w-full max-w-sm"
-                            disabled
-                        />
-                    </div>
-
-                    <div className="form-control w-full max-w-sm">
-                        <label className="label">
-                            <span className="label-text">Name</span>
-                        </label>
-                        <input
-                            type="text"
-                            className="input input-bordered w-full max-w-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-                            {...register("name", {
-                                required: {
-                                    value: true,
-                                    message: 'Name is Required'
-                                }
-                            })}
-                        />
-                        <label className="label">
-                            {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-                        </label>
-                    </div>
-
-                    <div className="form-control w-full max-w-sm">
-                        <label className="label">
-                            <span className="label-text">Education</span>
-                        </label>
-                        <input
-                            type="text"
-                            className="input input-bordered w-full max-w-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-                            {...register("education", {
-                                required: {
-                                    value: true,
-                                    message: 'Education is Required'
-                                }
-                            })}
-                        />
-                        <label className="label">
-                            {errors.education?.type === 'required' && <span className="label-text-alt text-red-500">{errors.education.message}</span>}
-                        </label>
-                    </div>
-
-                    <div className="form-control w-full max-w-sm mt-4 lg:mt-0">
-                        <label htmlFor='image' className="input input-bordered w-full h-24 max-w-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary cursor-pointer text-center pt-4">
-                            <span className="label-text text-accent font-medium">Upload Photo</span>
-                            <div className=' flex justify-center items-center'>
-                                <BiImageAdd className='text-4xl text-accent'></BiImageAdd>
+                <div className='bg-white shadow p-5 lg:p-10 rounded-xl'>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4'>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-medium">Email*</span>
+                                </label>
+                                <input
+                                    {...register("email")}
+                                    type="email"
+                                    defaultValue={user.email}
+                                    className="input input-bordered w-full"
+                                    disabled
+                                />
                             </div>
-                        </label>
-                        <input
-                            {...register("image", {
-                                required: {
-                                    value: true,
-                                    message: 'Photo is required',
-                                },
-                            })}
-                            id="image"
-                            type="file"
-                            className="hidden"
-                        />
-                        <label className="label">
-                            {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
-                        </label>
-                    </div>
-
-                    <div className="form-control w-full max-w-sm">
-                        <label className="label">
-                            <span className="label-text">Country</span>
-                        </label>
-                        <select
-                            {...register("country", {
-                                required: {
-                                    value: true,
-                                    message: 'Country is required'
-                                }
-                            })}
-                            className="input input-bordered w-full max-w-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
-                            <option disabled selected>Select your country</option>
-                            {
-                                countries.map((country) => <option
-                                    key={country.cca3}
-                                    value={country.name.common}
-                                >{country?.name.common}</option>)
-                            }
-                        </select>
-                        <label className="label">
-                            {errors.country?.type === 'required' && <span className="label-text-alt text-red-500">{errors.country.message}</span>}
-                        </label>
-                    </div>
-
-                    <div className="form-control w-full max-w-sm">
-                        <label className="label">
-                            <span className="label-text">Phone</span>
-                        </label>
-                        <input
-                            type="text"
-                            className="input input-bordered w-full max-w-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-                            {...register("phone", {
-                                required: {
-                                    value: true,
-                                    message: 'Phone is Required'
-                                }
-                            })}
-                        />
-                        <label className="label">
-                            {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
-                        </label>
-                    </div>
-
-                    <input className='btn text-white  w-full max-w-sm' type="submit" value="Save" />
-                </form>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-medium">Name*</span>
+                                </label>
+                                <input
+                                    {...register("name", {
+                                        required: {
+                                            value: true,
+                                            message: 'Name is required'
+                                        }
+                                    })}
+                                    defaultValue={user.displayName}
+                                    type="text"
+                                    className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                />
+                                <label className="label">
+                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.name.message}</span>}
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-medium">Education*</span>
+                                </label>
+                                <input
+                                    {...register("education", {
+                                        required: {
+                                            value: true,
+                                            message: 'Education is required'
+                                        }
+                                    })}
+                                    type="text"
+                                    className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                />
+                                <label className="label">
+                                    {errors.education?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.education.message}</span>}
+                                </label>
+                            </div>
+                            <div className="form-control mt-4 lg:mt-0">
+                                <label htmlFor='image' className="input input-bordered w-full h-24 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary cursor-pointer text-center pt-4">
+                                    <span className="label-text text-accent font-medium">Upload Photo</span>
+                                    <div className=' flex justify-center items-center'>
+                                        <BiImageAdd className='text-4xl text-accent'></BiImageAdd>
+                                    </div>
+                                </label>
+                                <input
+                                    {...register("image", {
+                                        required: {
+                                            value: true,
+                                            message: 'Photo is required',
+                                        },
+                                    })}
+                                    id="image"
+                                    type="file"
+                                    className="hidden"
+                                />
+                                <label className="label">
+                                    {errors.image?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.image.message}</span>}
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-medium">Country*</span>
+                                </label>
+                                <select
+                                    {...register("country", {
+                                        required: {
+                                            value: true,
+                                            message: 'Country is required'
+                                        }
+                                    })}
+                                    className="select select-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                                    <option disabled selected>Select your country</option>
+                                    {
+                                        countries.map((country) => <option
+                                            key={country.cca3}
+                                            value={country.name.common}
+                                        >{country?.name.common}</option>)
+                                    }
+                                </select>
+                                <label className="label">
+                                    {errors.country?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.country.message}</span>}
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-medium">Phone*</span>
+                                </label>
+                                <input
+                                    {...register("phone", {
+                                        required: {
+                                            value: true,
+                                            message: 'Phone is required'
+                                        }
+                                    })}
+                                    type="text"
+                                    className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                                />
+                                <label className="label">
+                                    {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500 flex items-center text-sm"><MdErrorOutline className='text-xl' />{errors.phone.message}</span>}
+                                </label>
+                            </div>
+                        </div>
+                        <div className='lg:mt-3 flex justify-end'>
+                            <input
+                                className='btn btn-primary text-white w-full lg:w-1/2 uppercase'
+                                type="submit"
+                                value="Update"
+                            />
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     );

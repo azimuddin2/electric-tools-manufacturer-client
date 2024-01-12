@@ -51,8 +51,8 @@ const AddProduct = () => {
 
     return (
         <section className='bg-gray-50 min-h-screen py-12 lg:py-16'>
-            <h1 className='text-2xl font-medium mb-5 lg:ml-28 text-center lg:text-left'>Add a New Product</h1>
-            <div className='bg-white shadow w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10 rounded-lg'>
+            <h1 className='text-2xl font-normal mb-4 lg:ml-32 text-center lg:text-left font-family'>Add a New Product</h1>
+            <div className='bg-white shadow w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10 rounded-xl'>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className='grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4'

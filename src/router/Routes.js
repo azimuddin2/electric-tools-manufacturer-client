@@ -15,6 +15,7 @@ import AllUsers from "../pages/Dashboard/AdminPages/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddProduct from "../pages/Dashboard/AdminPages/AddProduct/AddProduct";
 import ManageProducts from "../pages/Dashboard/AdminPages/ManageProducts/ManageProducts";
+import UpdateProfile from "../pages/Dashboard/OtherPages/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
     {
@@ -94,9 +95,12 @@ const router = createBrowserRouter([
                 path: 'add-review',
                 element: <AddReview></AddReview>
             },
-        ]
+            {
+                path: 'edit-profile',
+                element: <UpdateProfile></UpdateProfile>
+            },
+        ],
     },
-
 ]);
 
 export default router;
