@@ -14,10 +14,10 @@ const ProductRow = ({ tool, index, setDeletingProduct, setUpdateProduct }) => {
             </td>
             <td>{name}</td>
             <td>${price}</td>
-            <td title={description}>
+            <td className='lg:tooltip lg:tooltip-right' data-tip={description}>
                 {
-                    description.length > 18 ?
-                        <>{description.slice(0, 18) + '...'}</>
+                    description.length > 17 ?
+                        <>{description.slice(0, 17) + '...'}</>
                         :
                         <>{description}</>
                 }
@@ -38,7 +38,8 @@ const ProductRow = ({ tool, index, setDeletingProduct, setUpdateProduct }) => {
                     <label
                         onClick={() => setUpdateProduct(tool)}
                         htmlFor="update-product-modal"
-                        title='Edit'
+                        className='tooltip tooltip-top'
+                        data-tip="Update"
                     >
                         <BiEdit className='text-2xl text-primary mr-3 cursor-pointer'></BiEdit>
                     </label>
@@ -46,7 +47,8 @@ const ProductRow = ({ tool, index, setDeletingProduct, setUpdateProduct }) => {
                     <label
                         onClick={() => setDeletingProduct(tool)}
                         htmlFor="confirmation-modal"
-                        title='Delete'
+                        className='tooltip tooltip-top'
+                        data-tip="Delete"
                     >
                         <RiDeleteBin5Line className='text-2xl text-red-500 cursor-pointer'></RiDeleteBin5Line>
                     </label>

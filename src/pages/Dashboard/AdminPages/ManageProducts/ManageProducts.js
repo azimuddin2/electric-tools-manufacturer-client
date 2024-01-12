@@ -9,6 +9,7 @@ import ConfirmationModal from '../../../../components/ConfirmationModal/Confirma
 import useTitle from '../../../../hooks/useTitle';
 import { useLoaderData } from 'react-router-dom';
 import { IoSearch } from 'react-icons/io5';
+import ErrorMessage from '../../../Shared/ErrorMessage/ErrorMessage';
 
 const ManageProducts = () => {
     useTitle('Manage Products');
@@ -33,8 +34,8 @@ const ManageProducts = () => {
         setSearch(searchRef.current.value);
     };
 
-    const { data: tools, isLoading, refetch } = useQuery({
-        queryKey: ['tools', currentPage, totalPages],
+    const { data: tools, isLoading, error, refetch } = useQuery({
+        queryKey: ['all-tools', currentPage, toolsPerPage, search],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/all-tools?page=${currentPage}&limit=${toolsPerPage}&search=${search}`);
             const data = await res.json();
@@ -53,7 +54,7 @@ const ManageProducts = () => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     refetch();
-                    toast.success(`Tool ${tool.name} deleted successfully`)
+                    toast.success(`Tool ${tool.name} deleted successfully`);
                 }
             })
     };
@@ -62,24 +63,26 @@ const ManageProducts = () => {
         setDeletingProduct(null);
     };
 
+    if (error) {
+        return <ErrorMessage message={error.message}></ErrorMessage>
+    }
+
     if (isLoading) {
         return <Loading></Loading>
     }
 
     return (
         <section className='bg-gray-50 min-h-screen py-12 lg:py-16'>
-
             <div className='bg-white w-11/12 mx-auto p-5 lg:p-10'>
-
                 <div>
                     <div className='lg:flex items-center justify-between mb-3 lg:mb-5'>
-                        <h2 className='text-xl lg:text-2xl font-semibold text-primary'>All Users</h2>
+                        <h2 className='text-xl lg:text-2xl font-semibold text-secondary'>Manage Products</h2>
                         <div className="join w-full lg:w-1/2 mt-2 lg:mt-0 flex">
                             <input
                                 type='text'
                                 ref={searchRef}
                                 className="input input-sm w-full rounded input-bordered join-item focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-                                placeholder="Search for user..."
+                                placeholder="Search for tool..."
                             />
                             <button
                                 className="btn btn-sm join-item rounded bg-primary hover:bg-secondary text-white"
@@ -90,12 +93,11 @@ const ManageProducts = () => {
                         </div>
                     </div>
                     <div>
-                        {/* {
-                            search && <h2 className='text-lg flex justify-end text-primary mb-1'>Matching Results: 0{users?.length}</h2>
-                        } */}
+                        {
+                            search && <h2 className='text-lg flex justify-end text-primary mb-1'>Matching Results: 0{tools?.length}</h2>
+                        }
                     </div>
                 </div>
-
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         <thead className='bg-gray-100 font-bold'>
@@ -147,9 +149,6 @@ const ManageProducts = () => {
                     }
                 </select>
             </div>
-
-
-
             {
                 updateProduct && <UpdateProductModal
                     modalData={updateProduct}
