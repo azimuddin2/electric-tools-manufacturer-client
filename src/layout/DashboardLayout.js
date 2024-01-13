@@ -7,7 +7,7 @@ import { MdManageHistory, MdPostAdd } from 'react-icons/md';
 import { LuListTodo } from "react-icons/lu";
 import { IoHomeOutline } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
-import { TbPencilStar } from "react-icons/tb";
+import { TbMessageStar, TbPencilStar } from "react-icons/tb";
 import { BsInfoCircle } from 'react-icons/bs';
 import ActiveLink from '../components/ActiveLink/ActiveLink';
 import DashboardNavbar from '../pages/Shared/DashboardNavbar/DashboardNavbar';
@@ -56,6 +56,12 @@ const DashboardLayout = () => {
                                         <ActiveLink to="/dashboard/manage-products">
                                             <MdManageHistory className='text-xl' />
                                             <span>Manage Products</span>
+                                        </ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink to="/dashboard/client-reviews">
+                                            <TbMessageStar className='text-xl' />
+                                            <span>Client Reviews</span>
                                         </ActiveLink>
                                     </li>
                                 </>

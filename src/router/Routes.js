@@ -17,6 +17,7 @@ import AddProduct from "../pages/Dashboard/AdminPages/AddProduct/AddProduct";
 import ManageProducts from "../pages/Dashboard/AdminPages/ManageProducts/ManageProducts";
 import UpdateProfile from "../pages/Dashboard/OtherPages/UpdateProfile/UpdateProfile";
 import Profile from "../pages/Profile/Profile";
+import ClientReviews from "../pages/Dashboard/AdminPages/ClientReviews/ClientReviews";
 
 const router = createBrowserRouter([
     {
@@ -86,6 +87,12 @@ const router = createBrowserRouter([
                 loader: async () => {
                     return await fetch('http://localhost:5000/totalTools')
                 }
+            },
+            {
+                path: 'client-reviews',
+                element: <AdminRoute>
+                    <ClientReviews></ClientReviews>
+                </AdminRoute>
             },
             // NOTE: User Routes
             {
