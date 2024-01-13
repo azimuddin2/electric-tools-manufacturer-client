@@ -76,7 +76,7 @@ const ManageProducts = () => {
             <div className='bg-white w-11/12 mx-auto p-5 lg:p-10'>
                 <div>
                     <div className='lg:flex items-center justify-between mb-3 lg:mb-5'>
-                        <h2 className='text-xl lg:text-2xl font-semibold text-secondary'>Manage Products</h2>
+                        <h2 className='text-xl lg:text-2xl text-secondary font-medium font-family'>Manage Products</h2>
                         <div className="join w-full lg:w-1/2 mt-2 lg:mt-0 flex">
                             <input
                                 type='text'

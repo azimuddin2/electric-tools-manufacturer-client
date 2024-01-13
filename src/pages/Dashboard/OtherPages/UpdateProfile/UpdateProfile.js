@@ -4,7 +4,8 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { useQuery } from '@tanstack/react-query';
-import { BiImageAdd } from 'react-icons/bi';
+import { BiImageAdd, BiSolidEdit } from 'react-icons/bi';
+import { CiEdit } from "react-icons/ci";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -113,8 +114,9 @@ const UpdateProfile = () => {
     return (
         <section className='bg-gray-50 min-h-screen py-12 lg:py-16'>
             <div className='w-11/12 lg:w-4/5 mx-auto'>
-                <div>
-                    <h2 className='text-2xl font-normal mb-4 lg:ml-6 lg:text-left text-center font-family'>Edit Your Profile</h2>
+                <div className='flex items-center lg:justify-start justify-center mb-4 lg:ml-6'>
+                    <span className='text-2xl font-medium font-family'>Edit Your Profile</span>
+                    <CiEdit className='text-2xl' />
                 </div>
                 <div className='bg-white shadow p-5 lg:p-10 rounded-xl'>
                     <form onSubmit={handleSubmit(onSubmit)}>

@@ -69,7 +69,7 @@ const AddReview = () => {
             <div className="card bg-white shadow w-11/12 lg:w-2/5 mx-auto">
                 <div className="card-body p-5 lg:p-8">
                     <div>
-                        <h2 className='text-2xl font-medium text-center mb-3 uppercase'>Add a Review</h2>
+                        <h2 className='text-2xl text-center mb-3 uppercase font-medium font-family'>Add a Review</h2>
                     </div>
                     <form onSubmit={handleSubmit(handleReview)}>
                         <div className="form-control mb-3">
