@@ -5,8 +5,7 @@ import CustomLink from './CustomLink';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
-import { FaUserCircle } from 'react-icons/fa';
-import { HiOutlineHome } from 'react-icons/hi';
+import { IoHomeOutline } from 'react-icons/io5';
 import { BsCheck2Circle, BsTools } from 'react-icons/bs';
 import { BiMessageDetail } from 'react-icons/bi';
 import { MdOutlineDashboard } from 'react-icons/md';
@@ -30,22 +29,22 @@ const Navbar = () => {
     const navOptions = <>
         <li>
             <CustomLink to="/">
-                <HiOutlineHome className='text-xl lg:hidden'></HiOutlineHome>Home
+                <IoHomeOutline className='text-xl lg:hidden' />Home
             </CustomLink>
         </li>
         <li>
             <CustomLink to="/tools">
-                <BsTools className='text-xl lg:hidden'></BsTools>Tools
+                <BsTools className='text-xl lg:hidden' />Tools
             </CustomLink>
         </li>
         <li>
             <CustomLink to="/about">
-                <BsCheck2Circle className='text-xl lg:hidden'></BsCheck2Circle>About
+                <BsCheck2Circle className='text-xl lg:hidden' />About
             </CustomLink>
         </li>
         <li>
             <CustomLink to="/reviews">
-                <BiMessageDetail className='text-xl lg:hidden'></BiMessageDetail>Reviews
+                <BiMessageDetail className='text-xl lg:hidden' />Reviews
             </CustomLink>
         </li>
         {
@@ -54,11 +53,11 @@ const Navbar = () => {
                     {
                         isAdmin ?
                             <CustomLink to='/dashboard'>
-                                <MdOutlineDashboard className='text-xl lg:hidden'></MdOutlineDashboard>Dashboard
+                                <MdOutlineDashboard className='text-xl lg:hidden' />Dashboard
                             </CustomLink>
                             :
                             <CustomLink to='/dashboard/my-orders'>
-                                <MdOutlineDashboard className='text-xl lg:hidden'></MdOutlineDashboard>Dashboard
+                                <MdOutlineDashboard className='text-xl lg:hidden' />Dashboard
                             </CustomLink>
                     }
                 </li>
@@ -83,20 +82,6 @@ const Navbar = () => {
                     )
             }
         </li>
-        {/* {
-            user?.uid && (
-                <li title='View Profile'>
-                    <Link to='/profile'>
-                        {
-                            user?.photoURL ?
-                                <img src={user?.photoURL} alt='' className='w-9 h-9 border-2 rounded-full border-green-500' />
-                                :
-                                <FaUserCircle className='text-3xl'></FaUserCircle>
-                        }
-                    </Link>
-                </li>
-            )
-        } */}
     </>
 
     return (
