@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { useQuery } from '@tanstack/react-query';
-import { BiImageAdd, BiSolidEdit } from 'react-icons/bi';
+import { BiImageAdd } from 'react-icons/bi';
 import { CiEdit } from "react-icons/ci";
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import useTitle from '../../../../hooks/useTitle';
 import Loading from '../../../Shared/Loading/Loading';
 import { MdErrorOutline } from 'react-icons/md';
+import ErrorMessage from '../../../Shared/ErrorMessage/ErrorMessage';
 
 const UpdateProfile = () => {
     useTitle('Edit Profile');
@@ -21,9 +22,15 @@ const UpdateProfile = () => {
     const navigate = useNavigate();
     const imageHostKey = process.env.REACT_APP_imgBB_key;
 
+    useEffect(() => {
+        fetch('https://restcountries.com/v3.1/all')
+            .then(res => res.json())
+            .then(data => setCountries(data))
+    }, [])
+
     const url = `http://localhost:5000/user?email=${user?.email}`;
 
-    const { data: userInfo, isLoading } = useQuery({
+    const { data: userInfo = {}, isLoading, error } = useQuery({
         queryKey: ['user', user?.email],
         queryFn: async () => {
             try {
@@ -41,13 +48,6 @@ const UpdateProfile = () => {
         }
     });
 
-    useEffect(() => {
-        fetch('https://restcountries.com/v3.1/all')
-            .then(res => res.json())
-            .then(data => setCountries(data))
-    }, [])
-
-
     const onSubmit = (data) => {
         const image = data.image[0];
         const formData = new FormData();
@@ -60,19 +60,20 @@ const UpdateProfile = () => {
             .then(res => res.json())
             .then(imgData => {
                 if (imgData.success) {
-                    const updateUserInfo = {
-                        name: data.name,
-                        email: userInfo?.email,
-                        education: data.education,
-                        image: imgData.data.url,
-                        country: data.country,
-                        phone: data.phone,
-                    }
-                    console.log(updateUserInfo);
-                    // Firebase database update
-                    handleUpdateUserProfile(data.name, imgData.data.url, data.phone);
 
-                    // save user information to the database
+                    const { name, education, country, phone } = data;
+                    const updateUserInfo = {
+                        name: name,
+                        education: education,
+                        country: country,
+                        phone: phone,
+                        email: userInfo.email,
+                        image: imgData.data.url,
+                    };
+                    //NOTE: User information firebase update
+                    handleUpdateUserProfile(name, imgData.data.url, phone);
+
+                    // NOTE: Save user information to the database
                     fetch(`http://localhost:5000/user/${userInfo._id}`, {
                         method: 'PUT',
                         headers: {
@@ -107,6 +108,10 @@ const UpdateProfile = () => {
             })
     };
 
+    if (error) {
+        return <ErrorMessage message={error.message}></ErrorMessage>
+    }
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -128,7 +133,7 @@ const UpdateProfile = () => {
                                 <input
                                     {...register("email")}
                                     type="email"
-                                    defaultValue={user.email}
+                                    defaultValue={userInfo?.email}
                                     className="input input-bordered w-full"
                                     disabled
                                 />
@@ -144,7 +149,7 @@ const UpdateProfile = () => {
                                             message: 'Name is required'
                                         }
                                     })}
-                                    defaultValue={user.displayName}
+                                    defaultValue={userInfo?.name || ''}
                                     type="text"
                                     className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
@@ -163,6 +168,7 @@ const UpdateProfile = () => {
                                             message: 'Education is required'
                                         }
                                     })}
+                                    defaultValue={userInfo?.education || ''}
                                     type="text"
                                     className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />
@@ -227,6 +233,7 @@ const UpdateProfile = () => {
                                             message: 'Phone is required'
                                         }
                                     })}
+                                    defaultValue={userInfo?.phone || ''}
                                     type="text"
                                     className="input input-bordered w-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                                 />

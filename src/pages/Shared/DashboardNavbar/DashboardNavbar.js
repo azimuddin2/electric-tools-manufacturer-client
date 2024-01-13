@@ -6,6 +6,7 @@ import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { BiSolidEdit } from 'react-icons/bi';
 import { CgLogOut } from 'react-icons/cg';
 import logo from '../../../assets/icons/logo-black.svg'
+import { RiProfileLine } from 'react-icons/ri';
 
 const DashboardNavbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -75,6 +76,15 @@ const DashboardNavbar = () => {
                             <h1 className='text-lg font-medium mt-1'>Hi, {user.displayName}!</h1>
                             <h1 className='text-md mb-3'>{user.email}</h1>
                         </div>
+                        <li>
+                            <Link
+                                to={'/profile'}
+                                className="justify-between text-lg hover:bg-[#F1F5F9] hover:text-secondary font-medium"
+                            >
+                                View Profile
+                                <span className="badge"><RiProfileLine className='text-lg' /></span>
+                            </Link>
+                        </li>
                         <li>
                             <Link
                                 to={'/dashboard/edit-profile'}

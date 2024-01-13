@@ -16,6 +16,7 @@ import AdminRoute from "./AdminRoute";
 import AddProduct from "../pages/Dashboard/AdminPages/AddProduct/AddProduct";
 import ManageProducts from "../pages/Dashboard/AdminPages/ManageProducts/ManageProducts";
 import UpdateProfile from "../pages/Dashboard/OtherPages/UpdateProfile/UpdateProfile";
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
     {
@@ -50,12 +51,12 @@ const router = createBrowserRouter([
                 path: 'signup',
                 element: <SignUp></SignUp>
             },
-            // {
-            //     path: 'profile',
-            //     element: <PrivateRoute>
-            //         <Profile></Profile>
-            //     </PrivateRoute>
-            // }
+            {
+                path: 'profile',
+                element: <PrivateRoute>
+                    <Profile></Profile>
+                </PrivateRoute>
+            }
         ]
     },
 

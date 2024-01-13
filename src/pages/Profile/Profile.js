@@ -2,10 +2,10 @@ import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
-import Loading from '../Shared/Loading/Loading';
 import { FaEdit, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
+import Loading from '../Shared/Loading/Loading';
 
 const Profile = () => {
     useTitle('My Profile')
