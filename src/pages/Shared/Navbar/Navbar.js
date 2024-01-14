@@ -14,7 +14,7 @@ import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [isAdmin] = useAdmin();
+    const [isAdmin] = useAdmin(user?.email);
 
     const handleLogout = () => {
         logOut()

@@ -18,6 +18,7 @@ import ManageProducts from "../pages/Dashboard/AdminPages/ManageProducts/ManageP
 import UpdateProfile from "../pages/Dashboard/OtherPages/UpdateProfile/UpdateProfile";
 import Profile from "../pages/Profile/Profile";
 import ClientReviews from "../pages/Dashboard/AdminPages/ClientReviews/ClientReviews";
+import AdminHome from "../pages/Dashboard/AdminPages/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -67,6 +68,12 @@ const router = createBrowserRouter([
         errorElement: <DisplayError></DisplayError>,
         children: [
             // NOTE: Admin Route
+            {
+                path: '/dashboard',
+                element: <AdminRoute>
+                    <AdminHome></AdminHome>
+                </AdminRoute>
+            },
             {
                 path: 'users',
                 element: <AdminRoute>

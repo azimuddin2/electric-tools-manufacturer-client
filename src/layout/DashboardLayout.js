@@ -35,7 +35,7 @@ const DashboardLayout = () => {
                             isAdmin ?
                                 <>
                                     <li>
-                                        <ActiveLink to="dashboard">
+                                        <ActiveLink to="/dashboard">
                                             <RxDashboard className='text-xl' />
                                             <span>Dashboard</span>
                                         </ActiveLink>
