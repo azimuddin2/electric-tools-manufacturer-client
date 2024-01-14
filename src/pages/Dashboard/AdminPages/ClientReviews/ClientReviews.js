@@ -3,6 +3,7 @@ import useReview from '../../../../hooks/useReview';
 import Loading from '../../../Shared/Loading/Loading';
 import ErrorMessage from '../../../Shared/ErrorMessage/ErrorMessage';
 import useTitle from '../../../../hooks/useTitle';
+import ClientReviewRow from './ClientReviewRow';
 
 const ClientReviews = () => {
     useTitle('Client Reviews');
@@ -25,15 +26,20 @@ const ClientReviews = () => {
                         <thead className='bg-gray-100 font-bold uppercase'>
                             <tr>
                                 <th>No</th>
+                                <th>Avatar</th>
                                 <th>Name & Email</th>
                                 <th>Review Message</th>
-                                <th>Rating</th>
+                                <th>Review Rating Star</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-
+                                testimonials?.map((review, index) => <ClientReviewRow
+                                    key={review._id}
+                                    index={index}
+                                    review={review}
+                                ></ClientReviewRow>)
                             }
                         </tbody>
                     </table>
