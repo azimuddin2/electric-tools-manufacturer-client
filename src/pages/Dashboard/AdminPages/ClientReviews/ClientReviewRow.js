@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import ReactStars from "react-rating-stars-component";
 
-const ClientReviewRow = ({ index, review }) => {
+const ClientReviewRow = ({ index, review, setDeletingReview }) => {
     const [isReadMore, setIsReadMore] = useState(true);
-    const { name, email, image, country, description, rating } = review;
+    const { name, email, image, description, rating } = review;
 
     const toggleReadMore = () => {
         setIsReadMore(!isReadMore);
@@ -49,7 +49,7 @@ const ClientReviewRow = ({ index, review }) => {
                         isReadMore ?
                             <span className='link font-semibold text-primary'>Read More</span>
                             :
-                            <span className='link font-semibold text-primary'>ShowLess</span>
+                            <span className='link font-semibold text-primary'>Show Less</span>
                     }
                 </p>
             </td>
@@ -58,7 +58,7 @@ const ClientReviewRow = ({ index, review }) => {
             </td>
             <td>
                 <label
-                    // onClick={() => setDeletingUser(user)}
+                    onClick={() => setDeletingReview(review)}
                     htmlFor="confirmation-modal"
                     className='tooltip tooltip-top'
                     data-tip="Delete"

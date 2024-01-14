@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useReview from '../../../../hooks/useReview';
 import Loading from '../../../Shared/Loading/Loading';
 import ErrorMessage from '../../../Shared/ErrorMessage/ErrorMessage';
 import useTitle from '../../../../hooks/useTitle';
 import ClientReviewRow from './ClientReviewRow';
+import ConfirmationModal from '../../../../components/ConfirmationModal/ConfirmationModal';
+import { toast } from 'react-toastify';
 
 const ClientReviews = () => {
     useTitle('Client Reviews');
-    const [testimonials, isLoading, error] = useReview();
+    const [testimonials, isLoading, error, refetch] = useReview();
+    const [deletingReview, setDeletingReview] = useState(null);
+
+    const handleDeleteReview = (review) => {
+        fetch(`http://localhost:5000/review/${review._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.deletedCount > 0) {
+                    refetch();
+                    toast.success('Review deleted successfully');
+                }
+            })
+    };
+
+    const closeModal = () => {
+        setDeletingReview(null);
+    };
 
     if (error) {
         return <ErrorMessage message={error.message}></ErrorMessage>
@@ -39,12 +62,20 @@ const ClientReviews = () => {
                                     key={review._id}
                                     index={index}
                                     review={review}
+                                    setDeletingReview={setDeletingReview}
                                 ></ClientReviewRow>)
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
+            {
+                deletingReview && <ConfirmationModal
+                    modalData={deletingReview}
+                    successModal={handleDeleteReview}
+                    closeModal={closeModal}
+                ></ConfirmationModal>
+            }
         </div>
     );
 };
