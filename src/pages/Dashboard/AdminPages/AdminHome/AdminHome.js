@@ -8,6 +8,7 @@ import CountUp from 'react-countup';
 import { useQuery } from '@tanstack/react-query';
 import ErrorMessage from '../../../Shared/ErrorMessage/ErrorMessage';
 import Loading from '../../../Shared/Loading/Loading';
+import AdminCharts from './AdminCharts';
 
 const AdminHome = () => {
     const { user } = useContext(AuthContext);
@@ -41,7 +42,7 @@ const AdminHome = () => {
                 <div className='flex lg:justify-start justify-center'>
                     <h1 className='text-xl lg:text-2xl text-secondary font-medium font-family'>Hi Welcome {user.displayName}! 👋</h1>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-6'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-3 my-6'>
                     <div className='lg:flex items-center justify-center rounded-lg bg-white'>
                         <figure className='lg:ml-8 mt-6 lg:mt-0 text-center'>
                             <GiMoneyStack className='text-6xl inline-block text-primary' />
@@ -87,7 +88,9 @@ const AdminHome = () => {
                         </div>
                     </div>
                 </div>
-
+                <div>
+                    <AdminCharts></AdminCharts>
+                </div>
             </div>
         </div>
     );
