@@ -8,7 +8,7 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
     const [processing, setProcessing] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
-    const { customerName, customerEmail, _id } = payment;
+    const { customerName, customerEmail, _id, toolName } = payment;
     const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {
@@ -74,6 +74,7 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
             // store payment info in the database
             const paymentInfo = {
                 date: new Date(),
+                toolName,
                 totalToolPrice,
                 transactionId: paymentIntent.id,
                 customerName,

@@ -19,6 +19,7 @@ import UpdateProfile from "../pages/Dashboard/OtherPages/UpdateProfile/UpdatePro
 import Profile from "../pages/Profile/Profile";
 import ClientReviews from "../pages/Dashboard/AdminPages/ClientReviews/ClientReviews";
 import AdminHome from "../pages/Dashboard/AdminPages/AdminHome/AdminHome";
+import PaymentHistory from "../pages/Dashboard/UserPages/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
             {
                 path: 'add-review',
                 element: <AddReview></AddReview>
+            },
+            {
+                path: 'payment-history',
+                element: <PaymentHistory></PaymentHistory>
             },
             {
                 path: 'edit-profile',

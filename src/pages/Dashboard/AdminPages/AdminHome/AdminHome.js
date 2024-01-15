@@ -9,8 +9,10 @@ import { useQuery } from '@tanstack/react-query';
 import ErrorMessage from '../../../Shared/ErrorMessage/ErrorMessage';
 import Loading from '../../../Shared/Loading/Loading';
 import AdminCharts from './AdminCharts';
+import useTitle from '../../../../hooks/useTitle';
 
 const AdminHome = () => {
+    useTitle('Dashboard');
     const { user } = useContext(AuthContext);
 
     const { data: adminStats = {}, isLoading, error } = useQuery({
