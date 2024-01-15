@@ -74,43 +74,47 @@ const MyOrders = () => {
         <section className='bg-gray-50 min-h-screen py-12 lg:py-16'>
             {
                 orders?.length > 0 ?
-                    <div className='bg-white w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10'>
-                        <h1 className='text-2xl font-medium mb-4'>My Orders: 0{orders.length}</h1>
-                        <div className="overflow-x-auto">
-                            <table className="table w-full">
-                                <thead className='bg-gray-100 font-bold uppercase'>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Name & Email</th>
-                                        <th>Phone</th>
-                                        <th>Tool Name</th>
-                                        <th>Total Price</th>
-                                        <th>Payment</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        orders?.map((order, index) => <Order
-                                            key={order._id}
-                                            order={order}
-                                            index={index}
-                                            setPayment={setPayment}
-                                            setDeleteOrder={setDeleteOrder}
-                                            setPaymentInformationModal={setPaymentInformationModal}
-                                        ></Order>)
-                                    }
-                                </tbody>
-                            </table>
+                    (
+                        <div className='bg-white w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10'>
+                            <h1 className='text-2xl font-medium mb-4'>My Orders: 0{orders.length}</h1>
+                            <div className="overflow-x-auto">
+                                <table className="table w-full">
+                                    <thead className='bg-gray-100 font-bold uppercase'>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name & Email</th>
+                                            <th>Phone</th>
+                                            <th>Tool Name</th>
+                                            <th>Total Price</th>
+                                            <th>Payment</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            orders?.map((order, index) => <Order
+                                                key={order._id}
+                                                order={order}
+                                                index={index}
+                                                setPayment={setPayment}
+                                                setDeleteOrder={setDeleteOrder}
+                                                setPaymentInformationModal={setPaymentInformationModal}
+                                            ></Order>)
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    )
                     :
-                    <div className='text-center w-11/12 mx-auto'>
-                        <img src={orderGif} alt="Order Gif" className='mx-auto rounded-2xl mb-4' />
-                        <Link to='/tools'>
-                            <button className='btn btn-sm btn-primary text-white lg:mt-0'>Please Order tools <HiArrowRight className='text-lg'></HiArrowRight> </button>
-                        </Link>
-                    </div>
+                    (
+                        <div className='text-center w-11/12 mx-auto'>
+                            <img src={orderGif} alt="Order Gif" className='mx-auto rounded-2xl mb-4' />
+                            <Link to='/tools'>
+                                <button className='btn btn-sm btn-primary text-white lg:mt-0'>Please Order tools <HiArrowRight className='text-lg'></HiArrowRight> </button>
+                            </Link>
+                        </div>
+                    )
             }
             {
                 payment && <PaymentModal

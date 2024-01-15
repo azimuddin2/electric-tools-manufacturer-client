@@ -43,8 +43,8 @@ const PaymentHistory = () => {
             {
                 payments?.length > 0 ?
                     (
-                        <div className='bg-white w-11/12 lg:w-4/5 mx-auto p-5 lg:p-10'>
-                            <h1 className='text-2xl font-medium mb-4'>Payment History</h1>
+                        <div className='bg-white w-11/12 mx-auto p-5 lg:p-10'>
+                            <h1 className='text-2xl font-medium mb-4'>Payment History: 0{payments.length}</h1>
                             <div className="overflow-x-auto">
                                 <table className="table w-full">
                                     <thead className='bg-gray-100 font-bold uppercase'>
@@ -75,8 +75,8 @@ const PaymentHistory = () => {
                     (
                         <div className='text-center w-11/12 mx-auto'>
                             <img src={orderGif} alt="Order Gif" className='mx-auto rounded-2xl mb-4' />
-                            <Link to='/tools'>
-                                <button className='btn btn-sm btn-primary text-white lg:mt-0'>Please Order tools <HiArrowRight className='text-lg'></HiArrowRight> </button>
+                            <Link to='/dashboard/my-orders'>
+                                <button className='btn btn-sm btn-primary text-white lg:mt-0'>Please Payment<HiArrowRight className='text-lg'></HiArrowRight> </button>
                             </Link>
                         </div>
                     )

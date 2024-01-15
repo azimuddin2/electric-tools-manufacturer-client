@@ -64,6 +64,13 @@ const Login = () => {
             })
     };
 
+    swal({
+        title: "Admin Access🔥",
+        text: "📧Email: admin@gmail.com & 🔑Password: 1234567@",
+        icon: "info",
+        button: "Close",
+    });
+
     return (
         <section className='max-w-screen-lg lg:mx-auto hero my-12 lg:my-16'>
             <div className='hero-content grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10'>
