@@ -17,7 +17,7 @@ const Profile = () => {
     useTitle('My Profile');
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/user?email=${user?.email}`;
+    const url = `https://electric-tools-manufacturer-server-two.vercel.app/user?email=${user?.email}`;
     const { data: userInfo = {}, isLoading, error } = useQuery({
         queryKey: ['user', user?.email],
         queryFn: async () => {

@@ -41,7 +41,7 @@ const SocialLogin = () => {
             name,
             email
         };
-        fetch('http://localhost:5000/user', {
+        fetch('https://electric-tools-manufacturer-server-two.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

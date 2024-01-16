@@ -25,7 +25,7 @@ const UpdateProductModal = ({ updateProduct, setUpdateProduct, refetch }) => {
             description,
             rating: newRating
         };
-        fetch(`http://localhost:5000/tool/${_id}`, {
+        fetch(`https://electric-tools-manufacturer-server-two.vercel.app/tool/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

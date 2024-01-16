@@ -35,7 +35,7 @@ const router = createBrowserRouter([
                 path: 'tools',
                 element: <AllTools></AllTools>,
                 loader: async () => {
-                    return fetch('http://localhost:5000/totalTools')
+                    return fetch('https://electric-tools-manufacturer-server-two.vercel.app/totalTools')
                 }
             },
             {
@@ -93,7 +93,7 @@ const router = createBrowserRouter([
                     <ManageProducts></ManageProducts>
                 </AdminRoute>,
                 loader: async () => {
-                    return await fetch('http://localhost:5000/totalTools')
+                    return await fetch('https://electric-tools-manufacturer-server-two.vercel.app/totalTools')
                 }
             },
             {

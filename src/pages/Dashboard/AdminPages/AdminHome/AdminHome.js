@@ -18,7 +18,7 @@ const AdminHome = () => {
     const { data: adminStats = {}, isLoading, error } = useQuery({
         queryKey: ['admin-stats'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/admin-stats', {
+            const res = await fetch('https://electric-tools-manufacturer-server-two.vercel.app/admin-stats', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }

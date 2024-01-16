@@ -28,7 +28,7 @@ const UpdateProfile = () => {
             .then(data => setCountries(data))
     }, [])
 
-    const url = `http://localhost:5000/user?email=${user?.email}`;
+    const url = `https://electric-tools-manufacturer-server-two.vercel.app/user?email=${user?.email}`;
 
     const { data: userInfo = {}, isLoading, error } = useQuery({
         queryKey: ['user', user?.email],
@@ -74,7 +74,7 @@ const UpdateProfile = () => {
                     handleUpdateUserProfile(name, imgData.data.url, phone);
 
                     // NOTE: Save user information to the database
-                    fetch(`http://localhost:5000/user/${userInfo._id}`, {
+                    fetch(`https://electric-tools-manufacturer-server-two.vercel.app/user/${userInfo._id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

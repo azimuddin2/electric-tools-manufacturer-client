@@ -44,7 +44,7 @@ const AddReview = () => {
             description: data.description,
             rating: value,
         };
-        fetch('http://localhost:5000/review', {
+        fetch('https://electric-tools-manufacturer-server-two.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -14,7 +14,7 @@ const AllUsers = () => {
     const { data: users = [], isLoading, error, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users', {
+            const res = await fetch('https://electric-tools-manufacturer-server-two.vercel.app/users', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -25,7 +25,7 @@ const AllUsers = () => {
     });
 
     const handleDeleteUser = (user) => {
-        fetch(`http://localhost:5000/user/${user._id}`, {
+        fetch(`https://electric-tools-manufacturer-server-two.vercel.app/user/${user._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

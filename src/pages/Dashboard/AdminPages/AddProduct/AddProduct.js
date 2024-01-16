@@ -29,7 +29,7 @@ const AddProduct = () => {
             description,
             rating
         };
-        fetch('http://localhost:5000/tool', {
+        fetch('https://electric-tools-manufacturer-server-two.vercel.app/tool', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

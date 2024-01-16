@@ -12,7 +12,7 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
     const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://electric-tools-manufacturer-server-two.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -82,7 +82,7 @@ const CheckoutForm = ({ payment, totalToolPrice, setPayment, refetch }) => {
                 paymentId: _id,
             };
 
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://electric-tools-manufacturer-server-two.vercel.app/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

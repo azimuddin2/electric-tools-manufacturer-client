@@ -37,14 +37,14 @@ const ManageProducts = () => {
     const { data: tools, isLoading, error, refetch } = useQuery({
         queryKey: ['all-tools', currentPage, toolsPerPage, search],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/all-tools?page=${currentPage}&limit=${toolsPerPage}&search=${search}`);
+            const res = await fetch(`https://electric-tools-manufacturer-server-two.vercel.app/all-tools?page=${currentPage}&limit=${toolsPerPage}&search=${search}`);
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteProduct = (tool) => {
-        fetch(`http://localhost:5000/tool/${tool._id}`, {
+        fetch(`https://electric-tools-manufacturer-server-two.vercel.app/tool/${tool._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

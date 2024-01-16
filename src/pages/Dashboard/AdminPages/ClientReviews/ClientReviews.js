@@ -13,7 +13,7 @@ const ClientReviews = () => {
     const [deletingReview, setDeletingReview] = useState(null);
 
     const handleDeleteReview = (review) => {
-        fetch(`http://localhost:5000/review/${review._id}`, {
+        fetch(`https://electric-tools-manufacturer-server-two.vercel.app/review/${review._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
