@@ -47,7 +47,7 @@ const Profile = () => {
     }
 
     return (
-        <section className="hero min-h-screen py-12 lg:py-20">
+        <section className="hero lg:min-h-screen py-12 lg:py-20">
             <div className='grid grid-cols-1 lg:grid-cols-2'>
                 <div className='lg:flex justify-center items-center hidden'>
                     <img src={profile} alt="Profile" />

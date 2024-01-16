@@ -10,7 +10,7 @@ const ProductRow = ({ tool, index, setDeletingProduct, setUpdateProduct }) => {
         <tr>
             <th>{index + 1}</th>
             <td>
-                <img src={image} alt={name} className='w-24' />
+                <img src={image} alt={name} className='w-40' />
             </td>
             <td>{name}</td>
             <td className='font-semibold'>${price}</td>
