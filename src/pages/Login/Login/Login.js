@@ -14,6 +14,7 @@ const Login = () => {
     useTitle('Login');
     const { signIn } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [adminAccess, setAdminAccess] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
 
     const [loginUserEmail, setLoginUserEmail] = useState('');
@@ -64,12 +65,15 @@ const Login = () => {
             })
     };
 
-    swal({
-        title: "Admin Access🔥",
-        text: "📧Email: admin@gmail.com & 🔑Password: 1234567@",
-        icon: "info",
-        button: "Close",
-    });
+    if (adminAccess === true) {
+        swal({
+            title: "Admin Access🔐",
+            text: "📧Email: admin@gmail.com & 🔑Password: 1234567@",
+            icon: "info",
+            button: "Close",
+        });
+        setAdminAccess(false);
+    }
 
     return (
         <section className='max-w-screen-lg lg:mx-auto hero my-12 lg:my-16'>

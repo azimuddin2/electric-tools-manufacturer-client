@@ -10,11 +10,11 @@ const ProductRow = ({ tool, index, setDeletingProduct, setUpdateProduct }) => {
         <tr>
             <th>{index + 1}</th>
             <td>
-                <img src={image} alt={name} className='w-40' />
+                <img src={image} alt={name} className='w-20' />
             </td>
             <td>{name}</td>
             <td className='font-semibold'>${price}</td>
-            <td className='tooltip tooltip-right' data-tip={description}>
+            <td title={description} >
                 {
                     description.length > 20 ?
                         <span>{description.slice(0, 20) + '...'}</span>
