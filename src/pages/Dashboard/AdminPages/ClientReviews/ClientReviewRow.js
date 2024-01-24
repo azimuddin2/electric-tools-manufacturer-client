@@ -47,9 +47,9 @@ const ClientReviewRow = ({ index, review, setDeletingReview }) => {
                 <p onClick={toggleReadMore} className='inline'>
                     {
                         isReadMore ?
-                            <span className='link font-semibold text-primary'>Read More</span>
+                            <span className='link font-semibold text-primary'>more</span>
                             :
-                            <span className='link font-semibold text-primary'>Show Less</span>
+                            <span className='link font-semibold text-primary'>less</span>
                     }
                 </p>
             </td>
